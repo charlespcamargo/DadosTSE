@@ -33,8 +33,14 @@ namespace UFSCar.BD.Model
         [Column("UF")]
         public string UF { get; set; }
 
-        //[ForeignKey("ImportacaoArquivoID")]
+        [DataMember]
+        [ForeignKey("ImportacaoArquivoID")]
         public List<ImportacaoCandidato> lstCandidatos { get; set; }
+
+        [DataMember]
+        [ForeignKey("ImportacaoArquivoID")]
+        public List<ImportacaoBensCandidato> lstBens { get; set; }
+
     }
 
 }

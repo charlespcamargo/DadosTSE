@@ -160,6 +160,7 @@ namespace ImportacaoDadosTSE
                 if (iArquivo.Registros != null && iArquivo.Registros.Count > 0)
                 {
                     ImportacaoArquivoBL.New.Salvar(iArquivo);
+                    Console.WriteLine("O Arquivo [{0}] foi processado com sucesso. Foram criados [{1}] registros.", iArquivo.Nome, iArquivo.Registros.Count);
                 }
             }
         }
@@ -169,14 +170,14 @@ namespace ImportacaoDadosTSE
             using (StreamReader sr = arquivo.OpenText())
             {
                 iArquivo.Registros = new List<IArquivoItem>();
-                ArquivoCandidatosItem item = null;
+                IArquivoItem item = null;
                 string linha = "";
 
                 while ((linha = sr.ReadLine()) != null)
                 {
                     string[] linhaPropriedades = linha.Split(new string[] { ";" }, StringSplitOptions.None);
 
-                    item = new ArquivoCandidatosItem();
+                    item = Novo(iArquivo.TipoArquivo);
                     System.Reflection.PropertyInfo[] lstPropriedades = item.GetType().GetProperties();
 
                     for (int i = 0; i < linhaPropriedades.Length; i++)
@@ -184,6 +185,23 @@ namespace ImportacaoDadosTSE
 
                     iArquivo.Registros.Add(item);
                 }
+            }
+        }
+
+        private IArquivoItem Novo(eTipoArquivo tipo)
+        {
+            switch (tipo)
+            {
+                case eTipoArquivo.Candidatos:
+                    return new ArquivoCandidatosItem();
+                case eTipoArquivo.BensDosCandidatos:
+                    return new ArquivoBensDosCandidatosItem();
+                case eTipoArquivo.Legendas:
+                    return new ArquivoLegendasItem();
+                case eTipoArquivo.Vagas:
+                    return new ArquivoVagasItem();
+                default:
+                    throw new ArgumentException("Tipo desconhecido para a instancia");
             }
         }
 

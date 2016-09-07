@@ -60,12 +60,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Arquivos\Ler\" />
-    <Folder Include="Arquivos\Lidos\Bens\" />
-    <Folder Include="Arquivos\Lidos\Candidatos\" />
-    <Folder Include="Arquivos\Lidos\Legendas\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\UFSCar.BD.BackEnd\UFSCar.BD.BackEnd.csproj">
       <Project>{6891b511-c57b-4332-a79f-e577c0bcda9d}</Project>

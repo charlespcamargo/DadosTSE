@@ -21,7 +21,16 @@ namespace UFSCar.BD.BackEnd.Business
 
             using (UnitOfWork UoW = new UnitOfWork())
             {
-                UoW.ImportacaoArquivoRepository.Inserir(arquivo);
+                ImportacaoArquivo arquivoSalvo = UoW.ImportacaoArquivoRepository.Carregar(c => c.NomeArquivo == iArquivo.Nome, o => o.OrderBy(by => by.ID));
+
+                if (arquivoSalvo == null)
+                    UoW.ImportacaoArquivoRepository.Inserir(arquivo);
+                else
+                {
+                    arquivo.ID = arquivoSalvo.ID;
+                    UoW.ImportacaoArquivoRepository.Alterar(arquivo, "ID");
+                }
+
                 UoW.Save();
             }
         }
@@ -34,14 +43,41 @@ namespace UFSCar.BD.BackEnd.Business
             arquivo.TipoArquivoID = (int)iArquivo.TipoArquivo;
             arquivo.Ano = iArquivo.Ano;
             arquivo.UF = iArquivo.UF;
-            arquivo.lstCandidatos = ConvertItem(iArquivo.Registros);
+            Convert(arquivo, iArquivo.Registros);
 
             return arquivo;
         }
 
-        public List<ImportacaoCandidato> ConvertItem(List<IArquivoItem> iList)
+        public void Convert(ImportacaoArquivo arquivo, List<IArquivoItem> registros)
         {
-            List<ImportacaoCandidato> lstCandidatos = new List<ImportacaoCandidato>();
+            if (registros != null && registros.Count > 0)
+            {
+                switch ((Enumeradores.eTipoArquivo)arquivo.TipoArquivoID)
+                {
+                    case Enumeradores.eTipoArquivo.Candidatos:
+                        arquivo.lstCandidatos = ConvertItemCandidato(registros);
+                        break;
+
+                    case Enumeradores.eTipoArquivo.BensDosCandidatos:
+                        arquivo.lstBens = ConvertItemBens(registros);
+                        break;
+
+                    case Enumeradores.eTipoArquivo.Legendas:
+                        break;
+
+                    case Enumeradores.eTipoArquivo.Vagas:
+                        break;
+
+                    default:
+                        break;
+                }
+
+            }
+        }
+
+        public List<ImportacaoCandidato> ConvertItemCandidato(List<IArquivoItem> iList)
+        {
+            List<ImportacaoCandidato> lstItems = new List<ImportacaoCandidato>();
 
             if (iList != null && iList.Count > 0)
             {
@@ -49,7 +85,7 @@ namespace UFSCar.BD.BackEnd.Business
 
                 foreach (ArquivoCandidatosItem item in iList)
                 {
-                    candidato = new Model.ImportacaoCandidato();
+                    candidato = new ImportacaoCandidato();
                     //candidato.ImportacaoArquivoID = importacaoArquivoID;
                     candidato.DATA_GERACAO = item.DATA_GERACAO;
                     candidato.HORA_GERACAO = item.HORA_GERACAO;
@@ -98,11 +134,43 @@ namespace UFSCar.BD.BackEnd.Business
                     candidato.DESC_SIT_TOT_TURNO = item.DESC_SIT_TOT_TURNO;
                     candidato.NM_EMAIL = candidato.NM_EMAIL;
 
-                    lstCandidatos.Add(candidato);
+                    lstItems.Add(candidato);
                 }
             }
 
-            return lstCandidatos;
+            return lstItems;
+        }
+
+        public List<ImportacaoBensCandidato> ConvertItemBens(List<IArquivoItem> iList)
+        {
+            List<ImportacaoBensCandidato> lstItems = new List<ImportacaoBensCandidato>();
+
+            if (iList != null && iList.Count > 0)
+            {
+                ImportacaoBensCandidato obj = null;
+
+                foreach (ArquivoBensDosCandidatosItem item in iList)
+                {
+                    obj = new ImportacaoBensCandidato();
+                    //obj.ImportacaoArquivoID = importacaoArquivoID;
+                    obj.DATA_GERACAO = item.DATA_GERACAO;
+                    obj.HORA_GERACAO = item.HORA_GERACAO;
+                    obj.ANO_ELEICAO = item.ANO_ELEICAO;
+                    obj.DESCRICAO_ELEICAO = item.DESCRICAO_ELEICAO;
+                    obj.SIGLA_UF = item.SIGLA_UF;
+                    obj.SQ_CANDIDATO = item.SQ_CANDIDATO;
+                    obj.CD_TIPO_BEM_CANDIDATO = item.CD_TIPO_BEM_CANDIDATO;
+                    obj.DS_TIPO_BEM_CANDIDATO = item.DS_TIPO_BEM_CANDIDATO;
+                    obj.DETALHE_BEM = item.DETALHE_BEM;
+                    obj.VALOR_BEM = item.VALOR_BEM;
+                    obj.DATA_ULTIMA_ATUALIZACAO = item.DATA_ULTIMA_ATUALIZACAO;
+                    obj.HORA_ULTIMA_ATUALIZACAO = item.HORA_ULTIMA_ATUALIZACAO;
+
+                    lstItems.Add(obj);
+                }
+            }
+
+            return lstItems;
         }
 
     }

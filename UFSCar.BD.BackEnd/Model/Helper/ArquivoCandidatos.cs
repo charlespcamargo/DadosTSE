@@ -9,8 +9,6 @@ namespace UFSCar.BD.Model
 {
     public class ArquivoCandidatos : IArquivo
     {
-
-
         public int Ano { get; set; }
 
         public string Nome { get; set; }

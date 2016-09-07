@@ -56,6 +56,7 @@ namespace UFSCar.BD.Repository
             builder.Configurations.Add(new EntityTypeConfiguration<ImportacaoTipoArquivo>());
             builder.Configurations.Add(new EntityTypeConfiguration<ImportacaoArquivo>());
             builder.Configurations.Add(new EntityTypeConfiguration<ImportacaoCandidato>());
+            builder.Configurations.Add(new EntityTypeConfiguration<ImportacaoBensCandidato>());
 
 
             return builder;

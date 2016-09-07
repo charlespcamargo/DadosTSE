@@ -1,25 +1,33 @@
 /*
-	DROP TABLE ImportacaoCandidato
-	DROP TABLE ImportacaoArquivo
-	DROP TABLE ImportacaoTipoArquivo
+	DELETE FROM ImportacaoBensCandidato
+	DELETE FROM ImportacaoCandidato
+	DELETE FROM ImportacaoArquivo
+	
+
+	--DROP TABLE ImportacaoBensCandidato
+	--DROP TABLE ImportacaoCandidato
+	--DROP TABLE ImportacaoArquivo
+	--DROP TABLE ImportacaoTipoArquivo
 */ 
  
 
  
- CREATE TABLE ImportacaoTipoArquivo
+CREATE TABLE ImportacaoTipoArquivo
  (
 	ID									INT				NOT NULL PRIMARY KEY,
 	Nome								VARCHAR(30)		NOT NULL
  )
- GO
+ 
+GO
 
- INSERT INTO ImportacaoTipoArquivo VALUES (1, 'Candidatos')
+INSERT INTO ImportacaoTipoArquivo VALUES (1, 'Candidatos')
  INSERT INTO ImportacaoTipoArquivo VALUES (2, 'Bens Dos Candidatos')
  INSERT INTO ImportacaoTipoArquivo VALUES (3, 'Legendas')
  INSERT INTO ImportacaoTipoArquivo VALUES (4, 'Vagas')
- GO
+ 
+GO
 
- CREATE TABLE ImportacaoArquivo
+CREATE TABLE ImportacaoArquivo
  (
 	ID									INT IDENTITY	NOT NULL PRIMARY KEY,
 	NomeArquivo							VARCHAR(200)	NOT NULL,
@@ -27,9 +35,9 @@
 	Ano									INT				NOT NULL,
 	UF									VARCHAR(02)		NOT NULL
  )
- GO
+GO
  
- CREATE TABLE ImportacaoCandidato
+CREATE TABLE ImportacaoCandidato
  (
 	ID									INT IDENTITY PRIMARY KEY NOT NULL,
 	ImportacaoArquivoID				    INT NOT NULL FOREIGN KEY (ImportacaoArquivoID) REFERENCES ImportacaoArquivo(ID),
@@ -79,5 +87,25 @@
     COD_SIT_TOT_TURNO 					VARCHAR(MAX) NULL,
     DESC_SIT_TOT_TURNO 					VARCHAR(MAX) NULL,
     NM_EMAIL 							VARCHAR(MAX) NULL
+)
+GO
+
+
+CREATE TABLE ImportacaoBensCandidato
+(
+	ID									INT IDENTITY PRIMARY KEY NOT NULL,
+	ImportacaoArquivoID				    INT NOT NULL FOREIGN KEY (ImportacaoArquivoID) REFERENCES ImportacaoArquivo(ID),
+	DATA_GERACAO						VARCHAR(MAX) NULL,
+    HORA_GERACAO						VARCHAR(MAX) NULL,
+    ANO_ELEICAO 						VARCHAR(MAX) NULL,
+    DESCRICAO_ELEICAO					VARCHAR(MAX) NULL,
+    SIGLA_UF 							VARCHAR(MAX) NULL,
+    SQ_CANDIDATO 						VARCHAR(MAX) NULL,
+    CD_TIPO_BEM_CANDIDATO 				VARCHAR(MAX) NULL,
+    DS_TIPO_BEM_CANDIDATO 				VARCHAR(MAX) NULL,
+    DETALHE_BEM 						VARCHAR(MAX) NULL,
+    VALOR_BEM 							VARCHAR(MAX) NULL,
+    DATA_ULTIMA_ATUALIZACAO 			VARCHAR(MAX) NULL,
+    HORA_ULTIMA_ATUALIZACAO				VARCHAR(MAX) NULL
 )
 GO

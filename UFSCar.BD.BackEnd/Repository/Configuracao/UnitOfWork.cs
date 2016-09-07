@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 namespace UFSCar.BD.Repository
 {
     public partial class UnitOfWork : UnitOfWorkBase
-    {
-        #region Cliente
+    { 
 
         private BaseRepository<ImportacaoTipoArquivo> importacaoTipoArquivoRepository;
         public BaseRepository<ImportacaoTipoArquivo> ImportacaoTipoArquivoRepository
@@ -52,6 +51,18 @@ namespace UFSCar.BD.Repository
             }
         }
 
-        #endregion
+        private BaseRepository<ImportacaoBensCandidato> importacaoBensCandidatoRepository;
+        public BaseRepository<ImportacaoBensCandidato> ImportacaoBensCandidatoRepository
+        {
+            get
+            {
+                if (this.importacaoBensCandidatoRepository == null)
+                {
+                    this.importacaoBensCandidatoRepository = new BaseRepository<ImportacaoBensCandidato>(context);
+                }
+                return importacaoBensCandidatoRepository;
+            }
+        }
+         
     }
 }
