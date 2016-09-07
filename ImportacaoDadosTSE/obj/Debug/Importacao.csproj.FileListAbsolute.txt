@@ -1,0 +1,3 @@
+P:\Projetos\Mestrado\Sahudy - Banco de Dados\ImportacaoDadosTSE\ImportacaoDadosTSE\bin\Debug\ImportacaoDadosTSE.exe.config
+P:\Projetos\Mestrado\Sahudy - Banco de Dados\ImportacaoDadosTSE\ImportacaoDadosTSE\obj\Debug\ImportacaoDadosTSE.exe
+P:\Projetos\Mestrado\Sahudy - Banco de Dados\ImportacaoDadosTSE\ImportacaoDadosTSE\obj\Debug\ImportacaoDadosTSE.pdb

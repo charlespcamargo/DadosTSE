@@ -1,0 +1,12 @@
+P:\Projetos\Mestrado\Sahudy - Banco de Dados\ImportacaoDadosTSE\ImportacaoDadosTSE\bin\Debug\ImportacaoDadosTSE.exe.config
+P:\Projetos\Mestrado\Sahudy - Banco de Dados\ImportacaoDadosTSE\ImportacaoDadosTSE\obj\Debug\UFSCar.BD.Importacao.csprojResolveAssemblyReference.cache
+P:\Projetos\Mestrado\Sahudy - Banco de Dados\ImportacaoDadosTSE\ImportacaoDadosTSE\bin\Debug\ImportacaoDadosTSE.exe
+P:\Projetos\Mestrado\Sahudy - Banco de Dados\ImportacaoDadosTSE\ImportacaoDadosTSE\bin\Debug\ImportacaoDadosTSE.pdb
+P:\Projetos\Mestrado\Sahudy - Banco de Dados\ImportacaoDadosTSE\ImportacaoDadosTSE\bin\Debug\UFSCar.BD.BackEnd.dll
+P:\Projetos\Mestrado\Sahudy - Banco de Dados\ImportacaoDadosTSE\ImportacaoDadosTSE\bin\Debug\EntityFramework.dll
+P:\Projetos\Mestrado\Sahudy - Banco de Dados\ImportacaoDadosTSE\ImportacaoDadosTSE\bin\Debug\UFSCar.BD.BackEnd.pdb
+P:\Projetos\Mestrado\Sahudy - Banco de Dados\ImportacaoDadosTSE\ImportacaoDadosTSE\bin\Debug\EntityFramework.xml
+P:\Projetos\Mestrado\Sahudy - Banco de Dados\ImportacaoDadosTSE\ImportacaoDadosTSE\obj\Debug\ImportacaoDadosTSE.exe
+P:\Projetos\Mestrado\Sahudy - Banco de Dados\ImportacaoDadosTSE\ImportacaoDadosTSE\obj\Debug\ImportacaoDadosTSE.pdb
+P:\Projetos\Mestrado\Sahudy - Banco de Dados\ImportacaoDadosTSE\ImportacaoDadosTSE\bin\Debug\EntityFramework.SqlServer.dll
+P:\Projetos\Mestrado\Sahudy - Banco de Dados\ImportacaoDadosTSE\ImportacaoDadosTSE\bin\Debug\EntityFramework.SqlServer.xml
