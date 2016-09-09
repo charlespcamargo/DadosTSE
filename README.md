@@ -1,4 +1,4 @@
-# DadosTSE
+# Dados do TSE
 
 Projeto de Data Warehouse sobre os dados eleitorais divulgados pelo TSE, em especial sobre os candidatos. Sendo essas informações divulgadas a cada eleição (2 anos) é possível fazer um trabalho interessante e de grande valor para a sociedade, principalmente em período de eleições municipais. 
 
