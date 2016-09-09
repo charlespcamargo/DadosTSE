@@ -1,14 +1,20 @@
-SELECT COUNT(ID) AS QtdArquivo 
-  FROM dbo.ImportacaoArquivo WITH(NOLOCK)
+ 
 
-SELECT COUNT(ID) AS QtdCandidatos 
-  FROM dbo.ImportacaoCandidato WITH(NOLOCK)
+SELECT Candidato.NOME_CANDIDATO, Candidato.SIGLA_PARTIDO, Tabela.Valor
+  FROM ImportacaoCandidato	AS Candidato
+  JOIN (
+			
+			SELECT C.SEQUENCIAL_CANDIDATO					AS Sequencia,
+				   SUM(CAST(b.VALOR_BEM AS NUMERIC(14,2)))	AS Valor
 
-SELECT COUNT(ID) AS QtdBensCandidato
-  FROM dbo.ImportacaoBensCandidato WITH(NOLOCK)
+			  FROM ImportacaoCandidato				AS C	   WITH(NOLOCK)				
+			  JOIN dbo.ImportacaoBensCandidato		AS B		WITH(NOLOCK)		
+				ON C.SEQUENCIAL_CANDIDATO = B.SQ_CANDIDATO 
+			 WHERE C.SIGLA_UF = 'SP'
+			   AND C.NOME_MUNICIPIO_NASCIMENTO = 'SOROCABA'
+			 GROUP BY C.SEQUENCIAL_CANDIDATO
 
-SELECT COUNT(ID) AS QtdLegendas 
-  FROM dbo.ImportacaoLegenda WITH(NOLOCK)
-
-SELECT COUNT(ID) AS QtdVaga 
-  FROM dbo.ImportacaoVaga WITH(NOLOCK)
+	   ) AS Tabela
+	ON Candidato.SEQUENCIAL_CANDIDATO = Tabela.Sequencia
+ ORDER BY Valor DESC
+		
