@@ -181,8 +181,8 @@ namespace ImportacaoDadosTSE
 
         private void ProcessarArquivoItens(IArquivo iArquivo, FileInfo arquivo)
         {
-            using (StreamReader sr = arquivo.OpenText())
-            {
+            using (StreamReader sr = new StreamReader(arquivo.FullName, Encoding.Default))
+            {                
                 iArquivo.Registros = new List<IArquivoItem>();
                 IArquivoItem item = null;
                 string linha = "";
