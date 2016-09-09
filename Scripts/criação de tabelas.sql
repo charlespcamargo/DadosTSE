@@ -10,6 +10,13 @@
 	--DROP TABLE ImportacaoCandidato
 	--DROP TABLE ImportacaoArquivo
 	--DROP TABLE ImportacaoTipoArquivo
+
+	
+	SELECT COUNT(ID) AS Qtd FROM ImportacaoBensCandidato	WITH(NOLOCK)
+	SELECT COUNT(ID) AS Qtd FROM ImportacaoCandidato		WITH(NOLOCK)
+	SELECT COUNT(ID) AS Qtd FROM ImportacaoLegenda			WITH(NOLOCK)
+	SELECT COUNT(ID) AS Qtd FROM ImportacaoVaga				WITH(NOLOCK)
+	SELECT COUNT(ID) AS Qtd FROM ImportacaoArquivo 			WITH(NOLOCK)
 */ 
  
 
