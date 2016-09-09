@@ -98,7 +98,7 @@ namespace ImportacaoDadosTSE
             if (Directory.Exists(path))
             {
                 DirectoryInfo d = new DirectoryInfo(path);
-                FileInfo[] lstArquivos = d.GetFiles();
+                FileInfo[] lstArquivos = d.GetFiles("*.txt");
 
                 if (lstArquivos != null && lstArquivos.Length > 0)
                 {
@@ -110,22 +110,38 @@ namespace ImportacaoDadosTSE
                 else
                 {
                     Console.WriteLine("Nenhum arquivo foi encontrado neste diretório.");
+                }
 
-                    DirectoryInfo[] lstDiretorios = d.GetDirectories();
-                    if (lstDiretorios != null && lstDiretorios.Length > 0)
+
+                DirectoryInfo[] lstDiretorios = d.GetDirectories();
+                if (lstDiretorios != null && lstDiretorios.Length > 0)
+                {
+                    Console.WriteLine(Environment.NewLine);
+                    Console.WriteLine("Um ou mais diretorios foram encontrados. Informe o número do diretorio que deseja processar: ");
+                    Console.WriteLine("0 - Para processar todos os diretórios");
+
+                    for (int i = 0; i < lstDiretorios.Length; i++)
                     {
-                        Console.WriteLine(Environment.NewLine);
-                        Console.WriteLine("Um ou mais diretorios foram encontrados. Informe o número do diretorio que deseja processar: ");
-                        for (int i = 0; i < lstDiretorios.Length; i++)
+                        Console.WriteLine("{0} - Para processar o diretorio [{1}]", i + 1, lstDiretorios[i].Name);
+                    }
+
+                    ConsoleKeyInfo tecla = Console.ReadKey();
+
+                    if (Char.IsNumber(tecla.KeyChar))
+                    {
+                        int numero = Convert.ToInt32(tecla.KeyChar.ToString());
+
+                        // TODOS
+                        if (numero == 0)
                         {
-                            Console.WriteLine("{0} - Para processar o diretorio [{1}]", i, lstDiretorios[i].Name);
+                            lstDiretorios.ToList().ForEach(f =>
+                            {
+                                ProcurarArquivos(tipo, f.FullName);
+                            });
                         }
-
-                        ConsoleKeyInfo tecla = Console.ReadKey();
-
-                        if (Char.IsNumber(tecla.KeyChar))
+                        else
                         {
-                            int numero = Convert.ToInt32(tecla.KeyChar.ToString());
+                            numero = numero - 1;
 
                             if (numero >= 0 && numero <= lstDiretorios.Length - 1)
                             {
@@ -135,11 +151,11 @@ namespace ImportacaoDadosTSE
                             else
                                 Console.WriteLine("Número inválido de diretório, comece novamente.");
                         }
-                        else
-                            Console.WriteLine("Informação digitada não é um número válido, comece novamente.");
                     }
-
+                    else
+                        Console.WriteLine("Informação digitada não é um número válido, comece novamente.");
                 }
+
             }
             else
             {
@@ -159,7 +175,6 @@ namespace ImportacaoDadosTSE
                 if (iArquivo.Registros != null && iArquivo.Registros.Count > 0)
                 {
                     ImportacaoArquivoBL.New.Salvar(iArquivo);
-                    Console.WriteLine("O Arquivo [{0}] foi processado com sucesso. Foram criados [{1}] registros.", iArquivo.Nome, iArquivo.Registros.Count);
                 }
             }
         }

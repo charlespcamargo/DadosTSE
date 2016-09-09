@@ -24,14 +24,15 @@ namespace UFSCar.BD.BackEnd.Business
                 ImportacaoArquivo arquivoSalvo = UoW.ImportacaoArquivoRepository.Carregar(c => c.NomeArquivo == iArquivo.Nome, o => o.OrderBy(by => by.ID));
 
                 if (arquivoSalvo == null)
+                {
                     UoW.ImportacaoArquivoRepository.Inserir(arquivo);
+                    UoW.Save();
+                    Console.WriteLine("O Arquivo [{0}] foi processado com sucesso. Foram criados [{1}] registros.", iArquivo.Nome, iArquivo.Registros.Count);
+                }
                 else
                 {
-                    arquivo.ID = arquivoSalvo.ID;
-                    UoW.ImportacaoArquivoRepository.Alterar(arquivo, "ID");
+                    Console.WriteLine("O Arquivo [" + arquivo.NomeArquivo + "] já foi processado anteriormente.");
                 }
-
-                UoW.Save();
             }
         }
 

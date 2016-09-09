@@ -1,8 +1,10 @@
 /*
 	DELETE FROM ImportacaoBensCandidato
 	DELETE FROM ImportacaoCandidato
+	DELETE FROM ImportacaoLegenda
+	DELETE FROM ImportacaoVaga
 	DELETE FROM ImportacaoArquivo 
-	
+
 
 	--DROP TABLE ImportacaoBensCandidato
 	--DROP TABLE ImportacaoCandidato
