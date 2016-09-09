@@ -59,19 +59,17 @@
   <ItemGroup>
     <Compile Include="Business\ImportacaoArquivoBL.cs" />
     <Compile Include="Model\Helper\ArquivoBensDosCandidatos.cs" />
-    <Compile Include="Model\Helper\ArquivoBensDosCandidatosItem.cs" />
+    <Compile Include="Model\Helper\ImportacaoBensCandidato.cs" />
     <Compile Include="Model\Helper\ArquivoCandidatos.cs" />
-    <Compile Include="Model\Helper\ArquivoCandidatosItem.cs" />
+    <Compile Include="Model\Helper\ImportacaoCandidato.cs" />
     <Compile Include="Model\Helper\ArquivoLegendas.cs" />
-    <Compile Include="Model\Helper\ArquivoLegendasItem.cs" />
+    <Compile Include="Model\Helper\ImportacaoLegenda.cs" />
     <Compile Include="Model\Helper\ArquivoVagas.cs" />
-    <Compile Include="Model\Helper\ArquivoVagasItem.cs" />
+    <Compile Include="Model\Helper\ImportacaoVaga.cs" />
     <Compile Include="Model\Helper\base\Arquivo.cs" />
     <Compile Include="Model\Helper\base\ArquivoItem.cs" />
     <Compile Include="Model\Helper\Enumeradores.cs" />
     <Compile Include="Model\ImportacaoArquivo.cs" />
-    <Compile Include="Model\ImportacaoBensCandidato.cs" />
-    <Compile Include="Model\ImportacaoCandidato.cs" />
     <Compile Include="Model\ImportacaoTipoArquivo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\BaseRepository.cs" />

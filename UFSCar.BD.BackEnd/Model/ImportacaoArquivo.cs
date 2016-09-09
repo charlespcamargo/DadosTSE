@@ -41,6 +41,14 @@ namespace UFSCar.BD.Model
         [ForeignKey("ImportacaoArquivoID")]
         public List<ImportacaoBensCandidato> lstBens { get; set; }
 
+        [DataMember]
+        [ForeignKey("ImportacaoArquivoID")]
+        public List<ImportacaoLegenda> lstLegendas { get; set; }
+
+        [DataMember]
+        [ForeignKey("ImportacaoArquivoID")]
+        public List<ImportacaoVaga> lstVagas  { get; set; }
+
     }
 
 }

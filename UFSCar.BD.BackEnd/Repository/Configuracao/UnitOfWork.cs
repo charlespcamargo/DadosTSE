@@ -63,6 +63,34 @@ namespace UFSCar.BD.Repository
                 return importacaoBensCandidatoRepository;
             }
         }
-         
+
+
+        private BaseRepository<ImportacaoLegenda> importacaoLegendaRepository;
+        public BaseRepository<ImportacaoLegenda> ImportacaoLegendaRepository
+        {
+            get
+            {
+                if (this.importacaoLegendaRepository == null)
+                {
+                    this.importacaoLegendaRepository = new BaseRepository<ImportacaoLegenda>(context);
+                }
+                return importacaoLegendaRepository;
+            }
+        }
+
+
+        private BaseRepository<ImportacaoVaga> importacaoVagaRepository;
+        public BaseRepository<ImportacaoVaga> ImportacaoVagaRepository
+        {
+            get
+            {
+                if (this.importacaoVagaRepository == null)
+                {
+                    this.importacaoVagaRepository = new BaseRepository<ImportacaoVaga>(context);
+                }
+                return importacaoVagaRepository;
+            }
+        }
+
     }
 }

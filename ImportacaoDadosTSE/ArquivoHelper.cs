@@ -105,7 +105,6 @@ namespace ImportacaoDadosTSE
                     foreach (FileInfo arquivo in lstArquivos)
                     {
                         ProcessarArquivo(arquivo, tipo);
-                        break;
                     }
                 }
                 else
@@ -181,7 +180,7 @@ namespace ImportacaoDadosTSE
                     System.Reflection.PropertyInfo[] lstPropriedades = item.GetType().GetProperties();
 
                     for (int i = 0; i < linhaPropriedades.Length; i++)
-                        lstPropriedades[i].SetValue(item, linhaPropriedades[i]);
+                        lstPropriedades[i].SetValue(item, linhaPropriedades[i].Replace("\"", string.Empty));
 
                     iArquivo.Registros.Add(item);
                 }
@@ -193,13 +192,13 @@ namespace ImportacaoDadosTSE
             switch (tipo)
             {
                 case eTipoArquivo.Candidatos:
-                    return new ArquivoCandidatosItem();
+                    return new ImportacaoCandidato();
                 case eTipoArquivo.BensDosCandidatos:
-                    return new ArquivoBensDosCandidatosItem();
+                    return new ImportacaoBensCandidato();
                 case eTipoArquivo.Legendas:
-                    return new ArquivoLegendasItem();
+                    return new ImportacaoLegenda();
                 case eTipoArquivo.Vagas:
-                    return new ArquivoVagasItem();
+                    return new ImportacaoVaga();
                 default:
                     throw new ArgumentException("Tipo desconhecido para a instancia");
             }
