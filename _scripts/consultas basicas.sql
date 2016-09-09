@@ -36,11 +36,17 @@ SELECT Candidato.NOME_CANDIDATO, Candidato.SIGLA_PARTIDO, Tabela.Valor
 	ORDER BY Valor DESC
 
 /*
+	SELECT T.Nome, COUNT(A.ID) AS QtdArquivosImportados	
+	  FROM ImportacaoArquivo		AS A		WITH(NOLOCK)
+	  JOIN ImportacaoTipoArquivo	AS T		WITH(NOLOCK)
+	    ON A.TipoArquivoID = T.ID
+	 GROUP BY T.Nome
+
 	SELECT COUNT(ID) AS QtdRegistrosBens		FROM ImportacaoBensCandidato	WITH(NOLOCK)
 	SELECT COUNT(ID) AS QtdRegistrosCandidato	FROM ImportacaoCandidato		WITH(NOLOCK)
 	SELECT COUNT(ID) AS QtdRegistrosLegendas	FROM ImportacaoLegenda			WITH(NOLOCK)
 	SELECT COUNT(ID) AS QtdRegistrosVagas		FROM ImportacaoVaga				WITH(NOLOCK)
-	SELECT COUNT(ID) AS QtdArquivosImportados	FROM ImportacaoArquivo 			WITH(NOLOCK)
+
 
 
 */
