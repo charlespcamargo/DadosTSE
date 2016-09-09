@@ -20,11 +20,11 @@ SELECT Candidato.NOME_CANDIDATO, Candidato.SIGLA_PARTIDO, Tabela.Valor
 		
 
 /*
-	SELECT COUNT(ID) AS Qtd FROM ImportacaoBensCandidato	WITH(NOLOCK)
-	SELECT COUNT(ID) AS Qtd FROM ImportacaoCandidato		WITH(NOLOCK)
-	SELECT COUNT(ID) AS Qtd FROM ImportacaoLegenda			WITH(NOLOCK)
-	SELECT COUNT(ID) AS Qtd FROM ImportacaoVaga				WITH(NOLOCK)
-	SELECT COUNT(ID) AS Qtd FROM ImportacaoArquivo 			WITH(NOLOCK)
+	SELECT COUNT(ID) AS QtdRegistrosBens		FROM ImportacaoBensCandidato	WITH(NOLOCK)
+	SELECT COUNT(ID) AS QtdRegistrosCandidato	FROM ImportacaoCandidato		WITH(NOLOCK)
+	SELECT COUNT(ID) AS QtdRegistrosLegendas	FROM ImportacaoLegenda			WITH(NOLOCK)
+	SELECT COUNT(ID) AS QtdRegistrosVagas		FROM ImportacaoVaga				WITH(NOLOCK)
+	SELECT COUNT(ID) AS QtdArquivosImportados	FROM ImportacaoArquivo 			WITH(NOLOCK)
 
 
 */
