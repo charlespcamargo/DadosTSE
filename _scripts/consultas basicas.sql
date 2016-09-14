@@ -40,7 +40,7 @@ SELECT Candidato.NOME_CANDIDATO, Candidato.SIGLA_PARTIDO, Tabela.Valor
 	  FROM ImportacaoArquivo		AS A		WITH(NOLOCK)
 	  JOIN ImportacaoTipoArquivo	AS T		WITH(NOLOCK)
 	    ON A.TipoArquivoID = T.ID
-	 GROUP BY T.Nome
+	 GROUP BY T.T.UF
 
 	SELECT COUNT(ID) AS QtdRegistrosBens		FROM ImportacaoBensCandidato	WITH(NOLOCK)
 	SELECT COUNT(ID) AS QtdRegistrosCandidato	FROM ImportacaoCandidato		WITH(NOLOCK)
