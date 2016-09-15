@@ -1,2 +1,5 @@
+# Compiled Object files
 *.suo
-.vs/*
+.vs
+*.bin
+*.obj
