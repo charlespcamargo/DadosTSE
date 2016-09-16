@@ -13,6 +13,10 @@ namespace UFSCar.BD.Model
         eTipoArquivo TipoArquivo { get; set; }
         int Ano { get; set; }
         string UF { get; set; }
+        DateTime DataInicioProcessamento { get; set; }
+        DateTime DataFinalProcessamento { get; set; }
+        string TempoProcessamento { get; }
+
 
         List<IArquivoItem> Registros { get; set; }
     }

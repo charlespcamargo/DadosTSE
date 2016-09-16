@@ -18,5 +18,24 @@ namespace UFSCar.BD.Model
         public string UF { get; set; }
 
         List<IArquivoItem> IArquivo.Registros { get; set; }
+
+        public DateTime DataInicioProcessamento { get; set; }
+
+        public DateTime DataFinalProcessamento { get; set; }
+
+        public string TempoProcessamento
+        {
+            get
+            {
+                if (DataInicioProcessamento != default(DateTime) && DataFinalProcessamento != default(DateTime))
+                {
+                    TimeSpan diferenca = DataFinalProcessamento - DataInicioProcessamento;
+                    return diferenca.Hours + "h" + diferenca.Minutes + "m" + diferenca.Seconds + "s";
+                }
+                else
+                    return string.Empty;
+            }
+        }
+
     }
 }

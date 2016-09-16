@@ -27,7 +27,10 @@ namespace UFSCar.BD.BackEnd.Business
                 {
                     UoW.ImportacaoArquivoRepository.Inserir(arquivo);
                     UoW.Save();
-                    Console.WriteLine("O Arquivo [{0}] foi processado com sucesso. Foram criados [{1}] registros.", iArquivo.Nome, iArquivo.Registros.Count);
+
+
+                    iArquivo.DataFinalProcessamento = DateTime.Now;
+                    Console.WriteLine("O Arquivo [{1}] foi processado com sucesso. Tempo: [{0}] - Foram criados [{2}] registros.", iArquivo.TempoProcessamento, iArquivo.Nome, iArquivo.Registros.Count);
                 }
                 else
                 {

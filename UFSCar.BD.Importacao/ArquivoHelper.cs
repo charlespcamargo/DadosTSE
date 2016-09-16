@@ -102,10 +102,14 @@ namespace ImportacaoDadosTSE
 
                 if (lstArquivos != null && lstArquivos.Length > 0)
                 {
+                    DateTime dtInicio = DateTime.Now;
+
                     foreach (FileInfo arquivo in lstArquivos)
                     {
                         ProcessarArquivo(arquivo, tipo);
                     }
+
+                    ExibirTempoTotal(dtInicio, path);
                 }
                 else
                 {
@@ -170,6 +174,8 @@ namespace ImportacaoDadosTSE
 
             if (iArquivo != null)
             {
+                iArquivo.DataInicioProcessamento = DateTime.Now;
+
                 ProcessarArquivoItens(iArquivo, arquivo);
 
                 if (iArquivo.Registros != null && iArquivo.Registros.Count > 0)
@@ -182,7 +188,7 @@ namespace ImportacaoDadosTSE
         private void ProcessarArquivoItens(IArquivo iArquivo, FileInfo arquivo)
         {
             using (StreamReader sr = new StreamReader(arquivo.FullName, Encoding.Default))
-            {                
+            {
                 iArquivo.Registros = new List<IArquivoItem>();
                 IArquivoItem item = null;
                 string linha = "";
@@ -271,6 +277,14 @@ namespace ImportacaoDadosTSE
             }
         }
 
+        private void ExibirTempoTotal(DateTime dataInicio, string path)
+        {
+            TimeSpan diferenca = DateTime.Now - dataInicio;
+
+            Console.WriteLine(Environment.NewLine);
+            Console.WriteLine(@"O diretório lido foi [{0}]", path);
+            Console.WriteLine("Tempo: " + diferenca.Hours + "h" + diferenca.Minutes + "m" + diferenca.Seconds + "s");
+        }
 
     }
 
