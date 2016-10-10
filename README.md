@@ -1,8 +1,10 @@
 # Dados do TSE
 
-Projeto de Data Warehouse sobre os dados eleitorais divulgados pelo TSE, em especial sobre os candidatos. Sendo essas informações divulgadas a cada eleição (2 anos) é possível fazer um trabalho interessante e de grande valor para a sociedade, principalmente em período de eleições municipais. 
+Projeto de Data Warehouse sobre os dados eleitorais divulgados pelo TSE, em especial sobre os candidatos. 
 
-Inicialmente os arquivos projetados para o trabalhar e seus dados mais relevantes para o trabalho: 
+Sendo essas informações divulgadas a cada eleição (2 anos) é possível fazer um trabalho interessante e de grande valor para a sociedade, principalmente em período de eleições municipais. 
+
+Inicialmente os arquivos projetados para o trabalho e seus dados mais relevantes são: 
 
 Candidatura: 
      Ano, UF, Município, Cargo, Nome do Candidato, Sigla, Data Nascimento, Sexo, Grau Instrução, Estado Civil, Cor/Raça. 
