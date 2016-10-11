@@ -261,3 +261,4 @@ __pycache__/
 
 #Google Drive
 *.desktop.ini
+*desktop.ini
