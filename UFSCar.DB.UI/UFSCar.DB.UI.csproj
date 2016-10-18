@@ -1240,6 +1240,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Pages\BancoDados\DataWarehouse.aspx" />
+    <Content Include="Pages\BancoDados\DataWarehouse.js" />
     <Content Include="Pages\Exemplos\Exemplo.aspx" />
     <Content Include="Pages\Exemplos\Exemplo.js" />
     <Content Include="Assets\scripts\app.js" />
@@ -1283,7 +1284,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="scripts\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
