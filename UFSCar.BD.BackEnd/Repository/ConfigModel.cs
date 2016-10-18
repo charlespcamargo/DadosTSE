@@ -30,7 +30,7 @@ namespace UFSCar.BD.Repository
         {
             get
             {
-                DbCompiledModel compilado = HttpRuntime.Cache.Get("CacheModelCompilerCliente") as DbCompiledModel;
+                DbCompiledModel compilado = HttpRuntime.Cache.Get("CacheModelCompilerUFSCar") as DbCompiledModel;
                 if (compilado == null)
                 {
                     var builder = CompilaModel();
@@ -38,7 +38,7 @@ namespace UFSCar.BD.Repository
                     DbModel model = builder.Build(Conexao);
                     DbCompiledModel compliedModel = model.Compile();
 
-                    HttpRuntime.Cache.Insert("CacheModelCompilerCliente", compliedModel);
+                    HttpRuntime.Cache.Insert("CacheModelCompilerUFSCar", compliedModel);
 
                     return compliedModel;
                 }

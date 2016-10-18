@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Menu text="Banco de Dados" usoOffLine="true">
+
+  <SubMenu text="Banco de Dados" url=""  icone="icon-usd" >   
+      <SubMenu text="Data Warehouse" url="/Pages/BancoDados/DataWarehouse.aspx" />    
+  </SubMenu>
+ 
+</Menu>

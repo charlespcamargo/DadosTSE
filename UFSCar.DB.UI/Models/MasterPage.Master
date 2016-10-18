@@ -1,0 +1,205 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="UFSCar.DB.UI.Models.MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <base target="_self" />
+
+
+    <link href="/Assets/css/themes/default.css" rel="stylesheet" />
+
+    <script src="<%=this.Page.ResolveClientUrl("~/assets/plugins/jquery-1.10.1.min.js")%>" type="text/javascript"></script>
+    <script src="<%=this.Page.ResolveClientUrl("~/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js")%>" type="text/javascript"></script>
+
+    <script src="/Assets/Plugins/jquery.blockui.min.js"></script>
+    <script src="/Assets/Plugins/jquery.cookie.min.js"></script>
+    <script src="/Assets/Plugins/gritter/js/jquery.gritter.min.js"></script>
+
+    <script src="/Assets/scripts/app.js"></script>
+    <script src="/Assets/scripts/HelperJS.js"></script>
+    <script src="/Assets/scripts/google.loader.js"></script>
+    <script src="/Models/MasterMenu.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            App.init();
+            Menu.init();
+            HelperJS.init();
+
+        });
+
+    </script>
+
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="page-header-fixed">
+    <form id="form1" runat="server">
+
+        <asp:HiddenField ID="hfURLAPITSE" runat="server" ClientIDMode="Static" />
+
+        <div class="header navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+
+                    <a class="brand" href="/Default.aspx">
+                        <img src="/Assets/img/logo-ufscar-mini.png" alt="logo" />
+                    </a>
+
+                    <!-- BEGIN HORIZANTAL MENU -->
+                    <div class="navbar hor-menu hidden-phone hidden-tablet">
+                        <div class="navbar-inner">
+                            <ul class="nav">
+                                <li class="visible-phone visible-tablet">
+                                    <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+                                    <div class="sidebar-search">
+                                        <div class="input-box">
+                                            <a href="javascript:;" class="remove"></a>
+                                            <input type="text" onkeypress="javascript:Menu.Buscar();" placeholder="Buscar..." />
+                                            <input type="button" class="submit" value=" " />
+                                        </div>
+                                    </div>
+                                    <!-- END RESPONSIVE QUICK SEARCH FORM -->
+                                </li>
+                                <li id="1" class="active">
+                                    <a href="#" onclick="Menu.RecarregarMenu('1');">Banco de Dados<span class="selected"></span></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- END HORIZANTAL MENU -->
+                        <!-- BEGIN TOP NAVIGATION MENU -->
+                    </div>
+
+                    <div class="navbar hor-menu visible-phone visible-tablet">
+                        <div class="row-fluid">
+                            <div class="controls span3">
+                                <select id="ddlMenuPrincipal" class="span3 m-wrap" onchange="Menu.RecarregarMenu($(this).val());">
+                                    <option value="1">Administrativo</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                    <a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+                        <img src="/assets/img/menu-toggler.png" alt="" />
+                    </a>
+                    <!-- END RESPONSIVE MENU TOGGLER -->
+                    <ul class="nav pull-right">
+                        <!-- BEGIN USER LOGIN DROPDOWN -->
+                        <li class="dropdown user">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <asp:Image runat="server" ID="imgAvatar" ClientIDMode="Static" Style="height: 29px;" onerror="Menu.CarregarImagemAvatar();" />
+                                <asp:Label ID="lblNome" class="username" runat="server" />
+                                <i class="icon-angle-down"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li></li>
+                                <li class="divider"></li>
+                                <li><a href="javascript:;" id="trigger_fullscreen"><i class="icon-move"></i>Tela Cheia</a></li>
+                                <li></li>
+                            </ul>
+                        </li>
+                        <!-- END USER LOGIN DROPDOWN -->
+                        <!-- END USER LOGIN DROPDOWN -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-container">
+
+            <div class="page-sidebar nav-collapse collapse">
+                <ul class="page-sidebar-menu hidden-phone hidden-tablet">
+                    <li class="fixed">
+                        <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+                        <div class="sidebar-toggler hidden-phone"></div>
+                        <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+                    </li>
+                    <li class="fixed">
+                        <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+                        <div class="sidebar-search">
+                            <div class="input-box">
+                                <a href="javascript:;" class="remove"></a>
+                                <input id="txtBuscar" type="text" onkeyup="Menu.Buscar($(this).val());" placeholder="Nome da Página..." />
+                            </div>
+                        </div>
+                        <!-- END RESPONSIVE QUICK SEARCH FORM -->
+                    </li>
+                </ul>
+                <!--HORIZONTAL AND SIDEBAR MENU FOR MOBILE & TABLETS-->
+                <ul class="page-sidebar-menu visible-phone visible-tablet">
+                    <li>
+                        <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+                        <div class="sidebar-search">
+                            <div class="input-box">
+                                <a href="javascript:;" class="remove"></a>
+                                <input type="text" placeholder="Nome da Página..." />
+                            </div>
+                        </div>
+                        <!-- END RESPONSIVE QUICK SEARCH FORM -->
+                    </li>
+                    <li class="active">
+                        <a href="#">
+                            <span class="selected"></span>
+                            <span class="arrow open"></span>
+                        </a>
+                        <ul class="sub-menu">
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="page-content">
+                <div class="container-fluid">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-inner">
+                2016 - UFSCar - Mestrado em Ciencia da Computação
+            </div>
+            <div class="footer-tools">
+                <span class="go-top">
+                    <i class="icon-angle-up"></i>
+                </span>
+            </div>
+        </div>
+
+
+
+        <link href="<%=this.Page.ResolveClientUrl("~/Assets/Plugins/bootstrap/css/bootstrap.css")%>" rel="stylesheet" type="text/css" />
+        <link href="<%=this.Page.ResolveClientUrl("~/assets/plugins/bootstrap/css/bootstrap-responsive.min.css")%>" rel="stylesheet" type="text/css" />
+        <link href="<%=this.Page.ResolveClientUrl("~/assets/plugins/font-awesome/css/font-awesome.min.css")%>" rel="stylesheet" type="text/css" />
+        <link href="<%=this.Page.ResolveClientUrl("~/assets/css/style-m.css")%>" rel="stylesheet" type="text/css" />
+        <link href="<%=this.Page.ResolveClientUrl("~/assets/css/style.css")%>" rel="stylesheet" type="text/css" />
+        <link href="<%=this.Page.ResolveClientUrl("~/assets/css/style-responsive.css")%>" rel="stylesheet" type="text/css" />
+        <%--<link href="<%=this.Page.ResolveClientUrl("~/assets/css/light.css")%>" rel="stylesheet" type="text/css" id="style_color" />--%>
+        <link href="<%=this.Page.ResolveClientUrl("~/assets/css/pages/tasks.css")%>" rel="stylesheet" type="text/css" media="screen" />
+        <link href="<%=this.Page.ResolveClientUrl("~/assets/plugins/bootstrap-colorpicker/css/colorpicker.css")%>" rel="stylesheet" type="text/css" />
+        <link href="<%=this.Page.ResolveClientUrl("~/assets/plugins/bootstrap-modal/css/bootstrap-modal.css")%>" rel="stylesheet" type="text/css" />
+
+
+
+        <!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+        <script src="<%=this.Page.ResolveClientUrl("~/assets/plugins/bootstrap/js/bootstrap.min.js")%>" type="text/javascript"></script>
+        <script src="<%=this.Page.ResolveClientUrl("~/assets/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js")%>" type="text/javascript"></script>
+
+
+    </form>
+
+
+</body>
+</html>

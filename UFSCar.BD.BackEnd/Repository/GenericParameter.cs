@@ -14,7 +14,7 @@ namespace UFSCar.BD.Repository
 
         internal static DbParameter Create(string nomeParametro, System.Data.DbType dbType)
         {
-            string providerName = System.Configuration.ConfigurationManager.ConnectionStrings["IharaContext"].ProviderName;
+            string providerName = System.Configuration.ConfigurationManager.ConnectionStrings["EntitiesModels"].ProviderName;
             DbParameter parametro = null;
 
             parametro = new SqlParameter(nomeParametro.Replace("@", ""), DeParaSqlParameter(dbType));
@@ -39,7 +39,7 @@ namespace UFSCar.BD.Repository
 
         internal static DbParameter Create(string nomeParametro, DbType dbType, int size, bool isNullable, int precision, int scale)
         {
-            string providerName = System.Configuration.ConfigurationManager.ConnectionStrings["IharaContext"].ProviderName;
+            string providerName = System.Configuration.ConfigurationManager.ConnectionStrings["EntitiesModels"].ProviderName;
             DbParameter parametro = null;
 
             parametro = new SqlParameter(nomeParametro.Replace("@", ""), DeParaSqlParameter(dbType), size);

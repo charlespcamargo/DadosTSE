@@ -58,7 +58,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\ExemploBL.cs" />
     <Compile Include="Business\ImportacaoArquivoBL.cs" />
+    <Compile Include="Model\Exemplo\RegistroGraficoUm.cs" />
     <Compile Include="Model\Helper\ArquivoBensDosCandidatos.cs" />
     <Compile Include="Model\Helper\ImportacaoBensCandidato.cs" />
     <Compile Include="Model\Helper\ArquivoCandidatos.cs" />
