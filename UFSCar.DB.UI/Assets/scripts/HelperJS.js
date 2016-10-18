@@ -18,34 +18,8 @@ var HelperJS = function () {
              
             HelperJS.ConfiguraEventosGlobais();
         },
-
-        
-
-        CarregarParametro: function (nomeCookie, nomeHidden) {
-
-            if ($.cookie(nomeCookie) != undefined || $.cookie(nomeCookie) != null) {
-                $("#" + nomeHidden).val($.cookie(nomeCookie));
-            }
-            else {
-                $("#" + nomeHidden).val('');
-            }
-        },
-
-        SetTarget: function (target) {
-            $("#hfTargetAtual").val(target);
-            $.cookie("cookieTargetAcessado", target);
-        },
-        ObterParametro: function (id) {
-            if ($(id).val() == undefined || $(id).val() == null) {
-                $(id).val('');
-            }
-
-            return $(id).val();
-        },
-
-        CustomParametersUrl: function () {
-            return HelperJS.ObterParametro('#customParameters');
-        },
+         
+         
 
         getBaseURL: function (api) {
             var apiUrl = "";
@@ -105,7 +79,7 @@ var HelperJS = function () {
 
         callApiIE: function (api, url, type, dataSend, functionOnSucess, functionOnError) {
 
-            var urlProxy = "/proxy.ashx?tipo=" + type + "&api=" + HelperJS.getBaseURL(api) + "&url=" + url +  "&" + HelperJS.CustomParametersUrl();
+            var urlProxy = "/proxy.ashx?tipo=" + type + "&api=" + HelperJS.getBaseURL(api) + "&url=" + url +  "&";
 
             $.ajax({
                 global: true,
@@ -182,25 +156,7 @@ var HelperJS = function () {
             }
         },
 
-        VerificaToken: function () {
-            var baseURL = HelperJS.getBaseURL(APIs.API_TSE);
-            var token = $.cookie('cookieTokenUsuario');
-            $.ajax({
-                global: false,
-                type: "POST",
-                url: baseURL + token,
-                cache: false,
-                data: null,
-                success: function (data) {
-                    var idToken = data.Id;
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    if (jqXHR.status == 401) {
-                        window.location.href = '/SessionTimeout.aspx';
-                    }
-                }
-            });
-        },
+     
 
         //Usado para informar em tela algum erro retornado da api
         showError: function (jqXHR) {

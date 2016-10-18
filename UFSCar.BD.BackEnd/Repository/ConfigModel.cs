@@ -60,6 +60,13 @@ namespace UFSCar.BD.Repository
             builder.Configurations.Add(new EntityTypeConfiguration<ImportacaoLegenda>());
             builder.Configurations.Add(new EntityTypeConfiguration<ImportacaoVaga>());
 
+            builder.Configurations.Add(new EntityTypeConfiguration<Cargo>());
+            builder.Configurations.Add(new EntityTypeConfiguration<Eleicao>());
+            builder.Configurations.Add(new EntityTypeConfiguration<EleicaoCargo>());
+            builder.Configurations.Add(new EntityTypeConfiguration<Cidade>());
+            builder.Configurations.Add(new EntityTypeConfiguration<Pais>());
+            builder.Configurations.Add(new EntityTypeConfiguration<Estado>());
+
 
             return builder;
         }

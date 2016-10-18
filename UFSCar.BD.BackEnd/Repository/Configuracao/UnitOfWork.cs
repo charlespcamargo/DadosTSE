@@ -92,5 +92,85 @@ namespace UFSCar.BD.Repository
             }
         }
 
+
+
+        private BaseRepository<Cargo> _CargoRepository;
+        public BaseRepository<Cargo> CargoRepository
+        {
+            get
+            {
+                if (this._CargoRepository == null)
+                {
+                    this._CargoRepository = new BaseRepository<Cargo>(context);
+                }
+                return _CargoRepository;
+            }
+        }
+
+        private BaseRepository<Eleicao> _EleicaoRepository;
+        public BaseRepository<Eleicao> EleicaoRepository
+        {
+            get
+            {
+                if (this._EleicaoRepository == null)
+                {
+                    this._EleicaoRepository = new BaseRepository<Eleicao>(context);
+                }
+                return _EleicaoRepository;
+            }
+        }
+
+        private BaseRepository<EleicaoCargo> _EleicaoCargoRepository;
+        public BaseRepository<EleicaoCargo> EleicaoCargoRepository
+        {
+            get
+            {
+                if (this._EleicaoCargoRepository == null)
+                {
+                    this._EleicaoCargoRepository = new BaseRepository<EleicaoCargo>(context);
+                }
+                return _EleicaoCargoRepository;
+            }
+        }
+
+        private BaseRepository<Cidade> _CidadeRepository;
+        public BaseRepository<Cidade> CidadeRepository
+        {
+            get
+            {
+                if (this._CidadeRepository == null)
+                {
+                    this._CidadeRepository = new BaseRepository<Cidade>(context);
+                }
+                return _CidadeRepository;
+            }
+        }
+
+        private BaseRepository<Pais> _PaisRepository;
+        public BaseRepository<Pais> PaisRepository
+        {
+            get
+            {
+                if (this._PaisRepository == null)
+                {
+                    this._PaisRepository = new BaseRepository<Pais>(context);
+                }
+                return _PaisRepository;
+            }
+        }
+
+        private BaseRepository<Estado> _EstadoRepository;
+        public BaseRepository<Estado> EstadoRepository
+        {
+            get
+            {
+                if (this._EstadoRepository == null)
+                {
+                    this._EstadoRepository = new BaseRepository<Estado>(context);
+                }
+                return _EstadoRepository;
+            }
+        }
+
     }
 }

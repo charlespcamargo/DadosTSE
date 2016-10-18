@@ -28,11 +28,9 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-
             App.init();
             Menu.init();
             HelperJS.init();
-
         });
 
     </script>
