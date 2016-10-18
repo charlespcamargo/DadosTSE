@@ -1119,6 +1119,7 @@
     <Content Include="Assets\scripts\table-fnReloadAjax - Cópia.js" />
     <Content Include="Assets\scripts\table-fnReloadAjax.js" />
     <Content Include="Assets\scripts\tableHeadFixer.js" />
+    <Content Include="Default.aspx" />
     <Content Include="Menu\BancoDados.xml" />
     <Content Include="Models\MasterMenu.js" />
     <Content Include="packages.config" />
@@ -1238,14 +1239,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Pages\Exemplo.aspx" />
-    <Content Include="Pages\Exemplo.js" />
+    <Content Include="Pages\BancoDados\DataWarehouse.aspx" />
+    <Content Include="Pages\Exemplos\Exemplo.aspx" />
+    <Content Include="Pages\Exemplos\Exemplo.js" />
     <Content Include="Assets\scripts\app.js" />
     <Content Include="Assets\scripts\google.loader.js" />
     <Content Include="Assets\scripts\HelperJS.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1256,11 +1265,18 @@
     <Compile Include="Models\MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Exemplo.aspx.cs">
+    <Compile Include="Pages\BancoDados\DataWarehouse.aspx.cs">
+      <DependentUpon>DataWarehouse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\BancoDados\DataWarehouse.aspx.designer.cs">
+      <DependentUpon>DataWarehouse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Exemplos\Exemplo.aspx.cs">
       <DependentUpon>Exemplo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\Exemplo.aspx.designer.cs">
+    <Compile Include="Pages\Exemplos\Exemplo.aspx.designer.cs">
       <DependentUpon>Exemplo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
