@@ -1,13 +1,15 @@
-/****** Object:  Table [dbo].[TDCandidato]    Script Date: 21/10/2016 17:40:42 ******/
+/****** Object:  Table [dbo].[TDCandidato]    Script Date: 04/11/2016 16:54:06 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE [dbo].[TDCandidato](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[CPF] [varchar](10) NOT NULL,
 	[Nome] [varchar](30) NOT NULL,
 	[Sexo] [varchar](20) NOT NULL,
-	[Escolaridade] [varchar](50) NOT NULL,
  CONSTRAINT [PK_TDCandidato] PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
@@ -15,10 +17,14 @@ CREATE TABLE [dbo].[TDCandidato](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[TDCargoPolitico]    Script Date: 21/10/2016 17:40:42 ******/
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[TDCargoPolitico]    Script Date: 04/11/2016 16:54:06 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[TDCargoPolitico](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
@@ -32,10 +38,33 @@ CREATE TABLE [dbo].[TDCargoPolitico](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[TDLocalidade]    Script Date: 21/10/2016 17:40:42 ******/
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[TDEscolaridade]    Script Date: 04/11/2016 16:54:06 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[TDEscolaridade](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[Descricao] [varchar](50) NULL,
+ CONSTRAINT [PK_TDEscolaridade] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[TDLocalidade]    Script Date: 04/11/2016 16:54:06 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[TDLocalidade](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
@@ -49,10 +78,14 @@ CREATE TABLE [dbo].[TDLocalidade](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[TDOcupacao]    Script Date: 21/10/2016 17:40:42 ******/
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[TDOcupacao]    Script Date: 04/11/2016 16:54:06 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[TDOcupacao](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
@@ -65,10 +98,14 @@ CREATE TABLE [dbo].[TDOcupacao](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[TDPartidoColigacao]    Script Date: 21/10/2016 17:40:42 ******/
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[TDPartidoColigacao]    Script Date: 04/11/2016 16:54:06 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[TDPartidoColigacao](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
@@ -81,14 +118,16 @@ CREATE TABLE [dbo].[TDPartidoColigacao](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[TFDadoEleitoral]    Script Date: 21/10/2016 17:40:42 ******/
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[TFDadoEleitoral]    Script Date: 04/11/2016 16:54:06 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[TFDadoEleitoral](
 	[Ano] [int] NOT NULL,
-	[CandidatoID] [int] NOT NULL,
+	[CandidatoEscolaridadeID] [int] NOT NULL,
 	[PartidoColigacaoID] [int] NOT NULL,
 	[LocalidadeID] [int] NOT NULL,
 	[OcupacaoID] [int] NOT NULL,
@@ -98,7 +137,7 @@ CREATE TABLE [dbo].[TFDadoEleitoral](
  CONSTRAINT [PK_TFDadoEleitoral] PRIMARY KEY CLUSTERED 
 (
 	[Ano] ASC,
-	[CandidatoID] ASC,
+	[CandidatoEscolaridadeID] ASC,
 	[PartidoColigacaoID] ASC,
 	[LocalidadeID] ASC,
 	[OcupacaoID] ASC,
@@ -107,10 +146,21 @@ CREATE TABLE [dbo].[TFDadoEleitoral](
 ) ON [PRIMARY]
 
 GO
-ALTER TABLE [dbo].[TFDadoEleitoral]  WITH CHECK ADD  CONSTRAINT [FK_TFDadoEleitoral_TDCandidato] FOREIGN KEY([CandidatoID])
-REFERENCES [dbo].[TDCandidato] ([ID])
+/****** Object:  Table [dbo].[TPCandidatoEscolaridade]    Script Date: 04/11/2016 16:54:06 ******/
+SET ANSI_NULLS ON
 GO
-ALTER TABLE [dbo].[TFDadoEleitoral] CHECK CONSTRAINT [FK_TFDadoEleitoral_TDCandidato]
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TPCandidatoEscolaridade](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[CandidatoID] [int] NULL,
+	[EscolaridadeID] [int] NULL,
+ CONSTRAINT [PK_TPCandidatoEscolaridade] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
 GO
 ALTER TABLE [dbo].[TFDadoEleitoral]  WITH CHECK ADD  CONSTRAINT [FK_TFDadoEleitoral_TDCargoPolitico] FOREIGN KEY([CargoPoliticoID])
 REFERENCES [dbo].[TDCargoPolitico] ([ID])
@@ -131,4 +181,19 @@ ALTER TABLE [dbo].[TFDadoEleitoral]  WITH CHECK ADD  CONSTRAINT [FK_TFDadoEleito
 REFERENCES [dbo].[TDPartidoColigacao] ([ID])
 GO
 ALTER TABLE [dbo].[TFDadoEleitoral] CHECK CONSTRAINT [FK_TFDadoEleitoral_TDPartidoColigacao]
+GO
+ALTER TABLE [dbo].[TFDadoEleitoral]  WITH CHECK ADD  CONSTRAINT [FK_TFDadoEleitoral_TPCandidatoEscolaridade] FOREIGN KEY([CandidatoEscolaridadeID])
+REFERENCES [dbo].[TPCandidatoEscolaridade] ([ID])
+GO
+ALTER TABLE [dbo].[TFDadoEleitoral] CHECK CONSTRAINT [FK_TFDadoEleitoral_TPCandidatoEscolaridade]
+GO
+ALTER TABLE [dbo].[TPCandidatoEscolaridade]  WITH CHECK ADD  CONSTRAINT [FK_TPCandidatoEscolaridade_TDCandidato] FOREIGN KEY([CandidatoID])
+REFERENCES [dbo].[TDCandidato] ([ID])
+GO
+ALTER TABLE [dbo].[TPCandidatoEscolaridade] CHECK CONSTRAINT [FK_TPCandidatoEscolaridade_TDCandidato]
+GO
+ALTER TABLE [dbo].[TPCandidatoEscolaridade]  WITH CHECK ADD  CONSTRAINT [FK_TPCandidatoEscolaridade_TDEscolaridade] FOREIGN KEY([EscolaridadeID])
+REFERENCES [dbo].[TDEscolaridade] ([ID])
+GO
+ALTER TABLE [dbo].[TPCandidatoEscolaridade] CHECK CONSTRAINT [FK_TPCandidatoEscolaridade_TDEscolaridade]
 GO
