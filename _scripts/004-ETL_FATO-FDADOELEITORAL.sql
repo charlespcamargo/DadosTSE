@@ -19,10 +19,11 @@ SELECT
   CAST(VALOR_BEM AS NUMERIC(16, 2))
   ) 
     AS VlrTotalDeclarado,
-  COUNT(
+  COUNT
+ (
   1
   )          AS QtdTotalDeclarado
-
+  --,ImportacaoBensCandidato.*
  FROM TPCandidatoEscolaridade WITH(NOLOCK)
 INNER JOIN TDCandidato  WITH(NOLOCK)
    ON TPCandidatoEscolaridade.CandidatoID = TDCandidato.ID
@@ -52,9 +53,9 @@ INNER JOIN TDCargoPolitico WITH(NOLOCK)
    ON ImportacaoVaga.DESCRICAO_CARGO = TDCargoPolitico.Descricao
 INNER JOIN ImportacaoBensCandidato WITH(NOLOCK)
    ON ImportacaoCandidato.SEQUENCIAL_CANDIDATO = ImportacaoBensCandidato.SQ_CANDIDATO
-  AND ImportacaoBensCandidato.ANO_ELEICAO = ImportacaoCandidato.ANO_ELEICAO
-
---WHERE dbo.TPCandidatoEscolaridade.CandidatoID = 1
+  AND ImportacaoCandidato.ANO_ELEICAO = ImportacaoBensCandidato.ANO_ELEICAO
+  AND ImportacaoCandidato.SIGLA_UF = ImportacaoBensCandidato.SIGLA_UF
+WHERE ImportacaoCandidato.CPF_CANDIDATO = '28341228220' AND ImportacaoCandidato.ANO_ELEICAO = 2006
 
 GROUP BY ImportacaoCandidato.ANO_ELEICAO,
    TPCandidatoEscolaridade.ID,
