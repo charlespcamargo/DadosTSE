@@ -1,6 +1,6 @@
-DELETE FROM TDLocalidade;
+DELETE FROM [Estado];
 GO
-DBCC CHECKIDENT ('[TDLocalidade]', RESEED, 0);
+DBCC CHECKIDENT ('[Estado]', RESEED, 0);
 GO
 INSERT INTO [dbo].[Estado] ([Nome], [Sigla], [Regiao]) VALUES ('Rondônia', 'RO', 'Norte')
 INSERT INTO [dbo].[Estado] ([Nome], [Sigla], [Regiao]) VALUES ('Acre', 'AC', 'Norte')
