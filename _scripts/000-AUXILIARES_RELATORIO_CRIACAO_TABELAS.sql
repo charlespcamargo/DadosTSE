@@ -43,11 +43,12 @@ GO
 
 CREATE TABLE [dbo].[Estado]
 (
-	[ID] [int] IDENTITY(1,1) NOT NULL	PRIMARY KEY,
-	[Sigla] [varchar](2) NOT NULL,
-	[Nome] [varchar](50) NOT NULL,
-	[PaisID] [int] NOT NULL,
-	[SiglaUE] [varchar](10) NULL,
+	[ID]		[int] IDENTITY(1,1) NOT NULL	PRIMARY KEY,
+	[Sigla]		[varchar](2) NOT NULL,
+	[Nome]		[varchar](50) NOT NULL,
+	[Regiao]	[varchar](30) NOT NULL,
+	[PaisID]	[int] NOT NULL,
+	[SiglaUE]	[varchar](10) NULL,
 
 ) 
 GO
