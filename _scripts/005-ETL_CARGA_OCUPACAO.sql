@@ -31,13 +31,16 @@ SELECT Candidato.ANO_ELEICAO							AS Ano,
 		  Candidato.DESCRICAO_OCUPACAO
 GO
 
-
 /************************************************************** VALOR MÉDIO POR ANO DA OCUPAÇÃO ********************************************************************/
 DELETE FROM TDOcupacao;
 GO
 
 DBCC CHECKIDENT ('[TDOcupacao]', RESEED, 1);
 GO
-/************************************************************** VALOR MÉDIO POR ANO DA OCUPAÇÃO ********************************************************************/ 
+/************************************************************** VALOR MÉDIO DA OCUPAÇÃO ********************************************************************/ 
 
-
+INSERT INTO TDOcupacao (Descricao, VlrMedioDeclarado)
+SELECT 
+	OcupacaoValor.Descricao,
+	OcupacaoValor.ValorMedio
+FROM OcupacaoValor
