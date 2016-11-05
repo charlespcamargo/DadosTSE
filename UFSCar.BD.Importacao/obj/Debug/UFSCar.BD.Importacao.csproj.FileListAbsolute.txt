@@ -22,3 +22,15 @@ G:\Coisas\Labs\Msc\DadosTSE\UFSCar.BD.Importacao\bin\Debug\UFSCar.BD.BackEnd.pdb
 G:\Coisas\Labs\Msc\DadosTSE\UFSCar.BD.Importacao\bin\Debug\EntityFramework.xml
 G:\Coisas\Labs\Msc\DadosTSE\UFSCar.BD.Importacao\bin\Debug\EntityFramework.SqlServer.xml
 G:\Coisas\Labs\Msc\DadosTSE\UFSCar.BD.Importacao\obj\Debug\UFSCar.BD.Importacao.csprojResolveAssemblyReference.cache
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.Importacao\bin\Debug\ImportacaoDadosTSE.exe.config
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.Importacao\bin\Debug\ImportacaoDadosTSE.exe
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.Importacao\bin\Debug\ImportacaoDadosTSE.pdb
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.Importacao\bin\Debug\EntityFramework.dll
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.Importacao\bin\Debug\EntityFramework.SqlServer.dll
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.Importacao\bin\Debug\UFSCar.BD.BackEnd.dll
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.Importacao\bin\Debug\UFSCar.BD.BackEnd.pdb
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.Importacao\bin\Debug\EntityFramework.xml
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.Importacao\bin\Debug\EntityFramework.SqlServer.xml
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.Importacao\obj\Debug\UFSCar.BD.Importacao.csprojResolveAssemblyReference.cache
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.Importacao\obj\Debug\ImportacaoDadosTSE.exe
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.Importacao\obj\Debug\ImportacaoDadosTSE.pdb
