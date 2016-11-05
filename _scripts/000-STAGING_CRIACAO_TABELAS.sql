@@ -1,26 +1,11 @@
-/*
-	DELETE FROM ImportacaoBensCandidato
-	DELETE FROM ImportacaoCandidato
-	DELETE FROM ImportacaoLegenda
-	DELETE FROM ImportacaoVaga
-	DELETE FROM ImportacaoArquivo 
+/**************************************************************  ********************************************************************/
+IF EXISTS (SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'[ImportacaoTipoArquivo]') AND Type = N'U')
+BEGIN
+   DROP TABLE ImportacaoTipoArquivo
+END
+GO
 
 
-	--DROP TABLE ImportacaoBensCandidato
-	--DROP TABLE ImportacaoCandidato
-	--DROP TABLE ImportacaoArquivo
-	--DROP TABLE ImportacaoTipoArquivo
-
-	
-	SELECT COUNT(ID) AS Qtd FROM ImportacaoBensCandidato	WITH(NOLOCK)
-	SELECT COUNT(ID) AS Qtd FROM ImportacaoCandidato		WITH(NOLOCK)
-	SELECT COUNT(ID) AS Qtd FROM ImportacaoLegenda			WITH(NOLOCK)
-	SELECT COUNT(ID) AS Qtd FROM ImportacaoVaga				WITH(NOLOCK)
-	SELECT COUNT(ID) AS Qtd FROM ImportacaoArquivo 			WITH(NOLOCK)
-*/ 
- 
-
- 
 CREATE TABLE ImportacaoTipoArquivo
 (
 	ID									INT				NOT NULL PRIMARY KEY,
@@ -32,7 +17,16 @@ INSERT INTO ImportacaoTipoArquivo VALUES (1, 'Candidatos')
 INSERT INTO ImportacaoTipoArquivo VALUES (2, 'Bens Dos Candidatos')
 INSERT INTO ImportacaoTipoArquivo VALUES (3, 'Legendas')
 INSERT INTO ImportacaoTipoArquivo VALUES (4, 'Vagas')
- 
+GO
+/**************************************************************  ********************************************************************/
+
+
+
+/**************************************************************  ********************************************************************/
+IF EXISTS (SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'[ImportacaoArquivo]') AND Type = N'U')
+BEGIN
+   DROP TABLE ImportacaoArquivo
+END
 GO
 
 CREATE TABLE ImportacaoArquivo
@@ -44,7 +38,17 @@ CREATE TABLE ImportacaoArquivo
 	UF									VARCHAR(02)		NOT NULL
  )
 GO
+/**************************************************************  ********************************************************************/
  
+
+
+/**************************************************************  ********************************************************************/
+IF EXISTS (SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'[ImportacaoCandidato]') AND Type = N'U')
+BEGIN
+   DROP TABLE ImportacaoCandidato
+END
+GO
+
 CREATE TABLE ImportacaoCandidato
  (
 	ID									INT IDENTITY PRIMARY KEY NOT NULL,
@@ -97,6 +101,17 @@ CREATE TABLE ImportacaoCandidato
     NM_EMAIL 							VARCHAR(100) NULL
 )
 GO
+/**************************************************************  ********************************************************************/
+
+
+
+
+/**************************************************************  ********************************************************************/
+IF EXISTS (SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'[ImportacaoBensCandidato]') AND Type = N'U')
+BEGIN
+   DROP TABLE ImportacaoBensCandidato
+END
+GO
 
 
 CREATE TABLE ImportacaoBensCandidato
@@ -117,7 +132,16 @@ CREATE TABLE ImportacaoBensCandidato
     HORA_ULTIMA_ATUALIZACAO				VARCHAR(8) NULL
 )
 GO
+/**************************************************************  ********************************************************************/
 
+
+
+/**************************************************************  ********************************************************************/
+IF EXISTS (SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'[ImportacaoLegenda]') AND Type = N'U')
+BEGIN
+   DROP TABLE ImportacaoLegenda
+END
+GO
 
 CREATE TABLE ImportacaoLegenda
 (
@@ -143,7 +167,15 @@ CREATE TABLE ImportacaoLegenda
 	SEQUENCIAL_COLIGACAO				VARCHAR(12) NULL
 )
 GO
+/**************************************************************  ********************************************************************/
 
+
+/**************************************************************  ********************************************************************/
+IF EXISTS (SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'[ImportacaoVaga]') AND Type = N'U')
+BEGIN
+   DROP TABLE ImportacaoVaga
+END
+GO
 
 CREATE TABLE ImportacaoVaga
 (
@@ -162,3 +194,4 @@ CREATE TABLE ImportacaoVaga
     QTDE_VAGAS							VARCHAR(02) NULL
 )
 GO
+/**************************************************************  ********************************************************************/

@@ -1,5 +1,5 @@
 /************************************************************** CRIAÇÃO DA DIMENSÃO CANDIDATO ********************************************************************/
-IF EXISTS (SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'[TDCandidato]') A	ND Type = N'U')
+IF EXISTS (SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'[TDCandidato]') AND Type = N'U')
 BEGIN
    DROP TABLE [TDCandidato]
 END
