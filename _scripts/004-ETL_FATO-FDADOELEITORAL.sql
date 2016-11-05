@@ -2,7 +2,14 @@ DELETE FROM TFDADOELEITORAL;
 GO
 DBCC CHECKIDENT ('[TFDADOELEITORAL]', RESEED, 0);
 GO
-INSERT INTO TFDADOELEITORAL
+INSERT INTO TFDADOELEITORAL (Ano,
+CandidatoEscolaridadeID,
+PartidoColigacaoID,
+LocalidadeID,
+OcupacaoID,
+CargoPoliticoID,
+VlrTotalDeclarado,
+QtdTotalDeclarado)
 SELECT  CAST(ImportacaoCandidato.ANO_ELEICAO AS INT) AS ANO,
 	    TPCandidatoEscolaridade.ID AS CandidatoEscolaridadeID,
 		TDPARTIDOCOLIGACAO.ID AS PARTIDOCOLIGACAOID,
