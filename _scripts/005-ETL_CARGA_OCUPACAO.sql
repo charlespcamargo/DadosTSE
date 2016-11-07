@@ -8,6 +8,7 @@ GO
 
 CREATE TABLE OcupacaoValor
 (
+	OcupacaoID		    INT,
 	Ano					INT NOT NULL,
 	Codigo				VARCHAR(100),
 	Descricao			VARCHAR(100),

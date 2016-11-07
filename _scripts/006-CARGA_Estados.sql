@@ -1,9 +1,10 @@
+DELETE FROM [Estado];
 DELETE FROM [Pais];
 GO
 DBCC CHECKIDENT ('[Pais]', RESEED, 0);
 GO
 
-DELETE FROM [Estado];
+
 GO
 DBCC CHECKIDENT ('[Estado]', RESEED, 0);
 GO

@@ -2,7 +2,7 @@
 IF EXISTS (SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'[TDCandidato]') AND Type = N'U')
 BEGIN
    DROP TABLE [TDCandidato]
-END
+END	
 GO
 
 CREATE TABLE [dbo].[TDCandidato]
@@ -196,6 +196,30 @@ GO
 /************************************************ CRIA플O DA TABELA PONTE CANDIDATO ESCOLARIDADE ******************************************************************/
 
 
+
+/************************************************ CRIA플O DAS TABELA DE BENS ******************************************************************/
+IF EXISTS (SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'[BensCandidadtoAgrupados]') AND Type = N'U')
+BEGIN
+   DROP TABLE [BensCandidadtoAgrupados]
+END
+GO
+
+CREATE TABLE [dbo].[BensCandidadtoAgrupados]
+(
+	[ID]			[int] IDENTITY(1,1) NOT NULL,
+	[ANO_ELEICAO]	[varchar](20) NULL,
+	[SIGLA_UF]		[varchar](2) NULL,
+	[SQ_CANDIDATO]	[varchar](50) NULL,
+	[VLRTOTAL]		[numeric](16, 2) NULL,
+	[QTDTOTAL]		[int] NULL,
+
+	CONSTRAINT [PK_BensCandidadtoAgrupados] PRIMARY KEY CLUSTERED 
+	(
+	[ID] ASC
+	)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/************************************************ CRIA플O DAS TABELA DE BENS ******************************************************************/
 
 
 /************************************************ CRIA플O DAS CHAVES DE REFERENCIA ******************************************************************/
