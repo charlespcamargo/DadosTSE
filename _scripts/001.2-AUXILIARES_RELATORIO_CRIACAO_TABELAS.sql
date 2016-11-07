@@ -1,4 +1,4 @@
-/**************************************************************  ********************************************************************/
+/*************************************** TABELAS AUXILIARES PARA FILTROS NOS RELATÓRIOS ********************************************************************/
 IF EXISTS (SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'[Cargo]') AND Type = N'U')
 BEGIN
    DROP TABLE [Cargo]

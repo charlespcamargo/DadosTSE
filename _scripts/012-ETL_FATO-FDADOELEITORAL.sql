@@ -1,34 +1,16 @@
 DELETE FROM TFDADOELEITORAL;
 GO
-INSERT INTO TFDADOELEITORAL (Ano,
-CandidatoEscolaridadeID,
-PartidoColigacaoID,
-LocalidadeID,
-OcupacaoID,
-CargoPoliticoID,
-VlrTotalDeclarado,
-QtdTotalDeclarado)
-SELECT 
- CAST(ImportacaoCandidato.ANO_ELEICAO AS INT) AS ANO,
-     TPCandidatoEscolaridade.ID      AS CandidatoEscolaridadeID,
- -- ,
-  TDPARTIDOCOLIGACAO.ID       AS PARTIDOCOLIGACAOID,
---  ,
-  TDLocalidade.ID         AS LocalidadeID,
-  TDOcupacao.ID         AS OcupacaoID,-- 1, 0, 0
- TDCargoPolitico.ID        AS CargoPoliticoID,
-  SUM
- (
- ---- CAST(VALOR_BEM AS NUMERIC(16, 2))
- VLRTOTAL
+
+INSERT INTO TFDADOELEITORAL (Ano, CandidatoEscolaridadeID, PartidoColigacaoID, LocalidadeID, OcupacaoID,CargoPoliticoID, VlrTotalDeclarado, QtdTotalDeclarado)
+SELECT CAST(ImportacaoCandidato.ANO_ELEICAO AS INT)			AS ANO,
+	   TPCandidatoEscolaridade.ID							AS CandidatoEscolaridadeID,
+	   TDPARTIDOCOLIGACAO.ID								AS PARTIDOCOLIGACAOID,
+	   TDLocalidade.ID										AS LocalidadeID,
+	   TDOcupacao.ID										AS OcupacaoID,
+	   TDCargoPolitico.ID									AS CargoPoliticoID,
+	   SUM(VLRTOTAL)										AS VlrTotalDeclarado,
+	   SUM(QTDTOTAL)										AS QtdTotalDeclarado
  
-  ) 
-    AS VlrTotalDeclarado,
-  SUM
- (
-  QTDTOTAL
-  )          AS QtdTotalDeclarado
- ---- ,SEQUENCIAL_CANDIDATO, *
  FROM TPCandidatoEscolaridade WITH(NOLOCK)
 INNER JOIN TDCandidato  WITH(NOLOCK)
    ON TPCandidatoEscolaridade.CandidatoID = TDCandidato.ID
@@ -55,30 +37,16 @@ INNER JOIN TDOcupacao WITH(NOLOCK)
   ON OcupacaoValor.OcupacaoID = TDOcupacao.ID
 INNER JOIN TDCargoPolitico WITH(NOLOCK)
    ON ImportacaoVaga.DESCRICAO_CARGO = TDCargoPolitico.Descricao
-INNER JOIN BensCandidadtoAgrupados WITH(NOLOCK)
-   ON ImportacaoCandidato.SEQUENCIAL_CANDIDATO = BensCandidadtoAgrupados.SQ_CANDIDATO
-  AND ImportacaoCandidato.ANO_ELEICAO = BensCandidadtoAgrupados.ANO_ELEICAO
-  AND ImportacaoCandidato.SIGLA_UF = BensCandidadtoAgrupados.SIGLA_UF
---WHERE ImportacaoCandidato.CPF_CANDIDATO = '28341228220' AND ImportacaoCandidato.ANO_ELEICAO = 2006
-
+INNER JOIN BensCandidatoAgrupado WITH(NOLOCK)
+   ON ImportacaoCandidato.SEQUENCIAL_CANDIDATO = BensCandidatoAgrupado.SQ_CANDIDATO
+  AND ImportacaoCandidato.ANO_ELEICAO = BensCandidatoAgrupado.ANO_ELEICAO
+  AND ImportacaoCandidato.SIGLA_UF = BensCandidatoAgrupado.SIGLA_UF
 GROUP BY ImportacaoCandidato.ANO_ELEICAO,
-   TPCandidatoEscolaridade.ID
-   ,
-   TDPARTIDOCOLIGACAO.ID ,
-   TDLocalidade.ID ,
-    TDOcupacao.ID ,
-    TDCargoPolitico.ID
+		 TPCandidatoEscolaridade.ID,
+		 TDPARTIDOCOLIGACAO.ID,
+		 TDLocalidade.ID,
+		 TDOcupacao.ID,
+		 TDCargoPolitico.ID
 
 
 
---SELECT * FROM TFDADOELEITORAL
-
---1427075
---1409515
---1409515
---1409422 2MINUTOS
---1409422 2:13MINUTOS
---1409422 2:28MINUTOS
---913049 2:08MINUTOS
---914690 2:31MINUTOS
---914690 2:36MINUTOS

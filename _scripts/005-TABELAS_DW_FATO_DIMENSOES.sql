@@ -1,10 +1,47 @@
-/************************************************************** CRIAÇÃO DA DIMENSÃO CANDIDATO ********************************************************************/
+IF EXISTS (SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'[TFDadoEleitoral]') AND Type = N'U')
+BEGIN
+   DROP TABLE [TFDadoEleitoral]
+END	
+GO
+IF EXISTS (SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'[TPCandidatoEscolaridade]') AND Type = N'U')
+BEGIN
+   DROP TABLE [TPCandidatoEscolaridade]
+END	
+GO
 IF EXISTS (SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'[TDCandidato]') AND Type = N'U')
 BEGIN
    DROP TABLE [TDCandidato]
 END	
 GO
+IF EXISTS (SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'[TDCargoPolitico]') AND Type = N'U')
+BEGIN
+   DROP TABLE [TDCargoPolitico]
+END	
+GO
+IF EXISTS (SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'[TDEscolaridade]') AND Type = N'U')
+BEGIN
+   DROP TABLE [TDEscolaridade]
+END	
+GO
+IF EXISTS (SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'[TDLocalidade]') AND Type = N'U')
+BEGIN
+   DROP TABLE [TDLocalidade]
+END	
+GO
+IF EXISTS (SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'[TDOcupacao]') AND Type = N'U')
+BEGIN
+   DROP TABLE [TDOcupacao]
+END	
+GO
+IF EXISTS (SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'[TDPartidoColigacao]') AND Type = N'U')
+BEGIN
+   DROP TABLE [TDPartidoColigacao]
+END	
+GO
 
+
+
+/************************************************************** CRIAÇÃO DA DIMENSÃO CANDIDATO ********************************************************************/
 CREATE TABLE [dbo].[TDCandidato]
 (
 	[ID]	[int] IDENTITY(1,1) NOT NULL,
@@ -23,12 +60,6 @@ GO
 
 
 /********************************************************* CRIAÇÃO DA DIMENSÃO CARGO POLITICO ********************************************************************/
-IF EXISTS (SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'[TDCargoPolitico]') AND Type = N'U')
-BEGIN
-   DROP TABLE [TDCargoPolitico]
-END
-GO
-
 CREATE TABLE [dbo].[TDCargoPolitico]
 (
 	[ID]		[int] IDENTITY(1,1) NOT NULL,
@@ -47,12 +78,6 @@ GO
 
 
 /********************************************************* CRIAÇÃO DA DIMENSÃO ESCOLARIDADE ********************************************************************/
-IF EXISTS (SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'[TDEscolaridade]') AND Type = N'U')
-BEGIN
-   DROP TABLE [TDEscolaridade]
-END
-GO
-
 CREATE TABLE [dbo].[TDEscolaridade]
 (
 	[ID]		[int]		IDENTITY(1,1) NOT NULL,
@@ -70,12 +95,6 @@ GO
 
 
 /********************************************************* CRIAÇÃO DA DIMENSÃO LOCALIDADE ********************************************************************/
-IF EXISTS (SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'[TDLocalidade]') AND Type = N'U')
-BEGIN
-   DROP TABLE [TDLocalidade]
-END
-GO
-
 CREATE TABLE [dbo].[TDLocalidade]
 (
 	[ID]			[int] IDENTITY(1,1)	NOT NULL,
@@ -94,12 +113,6 @@ GO
 
 
 /********************************************************* CRIAÇÃO DA DIMENSÃO OCUPAÇÃO ********************************************************************/
-IF EXISTS (SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'[TDOcupacao]') AND Type = N'U')
-BEGIN
-   DROP TABLE [TDOcupacao]
-END
-GO
-
 CREATE TABLE [dbo].[TDOcupacao]
 (
 	[ID]				[int] IDENTITY(1,1) NOT NULL,
@@ -116,12 +129,6 @@ GO
 
 
 /********************************************************* CRIAÇÃO DA DIMENSÃO PARTIDO COLIGAÇÃO ********************************************************************/
-IF EXISTS (SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'[TDPartidoColigacao]') AND Type = N'U')
-BEGIN
-   DROP TABLE [TDPartidoColigacao]
-END
-GO
-
 CREATE TABLE [dbo].[TDPartidoColigacao]
 (
 	[ID]		[int] IDENTITY(1,1) NOT NULL,
@@ -139,13 +146,6 @@ GO
 
 
 /********************************************************* CRIAÇÃO DA TABELA FATO DADO ELEITORAL ******************************************************************/
-IF EXISTS (SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'[TFDadoEleitoral]') AND Type = N'U')
-BEGIN
-   DROP TABLE [TFDadoEleitoral]
-END
-GO
-
-
 CREATE TABLE [dbo].[TFDadoEleitoral]
 (
 	[Ano]						[int] NOT NULL,
@@ -173,13 +173,6 @@ GO
 
 
 /************************************************ CRIAÇÃO DA TABELA PONTE CANDIDATO ESCOLARIDADE ******************************************************************/
-IF EXISTS (SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'[TPCandidatoEscolaridade]') AND Type = N'U')
-BEGIN
-   DROP TABLE [TPCandidatoEscolaridade]
-END
-GO
-
-
 CREATE TABLE [dbo].[TPCandidatoEscolaridade]
 (
 	[ID]				[int] IDENTITY(1,1) NOT NULL,
@@ -196,30 +189,6 @@ GO
 /************************************************ CRIAÇÃO DA TABELA PONTE CANDIDATO ESCOLARIDADE ******************************************************************/
 
 
-
-/************************************************ CRIAÇÃO DAS TABELA DE BENS ******************************************************************/
-IF EXISTS (SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'[BensCandidadtoAgrupados]') AND Type = N'U')
-BEGIN
-   DROP TABLE [BensCandidadtoAgrupados]
-END
-GO
-
-CREATE TABLE [dbo].[BensCandidadtoAgrupados]
-(
-	[ID]			[int] IDENTITY(1,1) NOT NULL,
-	[ANO_ELEICAO]	[varchar](20) NULL,
-	[SIGLA_UF]		[varchar](2) NULL,
-	[SQ_CANDIDATO]	[varchar](50) NULL,
-	[VLRTOTAL]		[numeric](16, 2) NULL,
-	[QTDTOTAL]		[int] NULL,
-
-	CONSTRAINT [PK_BensCandidadtoAgrupados] PRIMARY KEY CLUSTERED 
-	(
-	[ID] ASC
-	)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/************************************************ CRIAÇÃO DAS TABELA DE BENS ******************************************************************/
 
 
 /************************************************ CRIAÇÃO DAS CHAVES DE REFERENCIA ******************************************************************/

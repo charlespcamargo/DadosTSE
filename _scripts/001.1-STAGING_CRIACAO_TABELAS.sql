@@ -196,3 +196,32 @@ CREATE TABLE ImportacaoVaga
 )
 GO
 /**************************************************************  ********************************************************************/
+
+
+
+
+
+
+/************************************************ CRIAÇÃO DAS TABELA DE BENS ******************************************************************/
+IF EXISTS (SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'[BensCandidatoAgrupado]') AND Type = N'U')
+BEGIN
+   DROP TABLE [BensCandidatoAgrupado]
+END
+GO
+
+CREATE TABLE [dbo].[BensCandidatoAgrupado]
+(
+	[ID]			[int] IDENTITY(1,1) NOT NULL,
+	[ANO_ELEICAO]	[INT]				NULL,
+	[SIGLA_UF]		[varchar](2)		NULL,
+	[SQ_CANDIDATO]	[varchar](50)		NULL,
+	[VLRTOTAL]		[numeric](16, 2)	NULL,
+	[QTDTOTAL]		[int]				NULL,
+
+	CONSTRAINT [PK_BensCandidatoAgrupado] PRIMARY KEY CLUSTERED 
+	(
+	[ID] ASC
+	)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/************************************************ CRIAÇÃO DAS TABELA DE BENS ******************************************************************/

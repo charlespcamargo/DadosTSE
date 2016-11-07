@@ -8,7 +8,6 @@ GO
 
 CREATE TABLE OcupacaoValor
 (
-	OcupacaoID		    INT,
 	Ano					INT NOT NULL,
 	Codigo				VARCHAR(100),
 	Descricao			VARCHAR(100),
@@ -37,12 +36,20 @@ GO
 DELETE FROM TDOcupacao;
 GO
 
-DBCC CHECKIDENT ('[TDOcupacao]', RESEED, 1);
+DBCC CHECKIDENT ('[TDOcupacao]', RESEED, 0);
 GO
 /************************************************************** VALOR MÉDIO DA OCUPAÇÃO ********************************************************************/ 
 
 INSERT INTO TDOcupacao (Descricao, VlrMedioDeclarado)
-SELECT 
-	OcupacaoValor.Descricao,
-	OcupacaoValor.ValorMedio
+SELECT OcupacaoValor.Descricao,
+	   OcupacaoValor.ValorMedio
 FROM OcupacaoValor
+GO
+/************************************************************** VINCULANDO OCUPAÇÃO COM O VALOR MÉDIO ************************************************************/
+
+ UPDATE OcupacaoValor  
+	SET OcupacaoID = TDOcupacao.ID
+   FROM OcupacaoValor 
+   JOIN TDOcupacao
+	 ON OcupacaoValor.Descricao = TDOcupacao.Descricao 
+	AND OcupacaoValor.ValorMedio = TDOcupacao.VlrMedioDeclarado
