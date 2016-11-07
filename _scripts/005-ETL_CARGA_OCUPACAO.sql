@@ -12,7 +12,8 @@ CREATE TABLE OcupacaoValor
 	Ano					INT NOT NULL,
 	Codigo				VARCHAR(100),
 	Descricao			VARCHAR(100),
-	ValorMedio			NUMERIC(16,2)
+	ValorMedio			NUMERIC(16,2),
+	OcupacaoID			INT NULL
 )
 GO
 /************************************************************** VALOR MÉDIO POR ANO DA OCUPAÇÃO ********************************************************************/
