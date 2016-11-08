@@ -41,6 +41,7 @@ INNER JOIN BensCandidatoAgrupado WITH(NOLOCK)
    ON ImportacaoCandidato.SEQUENCIAL_CANDIDATO = BensCandidatoAgrupado.SQ_CANDIDATO
   AND ImportacaoCandidato.ANO_ELEICAO = BensCandidatoAgrupado.ANO_ELEICAO
   AND ImportacaoCandidato.SIGLA_UF = BensCandidatoAgrupado.SIGLA_UF
+WHERE NUM_TURNO = '1'
 GROUP BY ImportacaoCandidato.ANO_ELEICAO,
 		 TPCandidatoEscolaridade.ID,
 		 TDPARTIDOCOLIGACAO.ID,
