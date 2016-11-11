@@ -8,8 +8,8 @@ SELECT CAST(ImportacaoCandidato.ANO_ELEICAO AS INT)			AS ANO,
 	   TDLocalidade.ID										AS LocalidadeID,
 	   TDOcupacao.ID										AS OcupacaoID,
 	   TDCargoPolitico.ID									AS CargoPoliticoID,
-	   SUM(VLRTOTAL)										AS VlrTotalDeclarado,
-	   SUM(QTDTOTAL)										AS QtdTotalDeclarado
+	   SUM(ISNULL(VLRTOTAL, 0))										AS VlrTotalDeclarado,
+	   SUM(ISNULL(QTDTOTAL, 0))										AS QtdTotalDeclarado
  
  FROM TPCandidatoEscolaridade WITH(NOLOCK)
 INNER JOIN TDCandidato  WITH(NOLOCK)
@@ -37,7 +37,7 @@ INNER JOIN TDOcupacao WITH(NOLOCK)
   ON OcupacaoValor.OcupacaoID = TDOcupacao.ID
 INNER JOIN TDCargoPolitico WITH(NOLOCK)
    ON ImportacaoVaga.DESCRICAO_CARGO = TDCargoPolitico.Descricao
-INNER JOIN BensCandidatoAgrupado WITH(NOLOCK)
+LEFT JOIN BensCandidatoAgrupado WITH(NOLOCK)
    ON ImportacaoCandidato.SEQUENCIAL_CANDIDATO = BensCandidatoAgrupado.SQ_CANDIDATO
   AND ImportacaoCandidato.ANO_ELEICAO = BensCandidatoAgrupado.ANO_ELEICAO
   AND ImportacaoCandidato.SIGLA_UF = BensCandidatoAgrupado.SIGLA_UF
@@ -48,6 +48,3 @@ GROUP BY ImportacaoCandidato.ANO_ELEICAO,
 		 TDLocalidade.ID,
 		 TDOcupacao.ID,
 		 TDCargoPolitico.ID
-
-
-
