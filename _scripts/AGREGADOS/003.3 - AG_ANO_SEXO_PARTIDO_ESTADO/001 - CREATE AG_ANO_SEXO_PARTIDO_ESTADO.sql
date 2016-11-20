@@ -1,4 +1,6 @@
-CREATE TABLE [dbo].[AG_ANO_SEXO_PARTIDO_ESTADO](
+-- DROP TABLE [dbo].[AG_ANO_SEXO_PARTIDO_ESTADO]
+CREATE TABLE [dbo].[AG_ANO_SEXO_PARTIDO_ESTADO]
+(
 	[Ano] [int] NOT NULL,
 	[CandidatoEscolaridadeID] [int] NOT NULL,
 	[PartidoColigacaoID] [int] NOT NULL,

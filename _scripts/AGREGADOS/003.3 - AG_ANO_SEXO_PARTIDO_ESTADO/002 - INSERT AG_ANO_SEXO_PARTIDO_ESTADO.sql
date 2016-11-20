@@ -5,16 +5,18 @@ INSERT INTO [dbo].AG_ANO_SEXO_PARTIDO_ESTADO
            ,[CandidatoEscolaridadeID]
            ,[PartidoColigacaoID]
            ,[LocalidadeID]
-		   ,TDCandidato
+           ,[QtdCandidatos]
            ,[VlrTotalDeclarado]
-           ,[QtdTotalDeclarado])
-SELECT ANO, 
-	   [TPCandidatoEscolaridadeSexo].ID  as TPCandidatoEscolaridadeSexoID, 
-	   TFDadoEleitoral.[PartidoColigacaoID],
-	   TDLocalidadeEstado.ID as TDLocalidadeEstadoID, 
-	   COUNT([TDCandidato].ID),
-	   sum(TFDadoEleitoral.[VlrTotalDeclarado]) as [VlrTotalDeclarado],
-	   sum(TFDadoEleitoral.[QtdTotalDeclarado]) as [QtdTotalDeclarado]
+		   ,[QtdTotalDeclarado])
+SELECT ANO															AS Ano, 
+	   [TPCandidatoEscolaridadeSexo].ID								AS TPCandidatoEscolaridadeSexoID, 
+	   TFDadoEleitoral.[PartidoColigacaoID]							AS PartidoColigacaoID,				
+	   TDLocalidadeEstado.ID										AS TDLocalidadeEstadoID, 
+	   
+	   COUNT([TDCandidato].ID)										AS TDCandidato,
+	   SUM(TFDadoEleitoral.[VlrTotalDeclarado])						AS VlrTotalDeclarado,
+	   SUM(TFDadoEleitoral.[QtdTotalDeclarado])						AS QtdTotalDeclarado
+
 FROM TFDadoEleitoral
 INNER JOIN TDLocalidade ON TFDadoEleitoral.LocalidadeID = TDLocalidade.ID
 INNER JOIN TDLocalidade as TDLocalidadeEstado ON TDLocalidade.SiglaEstado = TDLocalidadeEstado.SiglaEstado
