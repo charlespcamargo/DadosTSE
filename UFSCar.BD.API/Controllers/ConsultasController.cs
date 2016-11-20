@@ -20,9 +20,9 @@ namespace UFSCar.BD.API.Controllers
 
         [HttpPost]
         [Route("patrimonio")]
-        public HttpResponseMessage Patrimonio([FromBody] PatrimonioResult filtro)
+        public HttpResponseMessage Patrimonio([FromBody] AnaliseFiltro filtro)
         {
-            List<PatrimonioResult> lst = null;                     
+            List<ANALISE1_1> lst = null;                     
 
             try
             {
@@ -45,13 +45,13 @@ namespace UFSCar.BD.API.Controllers
 
         [HttpPost]
         [Route("escolaridade")]
-        public HttpResponseMessage Escolaridade([FromBody] PatrimonioResult filtro)
+        public HttpResponseMessage Escolaridade([FromBody] AnaliseFiltro filtro)
         {
-            List<PatrimonioResult> lst = null;
+            List<dynamic> lst = null;
 
             try
             {
-                lst = ConsultasBL.New.EvolucaoPatrimonial(filtro);
+                //lst = ConsultasBL.New.EvolucaoPatrimonial(filtro);
 
                 return Request.CreateResponse(HttpStatusCode.OK, lst);
             }
@@ -70,13 +70,13 @@ namespace UFSCar.BD.API.Controllers
 
         [HttpPost]
         [Route("porsexo")]
-        public HttpResponseMessage PorSexo([FromBody] PatrimonioResult filtro)
+        public HttpResponseMessage PorSexo([FromBody] AnaliseFiltro filtro)
         {
-            List<PatrimonioResult> lst = null;
+            List<dynamic> lst = null;
 
             try
             {
-                lst = ConsultasBL.New.EvolucaoPatrimonial(filtro);
+                //lst = ConsultasBL.New.EvolucaoPatrimonial(filtro);
 
                 return Request.CreateResponse(HttpStatusCode.OK, lst);
             }

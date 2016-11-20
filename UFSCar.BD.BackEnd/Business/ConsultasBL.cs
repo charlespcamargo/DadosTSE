@@ -17,9 +17,9 @@ namespace UFSCar.BD.BackEnd.Business
         }
 
 
-        public List<PatrimonioResult> EvolucaoPatrimonial(PatrimonioResult filtro)
+        public List<ANALISE1_1> EvolucaoPatrimonial(AnaliseFiltro filtro)
         {
-            List<PatrimonioResult> lst = null;
+            List<ANALISE1_1> lst = null;
 
             #region Parametros
 
@@ -95,9 +95,9 @@ namespace UFSCar.BD.BackEnd.Business
 
             using (UnitOfWork UoW = new UnitOfWork())
             {
-                string script = "SP_ANALISE2_1  @ANO, @SEXO, @IDESCOLARIDADE, @IDOCUPACAO, @REGIAO, @SIGLAESTADO, @IDMUNICIPIO, @SIGLAPARTIDO, @IDCARGOPRETENDIDO ";
+                string script = "SP_ANALISE1_1  @ANO, @SEXO, @IDESCOLARIDADE, @IDOCUPACAO, @REGIAO, @SIGLAESTADO, @IDMUNICIPIO, @SIGLAPARTIDO, @IDCARGOPRETENDIDO ";
 
-                lst = UoW.GetContext().Database.SqlQuery<PatrimonioResult>(script, lstParametros.ToArray()).ToList();
+                lst = UoW.GetContext().Database.SqlQuery<ANALISE1_1>(script, lstParametros.ToArray()).ToList();
             }
 
             return lst;

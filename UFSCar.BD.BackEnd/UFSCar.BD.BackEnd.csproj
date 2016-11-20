@@ -61,6 +61,7 @@
     <Compile Include="Business\ConsultasBL.cs" />
     <Compile Include="Business\ExemploBL.cs" />
     <Compile Include="Business\ImportacaoArquivoBL.cs" />
+    <Compile Include="Model\Consultas\ANALISE1_1.cs" />
     <Compile Include="Model\Consultas\PatrimonioResult.cs" />
     <Compile Include="Model\Ocupacao.cs" />
     <Compile Include="Model\Cargo.cs" />

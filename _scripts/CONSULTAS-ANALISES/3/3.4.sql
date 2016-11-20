@@ -6,7 +6,15 @@
 -- Create date: 20/11/2016
 -- Description:	Procedure para responder os dados da primeira Consulta
 -- =============================================
-CREATE PROCEDURE SP_ANALISE3_3(
+
+IF EXISTS (SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'[SP_ANALISE3_4]') AND Type = N'P')
+BEGIN
+   DROP PROCEDURE SP_ANALISE3_4
+END
+GO
+
+
+CREATE PROCEDURE SP_ANALISE3_4(
 	@ANO INT = NULL,
 	@SEXO VARCHAR(20) = NULL,
 	@IDESCOLARIDADE INT = NULL,
@@ -18,6 +26,19 @@ CREATE PROCEDURE SP_ANALISE3_3(
 	@IDCARGOPRETENDIDO INT = NULL)
 AS
 BEGIN
+
+	/*
+		EXEC SP_ANALISE3_4		@ANO				= NULL,
+								@SEXO				= NULL,
+								@IDESCOLARIDADE		= NULL,
+								@IDOCUPACAO			= NULL,
+								@REGIAO				= NULL,
+								@SIGLAESTADO		= NULL,
+								@IDMUNICIPIO		= NULL,
+								@SIGLAPARTIDO		= NULL,
+								@IDCARGOPRETENDIDO	= NULL
+
+	*/
 
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.

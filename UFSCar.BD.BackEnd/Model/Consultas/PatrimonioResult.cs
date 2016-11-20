@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UFSCar.BD.BackEnd.Model
 {
-    public class PatrimonioResult
+    public class AnaliseFiltro
     {
         public int Ano { get; set; }
 
