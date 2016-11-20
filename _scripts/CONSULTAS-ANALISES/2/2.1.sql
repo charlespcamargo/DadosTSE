@@ -6,17 +6,16 @@
 -- Create date: 20/11/2016
 -- Description:	Procedure para responder os dados da primeira Consulta
 -- =============================================
-CREATE PROCEDURE SP_ANALISE2_1
-	-- Add the parameters for the stored procedure here
-	@ANO INT,
-	@SEXO VARCHAR(20),
-	@IDESCOLARIDADE INT,
-	@IDOCUPACAO INT,
-	@REGIAO VARCHAR(50),
-	@SIGLAESTADO VARCHAR(2),
-	@MUNICIPIO INT,
-	@PARTIDO VARCHAR(50),
-	@CARGOPRETENDIDO INT
+CREATE PROCEDURE SP_ANALISE2_1(
+	@ANO INT = NULL,
+	@SEXO VARCHAR(20) = NULL,
+	@IDESCOLARIDADE INT = NULL,
+	@IDOCUPACAO INT = NULL,
+	@REGIAO VARCHAR(50) = NULL,
+	@SIGLAESTADO VARCHAR(2) = NULL,
+	@IDMUNICIPIO INT = NULL,
+	@SIGLAPARTIDO VARCHAR(50) = NULL,
+	@IDCARGOPRETENDIDO INT = NULL)
 AS
 BEGIN
 
@@ -64,11 +63,11 @@ BEGIN
 			AND 
 				ISNULL(@SIGLAESTADO,TDLocalidade.SiglaEstado) = TDLocalidade.SiglaEstado
 			AND 
-				ISNULL(@MUNICIPIO,TDLocalidade.ID) = TDLocalidade.ID
+				ISNULL(@IDMUNICIPIO,TDLocalidade.ID) = TDLocalidade.ID
 			AND 
-				ISNULL(@MUNICIPIO,TDPartidoColigacao.Partido) = TDPartidoColigacao.Partido
+				ISNULL(@SIGLAPARTIDO,TDPartidoColigacao.Partido) = TDPartidoColigacao.Partido
 			AND 
-				ISNULL(@CARGOPRETENDIDO,TDCargoPolitico.ID) = TDCargoPolitico.ID
+				ISNULL(@IDCARGOPRETENDIDO,TDCargoPolitico.ID) = TDCargoPolitico.ID
 
 		--TDPartidoColigacao.Partido = 'PT' AND TDCargoPolitico.Descricao = 'VEREADOR' AND Municipio = 'RIO DE JANEIRO'
 
