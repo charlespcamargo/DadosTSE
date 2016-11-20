@@ -32,24 +32,29 @@
         alterouRegiao: function () 
         {        
             oDW.carregarComboUF();
+            oDW.carregarComboMunicipio();
         },
 
 
         carregarCombos:function()
         {
             $('#ddlRegiao').chosen({ allow_single_deselect: true });
+
             oDW.carregarComboUF();
             oDW.carregarComboMunicipio();
         },
 
         carregarComboUF: function () {
+
+            HelperJS.popularSelect2("hfEstado", null);
+
             HelperJS.ComboAutoComplete(APIs.API_TSE, "hfEstado", "ddlEstado", "Digite um código ou nome",  "localidade/autocompleteestado/" + $("#ddlRegiao").val(), false,
-               oDW.FormataResultadoUF, oDW.FormataGrupoUF, oDW.FuncaoGrupoUF, 2, oDW.onMudarUF, true);
+               oDW.FormataResultadoUF, oDW.FormataGrupoUF, oDW.FuncaoGrupoUF, 1, oDW.onMudarUF, true);
 
         },
         FormataResultadoUF: function (item) { return item.Sigla + " - " + item.Nome; },
         FormataGrupoUF: function (item) { return item.Sigla + " - " + item.Nome; },
-        FuncaoGrupoUF: function (item) { return item.Sigla; },
+        FuncaoGrupoUF: function (item) { return item.ID; },
         onMudarUF: function ()
         {
             oDW.carregarComboMunicipio();
@@ -57,6 +62,9 @@
                 
 
         carregarComboMunicipio: function () {
+
+            HelperJS.popularSelect2("hfMunicipio", null);
+
             HelperJS.ComboAutoComplete(APIs.API_TSE, "hfMunicipio", "ddlMunicipio", "Digite um código ou nome", "localidade/autocompletemunicipio/" + $("#hfEstado").val(), false,
                oDW.FormataResultadoMunicipio, oDW.FormataGrupoMunicipio, oDW.FuncaoGrupoMunicipio, 2, null, true);
         },

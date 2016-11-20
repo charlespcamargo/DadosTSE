@@ -44,7 +44,7 @@
                         <div class="row-fluid">
                             <div class="controls span4">
                                 <span>Região</span>
-                                <select class="span12 m-wrap chosen" id="ddlRegiao" data-placeholder="Selecione">
+                                <select class="span12 m-wrap" id="ddlRegiao" data-placeholder="Selecione">
                                     <option value=""></option>
                                     <option value="Centro-Oeste">Centro-Oeste</option>
                                     <option value="Nordeste">Nordeste</option>

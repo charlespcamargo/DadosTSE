@@ -19,8 +19,8 @@ namespace UFSCar.BD.API.Controllers
     {
 
         [HttpGet]
-        [Route("AutoCompleteEstado/{regiao}")]
-        public HttpResponseMessage AutoCompleteEstado(string regiao)
+        [Route("AutoCompleteEstado/{regiao?}")]
+        public HttpResponseMessage AutoCompleteEstado(string regiao = "")
         {
             List<Estado> lst = null;
 
@@ -31,7 +31,7 @@ namespace UFSCar.BD.API.Controllers
 
             var predicate = UtilEntity.True<Estado>();
             if (codigo == 0)
-                predicate = predicate.And(p => p.Nome.Contains(termo));
+                predicate = predicate.And(p => p.Nome.Contains(termo) || p.Sigla.Contains(termo));
             if (codigo > 0)
                 predicate = predicate.And(p => p.ID == codigo);
 
@@ -60,8 +60,8 @@ namespace UFSCar.BD.API.Controllers
         }
 
         [HttpGet]
-        [Route("AutoCompleteMunicipio/{estado}")]
-        public HttpResponseMessage AutoCompleteMunicipio(int? estadoID)
+        [Route("AutoCompleteMunicipio/{estadoID?}")]
+        public HttpResponseMessage AutoCompleteMunicipio(int estadoID = 0)
         {
             List<Cidade> lst = null;
 
@@ -76,14 +76,14 @@ namespace UFSCar.BD.API.Controllers
             if (codigo > 0)
                 predicate = predicate.And(p => p.ID == codigo);
 
-            if (estadoID.HasValue && estadoID.Value > 0)
+            if (estadoID > 0)
                 predicate = predicate.And(p => p.EstadoID == estadoID);
 
             try
             {
                 using (UnitOfWork UoW = new UnitOfWork())
                 {
-                    lst = UoW.CidadeRepository.Listar(predicate, o => o.OrderBy(by=> by.Nome));
+                    lst = UoW.CidadeRepository.Listar(predicate, o => o.OrderBy(by => by.Nome));
                 }
 
                 return Request.CreateResponse(HttpStatusCode.OK, lst);
