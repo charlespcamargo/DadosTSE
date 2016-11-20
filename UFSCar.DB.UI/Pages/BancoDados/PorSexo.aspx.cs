@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace UFSCar.DB.UI.Pages.BancoDados
 {
-    public partial class DataWarehouse : System.Web.UI.Page
+    public partial class PorSexo : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

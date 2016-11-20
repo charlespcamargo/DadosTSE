@@ -1239,8 +1239,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Pages\BancoDados\DataWarehouse.aspx" />
-    <Content Include="Pages\BancoDados\DataWarehouse.js" />
+    <Content Include="Pages\BancoDados\Escolaridade.aspx" />
+    <Content Include="Pages\BancoDados\Escolaridade.js" />
+    <Content Include="Pages\BancoDados\PorSexo.aspx" />
+    <Content Include="Pages\BancoDados\PorSexo.js" />
+    <Content Include="Pages\BancoDados\EvolucaoPatrimonial.aspx" />
+    <Content Include="Pages\BancoDados\EvolucaoPatrimonial.js" />
     <Content Include="Pages\Exemplos\Exemplo.aspx" />
     <Content Include="Pages\Exemplos\Exemplo.js" />
     <Content Include="Assets\scripts\app.js" />
@@ -1268,12 +1272,26 @@
     <Compile Include="Models\MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
-    <Compile Include="Pages\BancoDados\DataWarehouse.aspx.cs">
-      <DependentUpon>DataWarehouse.aspx</DependentUpon>
+    <Compile Include="Pages\BancoDados\Escolaridade.aspx.cs">
+      <DependentUpon>Escolaridade.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\BancoDados\DataWarehouse.aspx.designer.cs">
-      <DependentUpon>DataWarehouse.aspx</DependentUpon>
+    <Compile Include="Pages\BancoDados\Escolaridade.aspx.designer.cs">
+      <DependentUpon>Escolaridade.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BancoDados\PorSexo.aspx.cs">
+      <DependentUpon>PorSexo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\BancoDados\PorSexo.aspx.designer.cs">
+      <DependentUpon>PorSexo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BancoDados\EvolucaoPatrimonial.aspx.cs">
+      <DependentUpon>EvolucaoPatrimonial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\BancoDados\EvolucaoPatrimonial.aspx.designer.cs">
+      <DependentUpon>EvolucaoPatrimonial.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Exemplos\Exemplo.aspx.cs">
       <DependentUpon>Exemplo.aspx</DependentUpon>

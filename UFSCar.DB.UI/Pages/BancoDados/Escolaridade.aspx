@@ -1,8 +1,8 @@
-﻿<%@ Page Title="UFSCar - Evolução Patrimonial" Language="C#" MasterPageFile="~/Models/MasterPage.Master" AutoEventWireup="true" CodeBehind="DataWarehouse.aspx.cs" Inherits="UFSCar.DB.UI.Pages.BancoDados.DataWarehouse" %>
+﻿<%@ Page Title="UFSCar - Evolução Patrimonial" Language="C#" MasterPageFile="~/Models/MasterPage.Master" AutoEventWireup="true" CodeBehind="Escolaridade.aspx.cs" Inherits="UFSCar.DB.UI.Pages.BancoDados.Escolaridade" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-    <script src="DataWarehouse.js"></script>
+    <script src="Escolaridade.js"></script>
 
 </asp:Content>
 
@@ -18,13 +18,12 @@
             <a href="default.aspx">Home</a>
             <i class="icon-angle-right"></i>
         </li>
-        <li><a href="#">Dashboard</a></li>
-        <li class="pull-right no-text-shadow">
-            <div id="dashboard-report-range" class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change dashboard date range">
-                <i class="icon-calendar"></i>
-                <span></span>
-                <i class="icon-angle-down"></i>
-            </div>
+        <li>
+            <a href="#">Banco de Dados</a>
+            <i class="icon-angle-right"></i>
+        </li>
+        <li>
+            <a href="default.aspx">Escolaridade</a>
         </li>
     </ul>
 
@@ -137,7 +136,7 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            oDW.init();
+            Escolaridade.init();
         });
     </script>
 
