@@ -13,7 +13,7 @@ SELECT ANO															AS Ano,
 	   TFDadoEleitoral.[PartidoColigacaoID]							AS PartidoColigacaoID,				
 	   TDLocalidadeEstado.ID										AS TDLocalidadeEstadoID, 
 	   
-	   COUNT([TDCandidato].ID)										AS TDCandidato,
+	   COUNT([TDCandidato].ID)										AS QtdCandidatos,
 	   SUM(TFDadoEleitoral.[VlrTotalDeclarado])						AS VlrTotalDeclarado,
 	   SUM(TFDadoEleitoral.[QtdTotalDeclarado])						AS QtdTotalDeclarado
 
