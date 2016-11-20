@@ -5,9 +5,7 @@
 
         init: function ()
         {
-            //google.charts.load('current', { 'packages': ['bar'] });
-            //google.charts.setOnLoadCallback(oDW.drawChart);
-            
+            oDW.inicializarGoogleCharts();
             oDW.eventos();
             oDW.inicializarControles();
         },
@@ -29,6 +27,12 @@
             oDW.carregarCombos();        
         },
         
+        inicializarGoogleCharts:function()
+        {
+            google.charts.load('current', { 'packages': ['bar'] });
+            google.charts.setOnLoadCallback(oDW.drawChart);        
+        },
+
         alterouRegiao: function () 
         {        
             oDW.carregarComboUF();
@@ -91,7 +95,10 @@
 
 
 
-        drawChart: function () {
+        drawChart: function ()
+        {
+
+
             HelperJS.callApi(APIs.API_TSE, "/exemplo/exemplificar/", "GET", null, oDW.drawChart_sucesso, HelperJS.showError);
         },
 

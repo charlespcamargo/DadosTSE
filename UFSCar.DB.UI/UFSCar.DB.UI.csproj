@@ -1246,6 +1246,8 @@
     <Content Include="Assets\scripts\app.js" />
     <Content Include="Assets\scripts\google.loader.js" />
     <Content Include="Assets\scripts\HelperJS.js" />
+    <Content Include="Styles\DefaultStyle.css" />
+    <Content Include="Styles\Print.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

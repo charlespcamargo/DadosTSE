@@ -36,8 +36,7 @@
                     <div class="portlet-title">
                         <div class="caption"><i class="icon-cogs"></i>Filtros</div>
                         <div class="tools">
-                            <a href="javascript:;" class="collapse"></a>
-                            <a href="#portlet-config" data-toggle="modal" class="config"></a>
+                            <a href="javascript:;" class="collapse"></a> 
                         </div>
                     </div>
                     <div class="portlet-body">
@@ -101,14 +100,16 @@
                                 <input type="text" class="hidden" id="ddlEstado" name="hfEstado" value="" />
                             </div>
                             <div class="controls span4">
-                                <h4>Municipio</h4>
+                                <h4>Município</h4>
                                 <input type="hidden" class="select2-offscreen" id="hfMunicipio" style="width: 100%" value="" />
                                 <input type="text" class="hidden" id="ddlMunicipio" name="hfMunicipio" value="" />
                             </div>
                         </div>
                         <div class="row-fluid">
-                             <div class="controls span12">
-                                <div class="btn-group" style="margin-top: 30px;">
+                            <div class="controls span10">
+                                </div>
+                             <div class="controls span2">
+                                <div class="btn-group" style="">
                                     <a id="btnBuscar" class="btn btn-margin-5px">Buscar <i class="icon-search"></i>
                                     </a>
                                 </div>
@@ -122,11 +123,11 @@
                         <div class="caption"><i class="icon-cogs"></i>Evolução Patrimonial</div>
                         <div class="tools">
                             <a href="javascript:;" class="collapse"></a>
-                            <a href="#portlet-config" data-toggle="modal" class="config"></a>
                         </div>
                     </div>
                     <div class="portlet-body">
-                        <div id="chart_div"></div>
+                        <div id="chart_div" style="min-height:100px">
+                        </div>
                     </div>
                 </div>
 
