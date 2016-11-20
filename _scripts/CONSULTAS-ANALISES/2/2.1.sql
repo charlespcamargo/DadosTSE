@@ -52,25 +52,25 @@ BEGIN
 			   TDCargoPolitico.ID = AG_ANO_LOCAL_CARGO_PARTIDO.CargoPoliticoID AND
 			   TDPartidoColigacao.ID = AG_ANO_LOCAL_CARGO_PARTIDO.PartidoColigacaoID
 		WHERE 	
-		--		ISNULL(@ANO,TFDadoEleitoral.Ano) = TFDadoEleitoral.Ano
-		--	AND 
-		--		ISNULL(@SEXO,TDCandidato.Sexo) = TDCandidato.Sexo		
-		--	AND 
-		--		ISNULL(@IDESCOLARIDADE,TPCandidatoEscolaridade.EscolaridadeID) = TPCandidatoEscolaridade.EscolaridadeID
-		--	AND 
-		--		ISNULL(@IDOCUPACAO,TDOcupacao.ID) = TDOcupacao.ID
-		--	AND 
-		--		ISNULL(@REGIAO,TDLocalidade.Regiao) = TDLocalidade.Regiao
-		--	AND 
-		--		ISNULL(@SIGLAESTADO,TDLocalidade.SiglaEstado) = TDLocalidade.SiglaEstado
-		--	AND 
-		--		ISNULL(@MUNICIPIO,TDLocalidade.ID) = TDLocalidade.ID
-		--	AND 
-		--		ISNULL(@MUNICIPIO,TDPartidoColigacao.Partido) = TDPartidoColigacao.Partido
-		--	AND 
-		--		ISNULL(@CARGOPRETENDIDO,TDCargoPolitico.ID) = TDCargoPolitico.ID
+				ISNULL(@ANO,TFDadoEleitoral.Ano) = TFDadoEleitoral.Ano
+			AND 
+				ISNULL(@SEXO,TDCandidato.Sexo) = TDCandidato.Sexo		
+			AND 
+				ISNULL(@IDESCOLARIDADE,TPCandidatoEscolaridade.EscolaridadeID) = TPCandidatoEscolaridade.EscolaridadeID
+			AND 
+				ISNULL(@IDOCUPACAO,TDOcupacao.ID) = TDOcupacao.ID
+			AND 
+				ISNULL(@REGIAO,TDLocalidade.Regiao) = TDLocalidade.Regiao
+			AND 
+				ISNULL(@SIGLAESTADO,TDLocalidade.SiglaEstado) = TDLocalidade.SiglaEstado
+			AND 
+				ISNULL(@MUNICIPIO,TDLocalidade.ID) = TDLocalidade.ID
+			AND 
+				ISNULL(@MUNICIPIO,TDPartidoColigacao.Partido) = TDPartidoColigacao.Partido
+			AND 
+				ISNULL(@CARGOPRETENDIDO,TDCargoPolitico.ID) = TDCargoPolitico.ID
 
-		TDPartidoColigacao.Partido = 'PT' AND TDCargoPolitico.Descricao = 'VEREADOR' AND Municipio = 'RIO DE JANEIRO'
+		--TDPartidoColigacao.Partido = 'PT' AND TDCargoPolitico.Descricao = 'VEREADOR' AND Municipio = 'RIO DE JANEIRO'
 
 		GROUP BY TFDadoEleitoral.Ano, 
 			   TDLocalidade.Regiao, 
