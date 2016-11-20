@@ -41,6 +41,8 @@
             $('#ddlSexo').chosen({ allow_single_deselect: true });
             $('#ddlRegiao').chosen({ allow_single_deselect: true });
             $('#ddlEscolaridade').chosen({ allow_single_deselect: true });
+            $('#ddlPartido').chosen({ allow_single_deselect: true });
+            $('#ddlCargoPretendido').chosen({ allow_single_deselect: true });
 
             Escolaridade.carregarComboOcupacao();
             Escolaridade.carregarComboUF();
@@ -69,7 +71,7 @@
         },
         FormataResultadoUF: function (item) { return item.Sigla + " - " + item.Nome; },
         FormataGrupoUF: function (item) { return item.Sigla + " - " + item.Nome; },
-        FuncaoGrupoUF: function (item) { return item.ID; },
+        FuncaoGrupoUF: function (item) { return item.Sigla; },
         onMudarUF: function () {
             Escolaridade.carregarComboMunicipio();
         },
@@ -132,6 +134,17 @@
                 filtro.MunicipioID = $("#hfMunicipio").val();
             else
                 filtro.MunicipioID = 0;
+
+            if (HelperJS.temValor($("#ddlPartido").val()))
+                filtro.PartidoSigla = $("#ddlPartido").val();
+            else
+                filtro.PartidoSigla = 0;
+
+
+            if (HelperJS.temValor($("#ddlCargoPretendido").val()))
+                filtro.CargoPretendidoID = $("#ddlCargoPretendido").val();
+            else
+                filtro.CargoPretendidoID = 0;
 
 
             return filtro;

@@ -8,7 +8,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <h3 class="page-title">Dashboard 
+    <h3 class="page-title">Consultas 
         <small>Métricas sobre os dados do TSE</small>
     </h3>
 
@@ -42,7 +42,7 @@
                     <div class="portlet-title">
                         <div class="caption"><i class="icon-cogs"></i>Filtros</div>
                         <div class="tools">
-                            <a href="javascript:;" class="collapse"></a> 
+                            <a href="javascript:;" class="collapse"></a>
                         </div>
                     </div>
                     <div class="portlet-body">
@@ -69,7 +69,7 @@
                             </div>
                             <div class="controls span4">
                                 <h4>Escolaridade</h4>
-                                 <select class="span12 m-wrap" id="ddlEscolaridade" data-placeholder="Selecione">
+                                <select class="span12 m-wrap" id="ddlEscolaridade" data-placeholder="Selecione">
                                     <option value=""></option>
                                     <option value="0">Analfabeto</option>
                                     <option value="1">Ensino Fundamental Completo</option>
@@ -82,10 +82,10 @@
                                     <option value="8">Superior Incompleto</option>
                                 </select>
                             </div>
-                               <div class="controls span4">
+                            <div class="controls span4">
                                 <h4>Ocupação</h4>
                                 <input type="hidden" class="select2-offscreen" id="hfOcupacao" style="width: 100%" value="" />
-                                <input type="text" class="hidden" id="ddlOcupacao" name="hfOcupacao" value="" />                      
+                                <input type="text" class="hidden" id="ddlOcupacao" name="hfOcupacao" value="" />
                             </div>
                         </div>
                         <div class="row-fluid">
@@ -112,10 +112,70 @@
                             </div>
                         </div>
                         <div class="row-fluid">
-                            <div class="controls span10">
-                                </div>
-                             <div class="controls span2">
-                                <div class="btn-group" style="">
+                            <div class="controls span4">
+                                <h4>Partido</h4>
+                                <select class="span12 m-wrap" id="ddlPartido" data-placeholder="Selecione">
+                                    <option value=""></option>
+                                    <option value="DEM">DEM</option>
+                                    <option value="NOVO">NOVO</option>
+                                    <option value="PAN">PAN</option>
+                                    <option value="PC do B">PC do B</option>
+                                    <option value="PCB">PCB</option>
+                                    <option value="PCO">PCO</option>
+                                    <option value="PDT">PDT</option>
+                                    <option value="PEN">PEN</option>
+                                    <option value="PFL">PFL</option>
+                                    <option value="PHS">PHS</option>
+                                    <option value="PL">PL</option>
+                                    <option value="PMB">PMB</option>
+                                    <option value="PMDB">PMDB</option>
+                                    <option value="PMN">PMN</option>
+                                    <option value="PP">PP</option>
+                                    <option value="PPL">PPL</option>
+                                    <option value="PPS">PPS</option>
+                                    <option value="PR">PR</option>
+                                    <option value="PRB">PRB</option>
+                                    <option value="PRONA">PRONA</option>
+                                    <option value="PROS">PROS</option>
+                                    <option value="PRP">PRP</option>
+                                    <option value="PRTB">PRTB</option>
+                                    <option value="PSB">PSB</option>
+                                    <option value="PSC">PSC</option>
+                                    <option value="PSD">PSD</option>
+                                    <option value="PSDB">PSDB</option>
+                                    <option value="PSDC">PSDC</option>
+                                    <option value="PSL">PSL</option>
+                                    <option value="PSOL">PSOL</option>
+                                    <option value="PSTU">PSTU</option>
+                                    <option value="PT do B">PT do B</option>
+                                    <option value="PT">PT</option>
+                                    <option value="PTB">PTB</option>
+                                    <option value="PTC">PTC</option>
+                                    <option value="PTN">PTN</option>
+                                    <option value="PV">PV</option>
+                                    <option value="REDE">REDE</option>
+                                    <option value="SD">SD</option>
+                                </select>
+                            </div>
+                            <div class="controls span4">
+                                <h4>Cargo Pretendido</h4>
+                                <select class="span12 m-wrap" id="ddlCargoPretendido" data-placeholder="Selecione">
+                                    <option value=""></option>
+                                    <option value="0">Deputado Distrital</option>
+                                    <option value="1">Deputado Estadual</option>
+                                    <option value="2">Governador</option>
+                                    <option value="3">Senador</option>
+                                    <option value="10">1º Suplente Senador</option>                                    
+                                    <option value="4">2º Suplente Senador</option>
+                                    <option value="5">Vereador</option>
+                                    <option value="6">Deputado Federal</option>
+                                    <option value="7">Presidente</option>
+                                    <option value="8">Prefeito</option>
+                                    <option value="9">Vice-Prefeito</option>
+                                </select>
+                            </div>
+                            <div class="controls span4">
+                                <div class="btn-group" style="margin-top:45px">
                                     <a id="btnBuscar" class="btn btn-margin-5px">Buscar <i class="icon-search"></i>
                                     </a>
                                 </div>
@@ -132,7 +192,7 @@
                         </div>
                     </div>
                     <div class="portlet-body">
-                        <div id="chart_div" style="min-height:100px">
+                        <div id="chart_div" style="min-height: 100px">
                         </div>
                     </div>
                 </div>

@@ -60,8 +60,8 @@ namespace UFSCar.BD.API.Controllers
         }
 
         [HttpGet]
-        [Route("AutoCompleteMunicipio/{estadoID?}")]
-        public HttpResponseMessage AutoCompleteMunicipio(int estadoID = 0)
+        [Route("AutoCompleteMunicipio/{sigla?}")]
+        public HttpResponseMessage AutoCompleteMunicipio(string sigla = "")
         {
             List<Cidade> lst = null;
 
@@ -76,13 +76,16 @@ namespace UFSCar.BD.API.Controllers
             if (codigo > 0)
                 predicate = predicate.And(p => p.ID == codigo);
 
-            if (estadoID > 0)
-                predicate = predicate.And(p => p.EstadoID == estadoID);
-
             try
             {
                 using (UnitOfWork UoW = new UnitOfWork())
                 {
+                    if (!String.IsNullOrEmpty(sigla))
+                    {
+                        Estado estado = UoW.EstadoRepository.Carregar(c => c.Sigla == sigla, o => o.OrderBy(by => by.ID));
+                        predicate = predicate.And(p => p.EstadoID == estado.ID);
+                    }
+
                     lst = UoW.CidadeRepository.Listar(predicate, o => o.OrderBy(by => by.Nome));
                 }
 

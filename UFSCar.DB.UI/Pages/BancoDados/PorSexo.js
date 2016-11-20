@@ -41,6 +41,8 @@
             $('#ddlSexo').chosen({ allow_single_deselect: true });
             $('#ddlRegiao').chosen({ allow_single_deselect: true });
             $('#ddlEscolaridade').chosen({ allow_single_deselect: true });
+            $('#ddlPartido').chosen({ allow_single_deselect: true });
+            $('#ddlCargoPretendido').chosen({ allow_single_deselect: true });
 
             PorSexo.carregarComboOcupacao();
             PorSexo.carregarComboUF();
@@ -69,7 +71,7 @@
         },
         FormataResultadoUF: function (item) { return item.Sigla + " - " + item.Nome; },
         FormataGrupoUF: function (item) { return item.Sigla + " - " + item.Nome; },
-        FuncaoGrupoUF: function (item) { return item.ID; },
+        FuncaoGrupoUF: function (item) { return item.Sigla; },
         onMudarUF: function () {
             PorSexo.carregarComboMunicipio();
         },

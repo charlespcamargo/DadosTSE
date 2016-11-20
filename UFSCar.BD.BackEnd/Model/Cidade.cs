@@ -24,6 +24,8 @@ namespace UFSCar.BD.Model
         [Column("EstadoID")]
         public int EstadoID { get; set; }
 
+         
+
 
     }
 }

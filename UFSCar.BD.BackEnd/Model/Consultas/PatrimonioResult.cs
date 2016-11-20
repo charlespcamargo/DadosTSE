@@ -21,6 +21,10 @@ namespace UFSCar.BD.BackEnd.Model
         public int EstadoID { get; set; }
 
         public int MunicipioID { get; set; }
-        
+
+        public string PartidoSigla { get; set; }
+
+        public int CargoPretendidoID { get; set; }
+
     }
 }
