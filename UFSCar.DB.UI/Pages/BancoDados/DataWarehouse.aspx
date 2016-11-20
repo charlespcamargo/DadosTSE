@@ -34,28 +34,30 @@
 
                 <div class="portlet box grey">
                     <div class="portlet-title">
+                        <div class="caption"><i class="icon-cogs"></i>Filtros</div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse"></a>
+                            <a href="#portlet-config" data-toggle="modal" class="config"></a>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        
+                    </div>
+                </div>
+
+                <div class="portlet box grey">
+                    <div class="portlet-title">
                         <div class="caption"><i class="icon-cogs"></i>Bens por Candidato</div>
                         <div class="tools">
                             <a href="javascript:;" class="collapse"></a>
                             <a href="#portlet-config" data-toggle="modal" class="config"></a>
-                            <a href="javascript:;" class="reload"></a>
-                            <a href="javascript:;" class="remove"></a>
                         </div>
                     </div>
                     <div class="portlet-body">
                         <div id="chart_div"></div>
-                        <br />
-                        <div id="btn-group">
-                            <button class="button button-blue" id="none">No Format</button>
-                            <button class="button button-blue" id="scientific">Scientific Notation</button>
-                            <button class="button button-blue" id="decimal">Decimal</button>
-                            <button class="button button-blue" id="short">Short</button>
-                        </div>
                     </div>
                 </div>
-
-
-
+                
             </div>
         </div>
     </div>
