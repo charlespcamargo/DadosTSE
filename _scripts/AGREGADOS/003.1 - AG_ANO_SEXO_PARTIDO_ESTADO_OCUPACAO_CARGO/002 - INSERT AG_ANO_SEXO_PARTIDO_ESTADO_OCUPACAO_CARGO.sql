@@ -1,3 +1,5 @@
+DELETE FROM AG_ANO_SEXO_PARTIDO_ESTADO_OCUPACAO_CARGO;
+
 INSERT INTO [dbo].AG_ANO_SEXO_PARTIDO_ESTADO_OCUPACAO_CARGO
            ([Ano]
            ,[CandidatoEscolaridadeID]
@@ -5,6 +7,7 @@ INSERT INTO [dbo].AG_ANO_SEXO_PARTIDO_ESTADO_OCUPACAO_CARGO
            ,[LocalidadeID]
            ,[OcupacaoID]
            ,[CargoPoliticoID]
+		   ,QtdCandidatos
            ,[VlrTotalDeclarado]
            ,[QtdTotalDeclarado])
 SELECT ANO, 
@@ -13,6 +16,7 @@ SELECT ANO,
 	   TDLocalidadeEstado.ID as TDLocalidadeEstadoID, 
 	   TFDadoEleitoral.OcupacaoID,
 	   TFDadoEleitoral.CargoPoliticoID,
+	   COUNT([TDCandidato].ID),
 	   sum(TFDadoEleitoral.[VlrTotalDeclarado]) as [VlrTotalDeclarado],
 	   sum(TFDadoEleitoral.[QtdTotalDeclarado]) as [QtdTotalDeclarado]
 FROM TFDadoEleitoral

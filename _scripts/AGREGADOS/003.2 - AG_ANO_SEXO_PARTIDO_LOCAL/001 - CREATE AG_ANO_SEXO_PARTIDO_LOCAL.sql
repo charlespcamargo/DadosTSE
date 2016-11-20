@@ -3,6 +3,7 @@ CREATE TABLE [dbo].[AG_ANO_SEXO_PARTIDO_LOCAL](
 	[CandidatoEscolaridadeID] [int] NOT NULL,
 	[PartidoColigacaoID] [int] NOT NULL,
 	[LocalidadeID] [int] NOT NULL,
+	QtdCandidatos int not null,
 	[VlrTotalDeclarado] [numeric](16, 2) NOT NULL,
 	[QtdTotalDeclarado] [int] NOT NULL,
  CONSTRAINT [PK_AG_ANO_SEXO_PARTIDO_LOCAL] PRIMARY KEY CLUSTERED 

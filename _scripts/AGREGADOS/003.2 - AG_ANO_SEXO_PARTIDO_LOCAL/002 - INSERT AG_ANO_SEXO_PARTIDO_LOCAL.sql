@@ -1,14 +1,18 @@
+delete from [AG_ANO_SEXO_PARTIDO_LOCAL];
+
 INSERT INTO [dbo].[AG_ANO_SEXO_PARTIDO_LOCAL]
            ([Ano]
            ,[CandidatoEscolaridadeID]
            ,[PartidoColigacaoID]
            ,[LocalidadeID]
+		   ,QtdCandidatos
            ,[VlrTotalDeclarado]
            ,[QtdTotalDeclarado])
 SELECT ANO, 
 	   [TPCandidatoEscolaridadeSexo].ID  as TPCandidatoEscolaridadeSexoID, 
 	   TFDadoEleitoral.[PartidoColigacaoID],
 	   TDLocalidade.ID as TDLocalidadeEstadoID, 
+	   COUNT([TDCandidato].ID) as QtdCandidatos,
 	   sum(TFDadoEleitoral.[VlrTotalDeclarado]) as [VlrTotalDeclarado],
 	   sum(TFDadoEleitoral.[QtdTotalDeclarado]) as [QtdTotalDeclarado]
 FROM TFDadoEleitoral
