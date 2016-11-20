@@ -6,7 +6,7 @@ CREATE TABLE [dbo].[AG_ANO_SEXO_PARTIDO_ESTADO_OCUPACAO_CARGO](
 	[OcupacaoID] [int] NOT NULL,
 	[CargoPoliticoID] [int] NOT NULL,
 	[VlrTotalDeclarado] [numeric](16, 2) NOT NULL,
-	[QtdTotalDeclarado] [numeric](16, 2) NOT NULL,
+	[QtdTotalDeclarado] [int] NOT NULL,
  CONSTRAINT [PK_AG_ESTADO_SEXO_PARTIDO] PRIMARY KEY CLUSTERED 
 (
 	[Ano] ASC,
