@@ -172,5 +172,19 @@ namespace UFSCar.BD.Repository
             }
         }
 
+
+        private BaseRepository<Ocupacao> _OcupacaoRepository;
+        public BaseRepository<Ocupacao> OcupacaoRepository
+        {
+            get
+            {
+                if (this._OcupacaoRepository == null)
+                {
+                    this._OcupacaoRepository = new BaseRepository<Ocupacao>(context);
+                }
+                return _OcupacaoRepository;
+            }
+        }
+
     }
 }

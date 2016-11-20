@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Business\ExemploBL.cs" />
     <Compile Include="Business\ImportacaoArquivoBL.cs" />
+    <Compile Include="Model\Ocupacao.cs" />
     <Compile Include="Model\Cargo.cs" />
     <Compile Include="Model\Cidade.cs" />
     <Compile Include="Model\Eleicao.cs" />

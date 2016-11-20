@@ -141,3 +141,25 @@ GO
 
 
 
+
+/**************************************************************  ********************************************************************/
+IF EXISTS (SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'[Ocupacao]') AND Type = N'U')
+BEGIN
+   DROP TABLE [Ocupacao]
+END
+GO
+
+CREATE TABLE [dbo].[Ocupacao]
+(
+	[ID]		INT PRIMARY KEY,
+	[Descricao] VARCHAR(100) NOT NULL
+)
+GO
+
+ INSERT INTO Ocupacao(ID, Descricao)
+SELECT DISTINCT 
+	   Candidato.CODIGO_OCUPACAO						AS Codigo,
+	   Candidato.DESCRICAO_OCUPACAO						AS Descricao	   
+
+  FROM ImportacaoCandidato										AS Candidato
+/**************************************************************  ********************************************************************/

@@ -77,6 +77,11 @@
                                     <option value="8">Superior Incompleto</option>
                                 </select>
                             </div>
+                               <div class="controls span4">
+                                <h4>Ocupação</h4>
+                                <input type="hidden" class="select2-offscreen" id="hfOcupacao" style="width: 100%" value="" />
+                                <input type="text" class="hidden" id="ddlOcupacao" name="hfOcupacao" value="" />                      
+                            </div>
                         </div>
                         <div class="row-fluid">
                             <div class="controls span4">

@@ -43,10 +43,22 @@
             $('#ddlRegiao').chosen({ allow_single_deselect: true });
             $('#ddlEscolaridade').chosen({ allow_single_deselect: true });
             
-
+            oDW.carregarComboOcupacao();
             oDW.carregarComboUF();
             oDW.carregarComboMunicipio();
         },
+
+        carregarComboOcupacao: function () {
+
+            HelperJS.popularSelect2("hfOcupacao", null);
+
+            HelperJS.ComboAutoComplete(APIs.API_TSE, "hfOcupacao", "ddlOcupacao", "Digite um código ou nome", "ocupacao/autocomplete/", false,
+               oDW.FormataResultadoOcupacao, oDW.FormataGrupoOcupacao, oDW.FuncaoGrupoOcupacao, 2, null, true);
+        },
+        FormataResultadoOcupacao: function (item) { return item.ID + " - " + item.Descricao; },
+        FormataGrupoOcupacao: function (item) { return item.ID + " - " + item.Descricao; },
+        FuncaoGrupoOcupacao: function (item) { return item.ID; },
+
 
         carregarComboUF: function () {
 

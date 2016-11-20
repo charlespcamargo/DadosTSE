@@ -66,7 +66,7 @@ namespace UFSCar.BD.Repository
             builder.Configurations.Add(new EntityTypeConfiguration<Cidade>());
             builder.Configurations.Add(new EntityTypeConfiguration<Pais>());
             builder.Configurations.Add(new EntityTypeConfiguration<Estado>());
-
+            builder.Configurations.Add(new EntityTypeConfiguration<Ocupacao>());
 
             return builder;
         }
