@@ -38,7 +38,11 @@
 
         carregarCombos:function()
         {
+            $('#ddlAnoEleitoral').chosen({ allow_single_deselect: true });
+            $('#ddlSexo').chosen({ allow_single_deselect: true });
             $('#ddlRegiao').chosen({ allow_single_deselect: true });
+            $('#ddlEscolaridade').chosen({ allow_single_deselect: true });
+            
 
             oDW.carregarComboUF();
             oDW.carregarComboMunicipio();

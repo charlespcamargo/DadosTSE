@@ -42,8 +42,45 @@
                     </div>
                     <div class="portlet-body">
                         <div class="row-fluid">
+                            <div class="controls span2">
+                                <h4>Ano Eleitoral</h4>
+                                <select class="span12 m-wrap" id="ddlAnoEleitoral" data-placeholder="Selecione">
+                                    <option value=""></option>
+                                    <option value="2016">2016</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2012">2012</option>
+                                    <option value="2010">2010</option>
+                                    <option value="2008">2008</option>
+                                    <option value="2006">2006</option>
+                                </select>
+                            </div>
+                            <div class="controls span2">
+                                <h4>Sexo</h4>
+                                <select class="span12 m-wrap" id="ddlSexo" data-placeholder="Selecione">
+                                    <option value=""></option>
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Feminino</option>
+                                </select>
+                            </div>
                             <div class="controls span4">
-                                <span>Região</span>
+                                <h4>Escolaridade</h4>
+                                 <select class="span12 m-wrap" id="ddlEscolaridade" data-placeholder="Selecione">
+                                    <option value=""></option>
+                                    <option value="0">Analfabeto</option>
+                                    <option value="1">Ensino Fundamental Completo</option>
+                                    <option value="2">Ensino Fundamental Incompleto</option>
+                                    <option value="3">Ensino Médio Completo</option>
+                                    <option value="4">Ensino Médio Incompleto</option>
+                                    <option value="5">Lê e Escreve</option>
+                                    <option value="6">Não Informado</option>
+                                    <option value="7">Superior Completo</option>
+                                    <option value="8">Superior Incompleto</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="controls span4">
+                                <h4>Região</h4>
                                 <select class="span12 m-wrap" id="ddlRegiao" data-placeholder="Selecione">
                                     <option value=""></option>
                                     <option value="Centro-Oeste">Centro-Oeste</option>
@@ -54,12 +91,12 @@
                                 </select>
                             </div>
                             <div class="controls span4">
-                                <span>Estado</span>
+                                <h4>Estado</h4>
                                 <input type="hidden" class="select2-offscreen" id="hfEstado" style="width: 100%" value="" />
                                 <input type="text" class="hidden" id="ddlEstado" name="hfEstado" value="" />
                             </div>
                             <div class="controls span4">
-                                <span>Municipio</span>
+                                <h4>Municipio</h4>
                                 <input type="hidden" class="select2-offscreen" id="hfMunicipio" style="width: 100%" value="" />
                                 <input type="text" class="hidden" id="ddlMunicipio" name="hfMunicipio" value="" />
                             </div>
