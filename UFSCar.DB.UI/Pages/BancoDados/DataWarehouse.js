@@ -3,17 +3,69 @@
 
     return {
 
-        init: function () {
-            google.charts.load('current', { 'packages': ['bar'] });
-            google.charts.setOnLoadCallback(oDW.drawChart);
+        init: function ()
+        {
+            //google.charts.load('current', { 'packages': ['bar'] });
+            //google.charts.setOnLoadCallback(oDW.drawChart);
+            
             oDW.eventos();
+            oDW.inicializarControles();
         },
 
-        eventos: function () {
-            $("button").on("click", function (e) {
-                options.hAxis.format = e.target.id === 'none' ? '' : e.target.id;
+        eventos: function ()
+        {
+            $("#btnBuscar").on("click", function ()
+            {
+                oDW.drawChart();
+            });
+
+            $("#ddlRegiao").on("change", function () {
+                oDW.alterouRegiao();
             });
         },
+
+        inicializarControles:function()
+        {
+            oDW.carregarCombos();        
+        },
+        
+        alterouRegiao: function () 
+        {        
+            oDW.carregarComboUF();
+        },
+
+
+        carregarCombos:function()
+        {
+            $('#ddlRegiao').chosen({ allow_single_deselect: true });
+            oDW.carregarComboUF();
+            oDW.carregarComboMunicipio();
+        },
+
+        carregarComboUF: function () {
+            HelperJS.ComboAutoComplete(APIs.API_TSE, "hfEstado", "ddlEstado", "Digite um código ou nome",  "localidade/autocompleteestado/" + $("#ddlRegiao").val(), false,
+               oDW.FormataResultadoUF, oDW.FormataGrupoUF, oDW.FuncaoGrupoUF, 2, oDW.onMudarUF, true);
+
+        },
+        FormataResultadoUF: function (item) { return item.Sigla + " - " + item.Nome; },
+        FormataGrupoUF: function (item) { return item.Sigla + " - " + item.Nome; },
+        FuncaoGrupoUF: function (item) { return item.Sigla; },
+        onMudarUF: function ()
+        {
+            oDW.carregarComboMunicipio();
+        },
+                
+
+        carregarComboMunicipio: function () {
+            HelperJS.ComboAutoComplete(APIs.API_TSE, "hfMunicipio", "ddlMunicipio", "Digite um código ou nome", "localidade/autocompletemunicipio/" + $("#hfEstado").val(), false,
+               oDW.FormataResultadoMunicipio, oDW.FormataGrupoMunicipio, oDW.FuncaoGrupoMunicipio, 2, null, true);
+        },
+        FormataResultadoMunicipio: function (item) { return item.ID + " - " + item.Nome; },
+        FormataGrupoMunicipio: function (item) { return item.ID + " - " + item.Nome; },
+        FuncaoGrupoMunicipio: function (item) { return item.ID; },
+
+
+
 
         drawChart: function () {
             HelperJS.callApi(APIs.API_TSE, "/exemplo/exemplificar/", "GET", null, oDW.drawChart_sucesso, HelperJS.showError);

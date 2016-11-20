@@ -21,7 +21,7 @@ namespace UFSCar.DB.UI.Models
 
         private void ConfigurarAPIs()
         {
-            hfURLAPITSE.Value = System.Configuration.ConfigurationManager.AppSettings["API.TSE"];
+           hfURLAPITSE.Value = System.Configuration.ConfigurationManager.AppSettings["API.TSE"];
         }
     }
 }

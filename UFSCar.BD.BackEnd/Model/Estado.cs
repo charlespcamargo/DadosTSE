@@ -22,6 +22,10 @@ namespace UFSCar.BD.Model
         [DataMember]
         [Column("Nome")]
         public string Nome { get; set; }
+        
+        [DataMember]
+        [Column("Regiao")]
+        public string Regiao { get; set; }
 
         [DataMember]
         [Column("PaisID")]
