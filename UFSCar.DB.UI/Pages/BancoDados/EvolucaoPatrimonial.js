@@ -14,7 +14,7 @@
 
         eventos: function () {
             $("#btnBuscar").on("click", function () {
-                EvolucaoPatrimonial.drawChart();
+                EvolucaoPatrimonial.buscar();
             });
 
             $("#ddlRegiao").on("change", function () {
@@ -93,7 +93,7 @@
 
         buscar: function () {
             var filtro = EvolucaoPatrimonial.montarFiltro();
-            HelperJS.callApi(APIs.API_TSE, "/exemplo/exemplificar/", "GET", filtro, EvolucaoPatrimonial.buscar_sucesso, HelperJS.showError);
+            HelperJS.callApi(APIs.API_TSE, "/consultas/patrimonio/", "POST", filtro, EvolucaoPatrimonial.buscar_sucesso, HelperJS.showError);
         },
 
         montarFiltro: function ()

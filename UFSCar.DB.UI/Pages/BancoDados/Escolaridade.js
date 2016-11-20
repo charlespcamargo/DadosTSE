@@ -14,7 +14,7 @@
 
         eventos: function () {
             $("#btnBuscar").on("click", function () {
-                Escolaridade.drawChart();
+                Escolaridade.buscar();
             });
 
             $("#ddlRegiao").on("change", function () {
@@ -92,8 +92,8 @@
 
 
         buscar: function () {
-            var filtro = Escolaridade.montarFiltro();
-            HelperJS.callApi(APIs.API_TSE, "/exemplo/exemplificar/", "GET", filtro, Escolaridade.buscar_sucesso, HelperJS.showError);
+            var filtro = Escolaridade.montarFiltro(); 
+            HelperJS.callApi(APIs.API_TSE, "/consultas/escolaridade/", "POST", filtro, EvolucaoPatrimonial.buscar_sucesso, HelperJS.showError);
         },
 
         montarFiltro: function ()

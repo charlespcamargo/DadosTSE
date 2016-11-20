@@ -19,14 +19,14 @@ namespace UFSCar.BD.API.Controllers
     {
 
         [HttpPost]
-        [Route("AutoComplete")]
+        [Route("patrimonio")]
         public HttpResponseMessage Patrimonio([FromBody] PatrimonioResult filtro)
         {
             List<PatrimonioResult> lst = null;                     
 
             try
             {
-
+                lst = ConsultasBL.New.EvolucaoPatrimonial(filtro);
 
                 return Request.CreateResponse(HttpStatusCode.OK, lst);
             }
@@ -41,7 +41,55 @@ namespace UFSCar.BD.API.Controllers
                 throw new HttpResponseException(errorResponse);
             }
         }
-         
 
+
+        [HttpPost]
+        [Route("escolaridade")]
+        public HttpResponseMessage Escolaridade([FromBody] PatrimonioResult filtro)
+        {
+            List<PatrimonioResult> lst = null;
+
+            try
+            {
+                lst = ConsultasBL.New.EvolucaoPatrimonial(filtro);
+
+                return Request.CreateResponse(HttpStatusCode.OK, lst);
+            }
+            catch (ArgumentException aex)
+            {
+                var errorResponse = Request.CreateErrorResponse(HttpStatusCode.BadRequest, new HttpError(aex.Message));
+                throw new HttpResponseException(errorResponse);
+            }
+            catch (Exception ex)
+            {
+                var errorResponse = Request.CreateErrorResponse(HttpStatusCode.Conflict, new HttpError(ex.Message));
+                throw new HttpResponseException(errorResponse);
+            }
+        }
+
+
+        [HttpPost]
+        [Route("porsexo")]
+        public HttpResponseMessage PorSexo([FromBody] PatrimonioResult filtro)
+        {
+            List<PatrimonioResult> lst = null;
+
+            try
+            {
+                lst = ConsultasBL.New.EvolucaoPatrimonial(filtro);
+
+                return Request.CreateResponse(HttpStatusCode.OK, lst);
+            }
+            catch (ArgumentException aex)
+            {
+                var errorResponse = Request.CreateErrorResponse(HttpStatusCode.BadRequest, new HttpError(aex.Message));
+                throw new HttpResponseException(errorResponse);
+            }
+            catch (Exception ex)
+            {
+                var errorResponse = Request.CreateErrorResponse(HttpStatusCode.Conflict, new HttpError(ex.Message));
+                throw new HttpResponseException(errorResponse);
+            }
+        }
     }
 }

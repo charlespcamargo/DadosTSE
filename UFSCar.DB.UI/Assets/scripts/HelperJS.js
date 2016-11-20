@@ -156,7 +156,13 @@ var HelperJS = function () {
             }
         },
 
-     
+
+        temValor: function (prop) {
+            if ($.isArray(prop))
+                return (prop != null && prop.length > 0);
+            else
+                return (prop != null && prop != undefined && prop != '' && prop != 0);
+        },
 
         //Usado para informar em tela algum erro retornado da api
         showError: function (jqXHR) {

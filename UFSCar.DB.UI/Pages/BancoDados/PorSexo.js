@@ -14,7 +14,7 @@
 
         eventos: function () {
             $("#btnBuscar").on("click", function () {
-                PorSexo.drawChart();
+                PorSexo.buscar();
             });
 
             $("#ddlRegiao").on("change", function () {
@@ -93,7 +93,7 @@
 
         buscar: function () {
             var filtro = PorSexo.montarFiltro();
-            HelperJS.callApi(APIs.API_TSE, "/exemplo/exemplificar/", "GET", filtro, PorSexo.buscar_sucesso, HelperJS.showError);
+            HelperJS.callApi(APIs.API_TSE, "/consultas/porsexo/", "POST", filtro, EvolucaoPatrimonial.buscar_sucesso, HelperJS.showError);
         },
 
         montarFiltro: function ()
