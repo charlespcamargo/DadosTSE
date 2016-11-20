@@ -18,7 +18,7 @@ namespace UFSCar.BD.BackEnd.Model
 
         public string Regiao { get; set; }
 
-        public int EstadoID { get; set; }
+        public string EstadoSigla { get; set; }
 
         public int MunicipioID { get; set; }
 

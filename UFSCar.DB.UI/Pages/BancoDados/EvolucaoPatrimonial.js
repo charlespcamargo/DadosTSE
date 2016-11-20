@@ -126,9 +126,9 @@
                 filtro.Regiao = "";
 
             if (HelperJS.temValor($("#hfEstado").val()))
-                filtro.EstadoID = $("#hfEstado").val();
+                filtro.EstadoSigla = $("#hfEstado").val();
             else
-                filtro.EstadoID = 0;
+                filtro.EstadoSigla = 0;
 
             if (HelperJS.temValor($("#hfMunicipio").val()))
                 filtro.MunicipioID = $("#hfMunicipio").val();
