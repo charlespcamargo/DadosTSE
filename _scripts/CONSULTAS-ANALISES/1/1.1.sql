@@ -29,14 +29,14 @@ BEGIN
 
 	/*
 		EXEC SP_ANALISE1_1		@ANO				= 2016,
-								@SEXO				= NULL,
-								@IDESCOLARIDADE		= NULL,
+								@SEXO				= 'MASCULINO',
+								@IDESCOLARIDADE		= 7,
 								@IDOCUPACAO			= NULL,
-								@REGIAO				= NULL,
-								@SIGLAESTADO		= NULL,
-								@IDMUNICIPIO		= NULL,
+								@REGIAO				= 'Sudeste',
+								@SIGLAESTADO		= 'RJ',
+								@IDMUNICIPIO		= 4232,
 								@SIGLAPARTIDO		= NULL,
-								@IDCARGOPRETENDIDO	= NULL
+								@IDCARGOPRETENDIDO	= 8
 
 	*/
 

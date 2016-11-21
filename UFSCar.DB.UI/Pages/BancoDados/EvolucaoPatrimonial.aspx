@@ -2,7 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-    <script src="EvolucaoPatrimonial.js"></script>
+    <script src="EvolucaoPatrimonial.js"></script> 
+    <script src="/Assets/Plugins/highcharts/highcharts.js"></script>     
 
 </asp:Content>
 
@@ -193,6 +194,8 @@
                     </div>
                     <div class="portlet-body">
                         <div id="chart_div" style="min-height: 100px">
+                        </div>
+                        <div id="high_chart" style="min-width: 400px; height: 400px; margin: 0 auto">
                         </div>
                     </div>
                 </div>

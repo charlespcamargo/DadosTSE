@@ -30,5 +30,9 @@ namespace UFSCar.BD.BackEnd.Model
 
         public string Partido { get; set; }
 
+        public decimal[] lstVlrTotalDeclarado { get; set; }
+
+        public decimal[] lstVlrMedioOcupacao { get; set; }
+
     }
 }

@@ -27,7 +27,7 @@
         },
 
         inicializarGoogleCharts: function () {
-            google.charts.load('current', { 'packages': ['bar'] });
+            google.charts.load('current', { 'packages': ['corechart'] });
         },
 
         alterouRegiao: function () {
@@ -93,11 +93,13 @@
 
         buscar: function () {
             var filtro = EvolucaoPatrimonial.montarFiltro();
-            HelperJS.callApi(APIs.API_TSE, "/consultas/patrimonio/", "POST", filtro, EvolucaoPatrimonial.buscar_sucesso, HelperJS.showError);
+            //HelperJS.callApi(APIs.API_TSE, "/consultas/patrimonio/", "POST", filtro, EvolucaoPatrimonial.buscar_sucesso, HelperJS.showError);
+
+            EvolucaoPatrimonial.drawChart();
+
         },
 
-        montarFiltro: function ()
-        {
+        montarFiltro: function () {
             var filtro = {};
 
             if (HelperJS.temValor($("#ddlAnoEleitoral").val()))
@@ -154,36 +156,90 @@
         },
 
         drawChart: function () {
-            var options =
-            {
-                chart:
-                {
-                    title: 'Declaração ',
-                    subtitle: '',
-                },
-                bars: 'horizontal',
-                hAxis: { format: 'decimal' },
-                height: 400
+
+            var lstDados = [];
+            var item = {};
+
+            //$.each(lst, function (i, obj)
+            //{
+            //    item = {};
+            //    item.name = obj.Nome;
+            //    item.data = obj.lstVlrTotalDeclarado;
+            //    item.tooltip = { valuePrefix: 'R$' };
+            //    item.pointPadding = 0.3;
+            //    item.pointPlacement = -0.2;
+            //    lstDados.push(item);
+
+
+            //    item.name = obj.lstOcupacao;
+            //    item.data = obj.lstVlrMedioOcupacao;
+            //    item.tooltip = { valuePrefix: 'R$' };
+            //    item.pointPadding = 0.4;
+            //    item.pointPlacement = -0.2;
+            //    lstDados.push(item);
+            //});
+
+
+            item = {};
+            item.name = "Deputado";
+            item.data = [5800, 5850, 5860, 5890, 5900, 5910];
+            item.tooltip = {
+                valuePrefix: 'R$',
+                valueSuffix: ''
             };
+            item.pointPadding = 0.4;
+            item.pointPlacement = -0.2;
+            lstDados.push(item);
 
 
-            if (lst != null && lst.length > 0) {
-                var data = new google.visualization.DataTable();
-                data.addColumn('string', 'Nome');
-                data.addColumn('number', '2006');
-                data.addColumn('number', '2008');
-                data.addColumn('number', '2010');
-                data.addColumn('number', '2012');
-                data.addColumn('number', '2014');
-                data.addColumn('number', '2016');
 
-                $.each(lst, function (i, obj) {
-                    data.addRow([obj.NomeUrna, obj.Bens2006, obj.Bens2008, obj.Bens2010, obj.Bens2012, obj.Bens2014, obj.Bens2016]);
+            item = {};
+            item.name = "Marcelo Crivella";
+            item.data = [20000, 20500, 30000];
+            item.tooltip = {
+                valuePrefix: 'R$',
+                valueSuffix: ''
+            };
+            item.pointPadding = 0.3;
+            item.pointPlacement = 0.2;
+            lstDados.push(item);
+
+
+            item = {};
+            item.name = "SENADOR";
+            item.data = [22000, 27000, 32000];
+            item.tooltip = {
+                valuePrefix: 'R$',
+                valueSuffix: ''
+            };
+            item.pointPadding = 0.4;
+            item.pointPlacement = 0.2;
+            lstDados.push(item);
+
+            $("#high_chart").highcharts(
+                {
+                    chart: { type: 'column' },
+                    title: { text: 'Evolução Patrimonial' },
+                    xAxis: { categories:  [2006, 2008, 2010, 2012, 2014, 2016] },
+                    yAxis: [{ min: 0, title: { text: 'Candidatos' } },
+                            {
+                                title: { text: 'Valor declardo de Bens' },
+                                opposite: true
+                            }],
+                    legend: { shadow: false },
+                    tooltip: { shared: true },
+                    plotOptions:
+                    {
+                        column: {
+                            grouping: false,
+                            shadow: false,
+                            borderWidth: 0
+                        }
+                    },
+                    series: lstDados
                 });
 
-                chart = new google.charts.Bar(document.getElementById('chart_div'));
-                chart.draw(data, google.charts.Bar.convertOptions(options));
-            }
+             
         },
 
 

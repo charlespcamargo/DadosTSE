@@ -100,6 +100,11 @@ namespace UFSCar.BD.BackEnd.Business
                 lst = UoW.GetContext().Database.SqlQuery<ANALISE1_1>(script, lstParametros.ToArray()).ToList();
             }
 
+            //if (lst != null && lst.Count > 0)
+            //{
+            //    lst = lst.GroupBy(by => by.Nome).Select(s => s).ToList();
+            //}
+
             return lst;
         }
 
