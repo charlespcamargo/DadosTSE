@@ -20,11 +20,11 @@ namespace UFSCar.BD.BackEnd.Model
 
         public string Ocupacao { get; set; }
 
-        public string VlrMedioOcupacao { get; set; }
+        public decimal VlrMedioOcupacao { get; set; }
 
-        public string VlrTotalDeclarado { get; set; }
+        public decimal VlrTotalDeclarado { get; set; }
 
-        public string DiferencaMedia { get; set; }
+        public decimal DiferencaMedia { get; set; }
 
         public string CargoPolitico { get; set; }
 

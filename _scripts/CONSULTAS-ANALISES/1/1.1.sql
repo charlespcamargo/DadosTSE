@@ -28,7 +28,7 @@ AS
 BEGIN
 
 	/*
-		EXEC SP_ANALISE1_1		@ANO				= NULL,
+		EXEC SP_ANALISE1_1		@ANO				= 2016,
 								@SEXO				= NULL,
 								@IDESCOLARIDADE		= NULL,
 								@IDOCUPACAO			= NULL,
@@ -71,25 +71,25 @@ BEGIN
 	JOIN TDPartidoColigacao 
 	  ON TFDadoEleitoral.PartidoColigacaoID = TDPartidoColigacao.ID   
    WHERE 	
-			--	ISNULL(@ANO,TFDadoEleitoral.Ano) = TFDadoEleitoral.Ano
-			--AND 
-			--	ISNULL(@SEXO,TDCandidato.Sexo) = TDCandidato.Sexo		
-			--AND 
-			--	ISNULL(@IDESCOLARIDADE,TPCandidatoEscolaridade.EscolaridadeID) = TPCandidatoEscolaridade.EscolaridadeID
-			--AND 
-			--	ISNULL(@IDOCUPACAO,TDOcupacao.ID) = TDOcupacao.ID
-			--AND 
-			--	ISNULL(@REGIAO,TDLocalidade.Regiao) = TDLocalidade.Regiao
-			--AND 
-			--	ISNULL(@SIGLAESTADO,TDLocalidade.SiglaEstado) = TDLocalidade.SiglaEstado
-			--AND 
-			--	ISNULL(@IDMUNICIPIO,TDLocalidade.ID) = TDLocalidade.ID
-			--AND 
-			--	ISNULL(@SIGLAPARTIDO,TDPartidoColigacao.Partido) = TDPartidoColigacao.Partido
-			--AND 
-			--	ISNULL(@IDCARGOPRETENDIDO,TDCargoPolitico.ID) = TDCargoPolitico.ID
+				ISNULL(@ANO,TFDadoEleitoral.Ano) = TFDadoEleitoral.Ano
+			AND 
+				ISNULL(@SEXO,TDCandidato.Sexo) = TDCandidato.Sexo		
+			AND 
+				ISNULL(@IDESCOLARIDADE,TPCandidatoEscolaridade.EscolaridadeID) = TPCandidatoEscolaridade.EscolaridadeID
+			AND 
+				ISNULL(@IDOCUPACAO,TDOcupacao.ID) = TDOcupacao.ID
+			AND 
+				ISNULL(@REGIAO,TDLocalidade.Regiao) = TDLocalidade.Regiao
+			AND 
+				ISNULL(@SIGLAESTADO,TDLocalidade.SiglaEstado) = TDLocalidade.SiglaEstado
+			AND 
+				ISNULL(@IDMUNICIPIO,TDLocalidade.ID) = TDLocalidade.ID
+			AND 
+				ISNULL(@SIGLAPARTIDO,TDPartidoColigacao.Partido) = TDPartidoColigacao.Partido
+			AND 
+				ISNULL(@IDCARGOPRETENDIDO,TDCargoPolitico.ID) = TDCargoPolitico.ID
 
-		TDPartidoColigacao.Partido = 'PT' AND TDCargoPolitico.Descricao = 'VEREADOR' AND Municipio = 'RIO DE JANEIRO'
+		--TDPartidoColigacao.Partido = 'PT' AND TDCargoPolitico.Descricao = 'VEREADOR' AND Municipio = 'RIO DE JANEIRO'
 
 		--GROUP BY TFDadoEleitoral.Ano, 
 		--	   TDLocalidade.Regiao, 

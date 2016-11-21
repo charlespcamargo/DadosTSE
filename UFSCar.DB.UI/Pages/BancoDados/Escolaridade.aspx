@@ -56,8 +56,8 @@
                                 <h4>Sexo</h4>
                                 <select class="span12 m-wrap" id="ddlSexo" data-placeholder="Selecione">
                                     <option value=""></option>
-                                    <option value="M">Masculino</option>
-                                    <option value="F">Feminino</option>
+                                    <option value="MASCULINO">Masculino</option>
+                                    <option value="FEMININO">Feminino</option>
                                 </select>
                             </div>
                             <div class="controls span4">

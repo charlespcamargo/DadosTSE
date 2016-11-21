@@ -108,7 +108,7 @@
             if (HelperJS.temValor($("#ddlSexo").val()))
                 filtro.Sexo = $("#ddlSexo").val();
             else
-                filtro.Sexo = 0;
+                filtro.Sexo = "";
 
             if (HelperJS.temValor($("#ddlEscolaridade").val()))
                 filtro.EscolaridadeID = $("#ddlEscolaridade").val();
@@ -128,17 +128,18 @@
             if (HelperJS.temValor($("#hfEstado").val()))
                 filtro.EstadoSigla = $("#hfEstado").val();
             else
-                filtro.EstadoSigla = 0;
+                filtro.EstadoSigla = "";
 
             if (HelperJS.temValor($("#hfMunicipio").val()))
                 filtro.MunicipioID = $("#hfMunicipio").val();
             else
                 filtro.MunicipioID = 0;
+             
 
             if (HelperJS.temValor($("#ddlPartido").val()))
                 filtro.PartidoSigla = $("#ddlPartido").val();
             else
-                filtro.PartidoSigla = 0;
+                filtro.PartidoSigla = "";
 
 
             if (HelperJS.temValor($("#ddlCargoPretendido").val()))

@@ -49,8 +49,8 @@ namespace UFSCar.BD.BackEnd.Business
 
 
             parametro = GenericParameter.Create("@IDOCUPACAO", System.Data.DbType.Int32);
-            if (filtro.EscolaridadeID > 0)
-                parametro.Value = filtro.EscolaridadeID;
+            if (filtro.Ocupacao > 0)
+                parametro.Value = filtro.Ocupacao;
             else
                 parametro.Value = DBNull.Value;
             lstParametros.Add(parametro);
@@ -63,7 +63,7 @@ namespace UFSCar.BD.BackEnd.Business
             lstParametros.Add(parametro);
 
             parametro = GenericParameter.Create("@SIGLAESTADO", System.Data.DbType.AnsiString);
-            if (String.IsNullOrEmpty(filtro.EstadoSigla))
+            if (!String.IsNullOrEmpty(filtro.EstadoSigla))
                 parametro.Value = filtro.EstadoSigla;
             else
                 parametro.Value = DBNull.Value;
