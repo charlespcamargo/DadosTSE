@@ -93,11 +93,10 @@
 
         buscar: function () {
             var filtro = PorSexo.montarFiltro();
-            HelperJS.callApi(APIs.API_TSE, "/consultas/porsexo/", "POST", filtro, EvolucaoPatrimonial.buscar_sucesso, HelperJS.showError);
+            HelperJS.callApi(APIs.API_TSE, "/consultas/porsexo/", "POST", filtro, PorSexo.buscar_sucesso, HelperJS.showError);
         },
 
-        montarFiltro: function ()
-        {
+        montarFiltro: function () {
             var filtro = {};
 
             if (HelperJS.temValor($("#ddlAnoEleitoral").val()))
@@ -108,7 +107,7 @@
             if (HelperJS.temValor($("#ddlSexo").val()))
                 filtro.Sexo = $("#ddlSexo").val();
             else
-                filtro.Sexo ="";
+                filtro.Sexo = "";
 
             if (HelperJS.temValor($("#ddlEscolaridade").val()))
                 filtro.EscolaridadeID = $("#ddlEscolaridade").val();
@@ -152,42 +151,101 @@
 
         buscar_sucesso: function (data) {
             lst = data;
+
+            var columns = PorSexo.montarColunasGrid();
+
+            var sorter = [];
+            var bPaginate = false;
+            var bSort = false;
+            var fnDrawCallback = undefined;
+            console.log(data);
+            HelperJS.dataTableResult('gridPorSexo', columns, sorter, data, bPaginate, bSort, fnDrawCallback)
+
             google.charts.setOnLoadCallback(PorSexo.drawChart);
         },
 
+
+
         drawChart: function () {
-            var options =
-            {
-                chart:
-                {
-                    title: 'Declaração ',
-                    subtitle: '',
-                },
-                bars: 'horizontal',
-                hAxis: { format: 'decimal' },
-                height: 400
-            };
 
 
-            if (lst != null && lst.length > 0) {
-                var data = new google.visualization.DataTable();
-                data.addColumn('string', 'Nome');
-                data.addColumn('number', '2006');
-                data.addColumn('number', '2008');
-                data.addColumn('number', '2010');
-                data.addColumn('number', '2012');
-                data.addColumn('number', '2014');
-                data.addColumn('number', '2016');
+            //var options =
+            //{
+            //    chart:
+            //    {
+            //        title: 'Declaração ',
+            //        subtitle: '',
+            //    },
+            //    bars: 'horizontal',
+            //    hAxis: { format: 'decimal' },
+            //    height: 400
+            //};
 
-                $.each(lst, function (i, obj) {
-                    data.addRow([obj.NomeUrna, obj.Bens2006, obj.Bens2008, obj.Bens2010, obj.Bens2012, obj.Bens2014, obj.Bens2016]);
-                });
 
-                chart = new google.charts.Bar(document.getElementById('chart_div'));
-                chart.draw(data, google.charts.Bar.convertOptions(options));
-            }
+            //if (lst != null && lst.length > 0) {
+            //    var data = new google.visualization.DataTable();
+            //    data.addColumn('string', 'Nome');
+            //    data.addColumn('number', '2006');
+            //    data.addColumn('number', '2008');
+            //    data.addColumn('number', '2010');
+            //    data.addColumn('number', '2012');
+            //    data.addColumn('number', '2014');
+            //    data.addColumn('number', '2016');
+
+            //    $.each(lst, function (i, obj) {
+            //        data.addRow([obj.NomeUrna, obj.Bens2006, obj.Bens2008, obj.Bens2010, obj.Bens2012, obj.Bens2014, obj.Bens2016]);
+            //    });
+
+            //    chart = new google.charts.Bar(document.getElementById('chart_div'));
+            //    chart.draw(data, google.charts.Bar.convertOptions(options));
+            //}
         },
+        montarColunasGrid: function () {
 
+            var colunas = [];
 
+            colunas.push({
+                "mData": "Ano"
+            });
+            colunas.push({
+                "mData": "Regiao"
+            });
+            colunas.push({
+                "mData": "SiglaEstado"
+            });
+            colunas.push({
+                "mData": "Municipio"
+            });
+            colunas.push({
+                "mData": "Partido"
+            });
+            colunas.push({
+                "mData": "QtdMasculino"
+            });
+            colunas.push({
+                "mData": "QtdFeminino"
+            });
+            colunas.push({
+                "mData": "QtdTotal"
+            });
+            colunas.push({
+                "mData": "PercentualFeminino"
+            });
+            colunas.push({
+                "mData": "PercentualMasculino"
+            });
+            //colunas.push({
+            //    "mData": "Codigo",
+            //    "mRender": function (source, type, full) {
+            //        if (full.Codigo != null && full.Codigo > 0) {
+            //            return full.Codigo;
+            //        }
+            //        else {
+            //            return "-";
+            //        }
+            //    }
+            //});
+            return colunas;
+        },
     }
 }();

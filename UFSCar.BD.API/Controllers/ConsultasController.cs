@@ -22,7 +22,7 @@ namespace UFSCar.BD.API.Controllers
         [Route("patrimonio")]
         public HttpResponseMessage Patrimonio([FromBody] AnaliseFiltro filtro)
         {
-            List<ANALISE1_1> lst = null;                     
+            List<ANALISE1_1> lst = null;
 
             try
             {
@@ -72,11 +72,11 @@ namespace UFSCar.BD.API.Controllers
         [Route("porsexo")]
         public HttpResponseMessage PorSexo([FromBody] AnaliseFiltro filtro)
         {
-            List<dynamic> lst = null;
+            List<ANALISE3_2> lst = null;
 
             try
             {
-                //lst = ConsultasBL.New.EvolucaoPatrimonial(filtro);
+                lst = ConsultasBL.New.PorSexo(filtro);
 
                 return Request.CreateResponse(HttpStatusCode.OK, lst);
             }

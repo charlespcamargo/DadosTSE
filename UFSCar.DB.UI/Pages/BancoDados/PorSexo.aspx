@@ -13,7 +13,7 @@
     </h3>
 
     <ul class="breadcrumb">
-       <li>
+        <li>
             <i class="icon-home"></i>
             <a href="default.aspx">Home</a>
             <i class="icon-angle-right"></i>
@@ -35,7 +35,7 @@
                     <div class="portlet-title">
                         <div class="caption"><i class="icon-cogs"></i>Filtros</div>
                         <div class="tools">
-                            <a href="javascript:;" class="collapse"></a> 
+                            <a href="javascript:;" class="collapse"></a>
                         </div>
                     </div>
                     <div class="portlet-body">
@@ -62,7 +62,7 @@
                             </div>
                             <div class="controls span4">
                                 <h4>Escolaridade</h4>
-                                 <select class="span12 m-wrap" id="ddlEscolaridade" data-placeholder="Selecione">
+                                <select class="span12 m-wrap" id="ddlEscolaridade" data-placeholder="Selecione">
                                     <option value=""></option>
                                     <option value="0">Analfabeto</option>
                                     <option value="1">Ensino Fundamental Completo</option>
@@ -75,10 +75,10 @@
                                     <option value="8">Superior Incompleto</option>
                                 </select>
                             </div>
-                               <div class="controls span4">
+                            <div class="controls span4">
                                 <h4>Ocupação</h4>
                                 <input type="hidden" class="select2-offscreen" id="hfOcupacao" style="width: 100%" value="" />
-                                <input type="text" class="hidden" id="ddlOcupacao" name="hfOcupacao" value="" />                      
+                                <input type="text" class="hidden" id="ddlOcupacao" name="hfOcupacao" value="" />
                             </div>
                         </div>
                         <div class="row-fluid">
@@ -104,7 +104,7 @@
                                 <input type="text" class="hidden" id="ddlMunicipio" name="hfMunicipio" value="" />
                             </div>
                         </div>
-                                <div class="row-fluid">
+                        <div class="row-fluid">
                             <div class="controls span4">
                                 <h4>Partido</h4>
                                 <select class="span12 m-wrap" id="ddlPartido" data-placeholder="Selecione">
@@ -158,7 +158,7 @@
                                     <option value="1">Deputado Estadual</option>
                                     <option value="2">Governador</option>
                                     <option value="3">Senador</option>
-                                    <option value="10">1º Suplente Senador</option>                                    
+                                    <option value="10">1º Suplente Senador</option>
                                     <option value="4">2º Suplente Senador</option>
                                     <option value="5">Vereador</option>
                                     <option value="6">Deputado Federal</option>
@@ -168,7 +168,7 @@
                                 </select>
                             </div>
                             <div class="controls span4">
-                                <div class="btn-group" style="margin-top:45px">
+                                <div class="btn-group" style="margin-top: 45px">
                                     <a id="btnBuscar" class="btn btn-margin-5px">Buscar <i class="icon-search"></i>
                                     </a>
                                 </div>
@@ -179,13 +179,45 @@
 
                 <div class="portlet box grey">
                     <div class="portlet-title">
-                        <div class="caption"><i class="icon-cogs"></i>Evolução Patrimonial</div>
+                        <div class="caption"><i class="icon-cogs"></i>Detalhes Por Sexo</div>
                         <div class="tools">
                             <a href="javascript:;" class="collapse"></a>
                         </div>
                     </div>
                     <div class="portlet-body">
-                        <div id="chart_div" style="min-height:100px">
+                        <div id="chart_div" style="min-height: 100px">
+                        </div>
+                        <div id="table_div" style="min-height: 100px" class="portlet-body no-more-tables">
+                            <table id="gridPorSexo" class="display" class="table table-striped table-bordered table-hover table-full-width" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Ano</th>
+                                        <th>Regiao</th>
+                                        <th>SiglaEstado</th>
+                                        <th>Municipio</th>
+                                        <th>Partido</th>
+                                        <th>QtdMasculino</th>
+                                        <th>QtdFeminino</th>
+                                        <th>QtdTotal</th>
+                                        <th>PercentualFeminino</th>
+                                        <th>PercentualMasculino</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>Ano</th>
+                                        <th>Regiao</th>
+                                        <th>SiglaEstado</th>
+                                        <th>Municipio</th>
+                                        <th>Partido</th>
+                                        <th>QtdMasculino</th>
+                                        <th>QtdFeminino</th>
+                                        <th>QtdTotal</th>
+                                        <th>PercentualFeminino</th>
+                                        <th>PercentualMasculino</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
                         </div>
                     </div>
                 </div>
