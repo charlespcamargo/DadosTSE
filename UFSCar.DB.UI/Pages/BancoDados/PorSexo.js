@@ -229,10 +229,17 @@
                 "mData": "QtdTotal"
             });
             colunas.push({
-                "mData": "PercentualFeminino"
+                "mData": "PercentualFeminino",
+                "mRender": function (source, type, full) {
+                    return HelperJS.formatarDecimalBR(full.PercentualFeminino);
+                }
             });
             colunas.push({
-                "mData": "PercentualMasculino"
+                "mData": "PercentualMasculino",
+                "mRender": function (source, type, full) {
+                    return HelperJS.formatarDecimalBR(full.PercentualMasculino);
+                }
+
             });
             //colunas.push({
             //    "mData": "Codigo",

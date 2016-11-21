@@ -192,29 +192,29 @@
                                 <thead>
                                     <tr>
                                         <th>Ano</th>
-                                        <th>Regiao</th>
-                                        <th>SiglaEstado</th>
-                                        <th>Municipio</th>
+                                        <th>Região</th>
+                                        <th>Estado</th>
+                                        <th>Município</th>
                                         <th>Partido</th>
-                                        <th>QtdMasculino</th>
-                                        <th>QtdFeminino</th>
-                                        <th>QtdTotal</th>
-                                        <th>PercentualFeminino</th>
-                                        <th>PercentualMasculino</th>
+                                        <th>Qtd. M</th>
+                                        <th>Qtd. F</th>
+                                        <th>Total</th>
+                                        <th>%Feminino</th>
+                                        <th>%Masculino</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
                                         <th>Ano</th>
-                                        <th>Regiao</th>
-                                        <th>SiglaEstado</th>
-                                        <th>Municipio</th>
+                                        <th>Região</th>
+                                        <th>Estado</th>
+                                        <th>Município</th>
                                         <th>Partido</th>
-                                        <th>QtdMasculino</th>
-                                        <th>QtdFeminino</th>
-                                        <th>QtdTotal</th>
-                                        <th>PercentualFeminino</th>
-                                        <th>PercentualMasculino</th>
+                                        <th>Qtd. M</th>
+                                        <th>Qtd. F</th>
+                                        <th>Total</th>
+                                        <th>%Feminino</th>
+                                        <th>%Masculino</th>
                                     </tr>
                                 </tfoot>
                             </table>

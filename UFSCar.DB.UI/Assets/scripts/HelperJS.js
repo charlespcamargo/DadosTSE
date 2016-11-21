@@ -1363,6 +1363,16 @@ var HelperJS = function () {
                 return obj;
         },
 
+        formatarDecimalBR: function(number) {
+            var postComma, preComma, stringReverse, _ref;
+            stringReverse = function(str) {
+                return str.split('').reverse().join('');
+            };
+            _ref = number.toFixed(2).split('.'), preComma = _ref[0], postComma = _ref[1];
+            preComma = stringReverse(stringReverse(preComma).match(/.{1,3}/g).join('.'));
+            return "" + preComma + "," + postComma;
+        },
+
         formatarPercentual: function (valor, exibicao) {
 
             if (valor == undefined || valor == null || valor == '')
