@@ -168,37 +168,145 @@
 
         drawChart: function () {
 
+            PorSexo.tooltipOptions = {
+                title: 'Evolução no Estado',
+                //legend: 'Teste'
+                hAxis: {
+                    title: 'Ano'
+                },
+                vAxis: {
+                    title: '% Feminina',
+                    minValue: 0,
+                    maxValue: 100
+                },
+                series: [{ color: 'red', visibleInLegend: false }
+                ]
+            };
 
-            //var options =
-            //{
-            //    chart:
-            //    {
-            //        title: 'Declaração ',
-            //        subtitle: '',
-            //    },
-            //    bars: 'horizontal',
-            //    hAxis: { format: 'decimal' },
-            //    height: 400
-            //};
+            PorSexo.primaryOptions = {
+                region: 'BR', resolution: 'provinces',
+                colorAxis: { colors: ['#64B5F6', 'red'], minValue: 0, maxValue: 100 },
+                tooltip: { isHtml: true }
+            };
+
+            var qtdFemino = {};
+            var qtdTotal = {};
+
+            lst.forEach(function (item, index) {
+                if (qtdFemino[item.SiglaEstado] == undefined) {
+                    qtdFemino[item.SiglaEstado] = 0;
+                    qtdTotal[item.SiglaEstado] = 0;
+
+                }
+                qtdFemino[item.SiglaEstado] += item.QtdFeminino;
+                qtdTotal[item.SiglaEstado] += item.QtdTotal;
+            });
+
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Estado');
+            data.addColumn('number', 'PorcentagemFeminina');
+            data.addColumn({
+                type: 'string',
+                label: 'Tooltip Chart',
+                role: 'tooltip',
+                'p': { 'html': true }
+            });
+
+            for (prop in qtdTotal) {
+                console.log(prop);
+                data.addRow(['BR-' + prop, (qtdFemino[prop] / qtdTotal[prop]) * 100, '']);
+            }
+
+            PorSexo.primaryData = data;
 
 
-            //if (lst != null && lst.length > 0) {
-            //    var data = new google.visualization.DataTable();
-            //    data.addColumn('string', 'Nome');
-            //    data.addColumn('number', '2006');
-            //    data.addColumn('number', '2008');
-            //    data.addColumn('number', '2010');
-            //    data.addColumn('number', '2012');
-            //    data.addColumn('number', '2014');
-            //    data.addColumn('number', '2016');
+            google.charts.load('upcoming', { 'packages': ['geochart', 'corechart'] });
 
-            //    $.each(lst, function (i, obj) {
-            //        data.addRow([obj.NomeUrna, obj.Bens2006, obj.Bens2008, obj.Bens2010, obj.Bens2012, obj.Bens2014, obj.Bens2016]);
-            //    });
+            google.charts.setOnLoadCallback(PorSexo.drawTooltipCharts);
+        },
+        drawRegionsMap: function () {
 
-            //    chart = new google.charts.Bar(document.getElementById('chart_div'));
-            //    chart.draw(data, google.charts.Bar.convertOptions(options));
-            //}
+            var chart = new google.visualization.GeoChart(document.getElementById('chart_div'));
+            chart.draw(PorSexo.primaryData, PorSexo.primaryOptions);
+        },
+        // Draws your charts to pull the PNGs for your tooltips.
+        drawTooltipCharts: function () {
+
+            var tooltipData = [];
+            tooltipData.push([]);
+            tooltipData[0].push('Ano');
+
+            var indexEstado = {};
+            for (var i = 0; i < PorSexo.primaryData.Tf.length; i++) {
+                var estado = PorSexo.primaryData.Tf[i].c[0].v;
+                tooltipData[0].push(estado);
+                indexEstado[estado.substring(3)] = i;
+            }
+
+            var anoEstado = {};
+
+            lst.forEach(function (item, index) {
+                if (anoEstado[item.Ano] == undefined) {
+                    anoEstado[item.Ano] = {};
+                }
+                if (anoEstado[item.Ano][item.SiglaEstado] == undefined) {
+                    anoEstado[item.Ano][item.SiglaEstado] = {};
+                    anoEstado[item.Ano][item.SiglaEstado].QtdFeminino = 0;
+                    anoEstado[item.Ano][item.SiglaEstado].QtdTotal = 0;
+                }
+                anoEstado[item.Ano][item.SiglaEstado].QtdFeminino += item.QtdFeminino;
+                anoEstado[item.Ano][item.SiglaEstado].QtdTotal += item.QtdTotal;
+            });
+            i = 1;
+            console.log(anoEstado);
+            for (ano in anoEstado) {
+                tooltipData.push([]);
+                tooltipData[i].push(ano);
+
+                for (estado in indexEstado) {
+
+                    if (anoEstado[ano][estado] == undefined) {
+                        tooltipData[i].push(0);
+                    }
+                    else {
+                        var atual = anoEstado[ano][estado];
+                        tooltipData[i].push((atual.QtdFeminino / atual.QtdTotal) * 100);
+                    }
+                }
+                i++;
+            }
+
+
+            console.log(tooltipData);
+            var data = new google.visualization.arrayToDataTable(tooltipData);
+            var view = new google.visualization.DataView(data);
+
+
+            // For each row of primary data, draw a chart of its tooltip data.
+            for (var i = 0; i < PorSexo.primaryData.Tf.length; i++) {
+
+                // Set the view for each event's data
+                view.setColumns([0, i + 1]);
+
+                var hiddenDiv = document.getElementById('chart_tooltip_div');
+                var tooltipChart = new google.visualization.LineChart(hiddenDiv);
+
+                google.visualization.events.addListener(tooltipChart, 'ready', function () {
+                    // Get the PNG of the chart and set is as the src of an img tag.
+                    var tooltipImg =
+                            //"QtdMasculino"
+                            //"QtdFeminino"
+                            //"QtdTotal"
+                            //"PercentualFeminino"
+                        PorSexo.primaryData.Tf[i].c[0].v +
+                        '<br/><img src="' + tooltipChart.getImageURI() + '">';
+                    // Add the new tooltip image to your data rows.
+
+                    PorSexo.primaryData.Tf[i].c[2].v = tooltipImg;
+                });
+                tooltipChart.draw(view, PorSexo.tooltipOptions);
+            }
+            PorSexo.drawRegionsMap();
         },
         montarColunasGrid: function () {
 
