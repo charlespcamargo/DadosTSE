@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UFSCar.BD.API", "UFSCar.BD.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UFSCar.DB.UI", "UFSCar.DB.UI\UFSCar.DB.UI.csproj", "{EA29F577-46A6-4713-8DD8-2D7E484B6AB2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UFSCar.BD.Commom", "UFSCar.BD.Commom\UFSCar.BD.Commom.csproj", "{4D781E3B-D96D-4C1F-9442-7168257F6D20}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{EA29F577-46A6-4713-8DD8-2D7E484B6AB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA29F577-46A6-4713-8DD8-2D7E484B6AB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA29F577-46A6-4713-8DD8-2D7E484B6AB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D781E3B-D96D-4C1F-9442-7168257F6D20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D781E3B-D96D-4C1F-9442-7168257F6D20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D781E3B-D96D-4C1F-9442-7168257F6D20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D781E3B-D96D-4C1F-9442-7168257F6D20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

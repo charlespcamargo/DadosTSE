@@ -2,6 +2,7 @@
 
 
     var lst = [];
+    var dataSource = [];
 
 
     return {
@@ -25,6 +26,12 @@
 
         inicializarControles: function () {
             EvolucaoPatrimonial.carregarCombos();
+            EvolucaoPatrimonial.inicializarGrid();
+        },
+
+        inicializarGrid: function ()
+        {
+            HelperJS.dataTableResult("gridResultado", EvolucaoPatrimonial.montarColunasGrid(), [[0, 'asc'], [1, 'asc']], lst);
         },
 
         inicializarGoogleCharts: function () {
@@ -150,32 +157,76 @@
             return filtro;
         },
 
-        buscar_sucesso: function (data) {
-            lst = data;
+        buscar_sucesso: function (data)
+        {
+            if (data != null)
+                lst = data;
+            else
+                lst = [];
+
+            HelperJS.dataTableResult("gridResultado", EvolucaoPatrimonial.montarColunasGrid(), [[0, 'asc'], [1, 'asc']], lst);
+        },
+
+        exibirGrafico: function (cpf)
+        {
+            $("#modalGrafico").modal();
+
+            HelperJS.callApi(APIs.API_TSE, "/consultas/patrimoniografico/" + cpf, "GET", null, EvolucaoPatrimonial.exibirGrafico_sucesso, HelperJS.showError);
+        },
+
+        exibirGrafico_sucesso: function (dataSource)
+        {
             google.charts.setOnLoadCallback(EvolucaoPatrimonial.drawChart);
         },
 
+        montarColunasGrid: function () {
+
+            var colunas = [];
+
+            colunas.push({ "mData": "Ano" }); 
+            colunas.push({ "mData": "SiglaEstado" });
+            colunas.push({ "mData": "Municipio" });
+            colunas.push({ "mData": "Nome" });
+            colunas.push({ "mData": "Ocupacao" });
+            colunas.push({ "mData": "VlrMedioOcupacao" });
+            colunas.push({ "mData": "VlrTotalDeclarado" });
+            colunas.push({ "mData": "DiferencaMedia" });
+            colunas.push({ "mData": "CargoPolitico" });
+            colunas.push({ "mData": "Partido" });  
+            colunas.push({
+                "mData": "CPF",
+                "mRender": function (source, type, full)
+                {
+                    var exibirGrafico = "<a class='icons-dataTable tooltips' data-toggle='tooltip' data-original-title='Exibir Gráfico' onclick='EvolucaoPatrimonial.exibirGrafico('" + full.CPF + "')' href='javascript:;'><i class='icon-bar-chart'></i></a>";
+                    return "<center>" + exibirGrafico + "</center>";
+                }
+            });
+
+            return colunas;
+        },
+
+
         drawChart: function ()
         {
-            console.log(lst);
+            console.log(dataSource);
 
-            var data = google.visualization.arrayToDataTable([               
-              lst
-            ]);
+            var data = google.visualization.arrayToDataTable([dataSource]);
 
 
             var dv = new google.visualization.DataView(data);
-            dv.setColumns([0, 1, {
-                type: 'number',
-                label: 'average',
-                calc: function (dt, row) {
-                    return dt.Nf[row].c[3].v;
-                }
-            }]);
+
+            dv.setColumns([0, 1,
+                {
+                    type: 'number',
+                    label: 'average',
+                    calc: function (dt, row) {
+                        return dt.Nf[row].c[3].v;
+                    }
+                }]);
 
             var options =
                 {
-                    title: 'Population of Largest U.S. Cities', 
+                    title: 'Population of Largest U.S. Cities',
                     vAxis: {
                         title: 'Total Population',
                         minValue: 0
@@ -183,8 +234,8 @@
                     hAxis: {
                         title: 'City'
                     },
-                    series: {
-
+                    series:
+                    {
 
                     }
                 };
@@ -192,6 +243,7 @@
             var chart = new google.visualization.BarChart(document.getElementById('grafico'));
             chart.draw(data, options);
 
+            HelperJS.ajustarPosicaoModal("#modalGrafico");
         },
 
         /*

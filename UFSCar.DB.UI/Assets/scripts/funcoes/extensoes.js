@@ -1,7 +1,7 @@
 ﻿
 //Obtem o texto de um controle
 $.fn.getText = function () {
-    ///chama o getType do Ihara.js para pegar o tipo do controle
+    ///chama o getType do UFSCar.js para pegar o tipo do controle
     var tipo = $(this).getType();
     var controleId = $(this).attr('Id');
     var valores = null;

@@ -173,6 +173,10 @@
       <Project>{6891b511-c57b-4332-a79f-e577c0bcda9d}</Project>
       <Name>UFSCar.BD.BackEnd</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UFSCar.BD.Commom\UFSCar.BD.Commom.csproj">
+      <Project>{4d781e3b-d96d-4c1f-9442-7168257f6d20}</Project>
+      <Name>UFSCar.BD.Commom</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

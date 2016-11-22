@@ -3255,10 +3255,10 @@ the specific language governing permissions and limitations under the Apache Lic
             contentType: "application/json; charset=utf-8",
             data:  dataSend,
             headers: {
-                "CodigoModulo": Ihara.Modulo(),
-                "CodigoPrograma": Ihara.Programa(),
-                "CodigoTarget": Ihara.Target(),
-                "FreeAccess": Ihara.FreeAccess()
+                "CodigoModulo": UFSCar.Modulo(),
+                "CodigoPrograma": UFSCar.Programa(),
+                "CodigoTarget": UFSCar.Target(),
+                "FreeAccess": UFSCar.FreeAccess()
             },
             success: function (data)
             {
@@ -3267,7 +3267,7 @@ the specific language governing permissions and limitations under the Apache Lic
             error: function (jqXHR, textStatus, errorThrown)
             {
                 console.log("erro");
-                Ihara.showError(jqXHR);
+                UFSCar.showError(jqXHR);
             }
         }); 
         

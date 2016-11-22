@@ -22,13 +22,13 @@ namespace UFSCar.BD.API.Controllers
         [Route("patrimonio")]
         public HttpResponseMessage Patrimonio([FromBody] AnaliseFiltro filtro)
         {
-            ANALISE1_1_RELATORIO relatorio = null;
+            List<ANALISE1_1> lst = null;
 
             try
             {
-                relatorio = ConsultasBL.New.EvolucaoPatrimonial(filtro);
+                lst = ConsultasBL.New.EvolucaoPatrimonial(filtro);
 
-                return Request.CreateResponse(HttpStatusCode.OK, relatorio.lstLinha);
+                return Request.CreateResponse(HttpStatusCode.OK, lst);
             }
             catch (ArgumentException aex)
             {
@@ -42,6 +42,28 @@ namespace UFSCar.BD.API.Controllers
             }
         }
 
+        
+        [HttpGet]
+        [Route("patrimoniografico/{cpf}")]
+        public HttpResponseMessage PatrimonioGrafico(string cpf)
+        {
+            try
+            {
+                lst = ConsultasBL.New.EvolucaoPatrimonialGrafico(cpf);
+
+                return Request.CreateResponse(HttpStatusCode.OK, lst);
+            }
+            catch (ArgumentException aex)
+            {
+                var errorResponse = Request.CreateErrorResponse(HttpStatusCode.BadRequest, new HttpError(aex.Message));
+                throw new HttpResponseException(errorResponse);
+            }
+            catch (Exception ex)
+            {
+                var errorResponse = Request.CreateErrorResponse(HttpStatusCode.Conflict, new HttpError(ex.Message));
+                throw new HttpResponseException(errorResponse);
+            }
+        }
 
         [HttpPost]
         [Route("escolaridade")]

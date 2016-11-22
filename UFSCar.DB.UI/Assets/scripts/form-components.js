@@ -686,20 +686,20 @@ var FormComponents = function () {
                 var valorMaximo = null;
 
                 if ($(this).val().length > 0)
-                    valor = Number(Ihara.formataDecimal($(this).val()));
+                    valor = Number(UFSCar.formataDecimal($(this).val()));
 
                 if ($(this).attr("valormaximo") != undefined && $(this).attr("valormaximo").length > 0)
-                    valorMaximo = Number(Ihara.formataDecimal($(this).attr("valormaximo")));
+                    valorMaximo = Number(UFSCar.formataDecimal($(this).attr("valormaximo")));
 
                 if (valorMaximo != null)
                 {
                     if (valor > valorMaximo)
                     {
-                        var exibicaoValor = Ihara.formatMoney(valor, 2, ".", ",");
-                        var exibicaoValorMaximo = Ihara.formatMoney(valorMaximo, 2, ".", ",");
+                        var exibicaoValor = UFSCar.formatMoney(valor, 2, ".", ",");
+                        var exibicaoValorMaximo = UFSCar.formatMoney(valorMaximo, 2, ".", ",");
 
                         $(this).val(exibicaoValorMaximo);
-                        Ihara.showAlert('Valor informado(' + exibicaoValor + ') invalido. O valor foi alterado para o valor limite(' + exibicaoValorMaximo + ').');
+                        UFSCar.showAlert('Valor informado(' + exibicaoValor + ') invalido. O valor foi alterado para o valor limite(' + exibicaoValorMaximo + ').');
                     }
                 }
 

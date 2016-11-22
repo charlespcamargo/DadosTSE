@@ -7968,7 +7968,7 @@
              */
             "fnServerData": function (sUrl, aoData, fnCallback, oSettings) {
 
-                Ihara.CarregarParametrosAPI();
+                UFSCar.CarregarParametrosAPI();
 
                 var retorno;
 
@@ -7993,13 +7993,13 @@
                                 "server could not be parsed. This is caused by a JSON formatting error.");
                         }
 
-                        Ihara.showError(xhr);
+                        UFSCar.showError(xhr);
                     },
                     "beforeSend": function (xhr) {
-                        xhr.setRequestHeader("CodigoPrograma", Ihara.Programa());
-                        xhr.setRequestHeader("CodigoModulo", Ihara.Modulo());
-                        xhr.setRequestHeader("CodigoTarget", Ihara.Target());
-                        xhr.setRequestHeader("FreeAccess", Ihara.FreeAccess());
+                        xhr.setRequestHeader("CodigoPrograma", UFSCar.Programa());
+                        xhr.setRequestHeader("CodigoModulo", UFSCar.Modulo());
+                        xhr.setRequestHeader("CodigoTarget", UFSCar.Target());
+                        xhr.setRequestHeader("FreeAccess", UFSCar.FreeAccess());
                     }
                 });
 

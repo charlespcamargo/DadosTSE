@@ -18,3 +18,17 @@ P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.BackEnd\bin\Debug\EntityFramework.SqlSer
 P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.BackEnd\obj\Debug\UFSCar.BD.BackEnd.dll
 P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.BackEnd\obj\Debug\UFSCar.BD.BackEnd.pdb
 P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.BackEnd\obj\Debug\UFSCar.BD.BackEnd.csprojResolveAssemblyReference.cache
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.BackEnd\bin\Debug\Newtonsoft.Json.dll
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.BackEnd\bin\Debug\UFSCar.BD.Commom.dll
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.BackEnd\bin\Debug\EPPlus.dll
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.BackEnd\bin\Debug\Ionic.Zip.dll
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.BackEnd\bin\Debug\itextsharp.dll
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.BackEnd\bin\Debug\System.Web.Http.dll
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.BackEnd\bin\Debug\System.Net.Http.Formatting.dll
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.BackEnd\bin\Debug\UFSCar.BD.Commom.pdb
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.BackEnd\bin\Debug\Newtonsoft.Json.xml
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.BackEnd\bin\Debug\EPPlus.xml
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.BackEnd\bin\Debug\Ionic.Zip.xml
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.BackEnd\bin\Debug\itextsharp.xml
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.BackEnd\bin\Debug\System.Web.Http.xml
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.BackEnd\bin\Debug\System.Net.Http.Formatting.xml

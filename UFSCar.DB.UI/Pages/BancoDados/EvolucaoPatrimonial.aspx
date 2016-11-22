@@ -2,8 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-    <script src="EvolucaoPatrimonial.js"></script> 
-    <script src="/Assets/Plugins/highcharts/highcharts.js"></script>     
+    <script src="EvolucaoPatrimonial.js"></script>
+    <script src="/Assets/Plugins/highcharts/highcharts.js"></script>
 
 </asp:Content>
 
@@ -62,7 +62,8 @@
                             </div>
                             <div class="controls span2">
                                 <h4>Outros Anos</h4>
-                                <input type="checkbox" id="chkTodosAnos" checked="checked" /> Todos
+                                <input type="checkbox" id="chkTodosAnos" checked="checked" />
+                                Todos
                             </div>
                             <div class="controls span2">
                                 <h4>Sexo</h4>
@@ -170,7 +171,7 @@
                                     <option value="1">Deputado Estadual</option>
                                     <option value="2">Governador</option>
                                     <option value="3">Senador</option>
-                                    <option value="10">1º Suplente Senador</option>                                    
+                                    <option value="10">1º Suplente Senador</option>
                                     <option value="4">2º Suplente Senador</option>
                                     <option value="5">Vereador</option>
                                     <option value="6">Deputado Federal</option>
@@ -180,7 +181,7 @@
                                 </select>
                             </div>
                             <div class="controls span4">
-                                <div class="btn-group" style="margin-top:45px">
+                                <div class="btn-group" style="margin-top: 45px">
                                     <a id="btnBuscar" class="btn btn-margin-5px">Buscar <i class="icon-search"></i>
                                     </a>
                                 </div>
@@ -197,12 +198,55 @@
                         </div>
                     </div>
                     <div class="portlet-body">
-                        <div id="grafico"  style="min-width: 400px; height: 400px; margin: 0 auto">
+                        <div class="row-fluid">
+                            <!-- Listagem -->
+                            <div class="portlet-body no-more-tables">
+                                <table id="gridResultado" class="table table-striped table-bordered table-hover table-full-width" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 5%">Ano</th>
+                                            <th style="width: 5%">UF</th>
+                                            <th style="width: 10%">Municipio</th>
+                                            <th style="width: 15%">Nome</th>
+                                            <th style="width: 10%">Ocupação</th>
+                                            <th style="width: 10%">Valor Médio da Ocupação</th>
+                                            <th style="width: 10%">Valor Total Declarado</th>
+                                            <th style="width: 10%">Diferença Média</th>
+                                            <th style="width: 10%">Cargo Politico</th>
+                                            <th style="width: 10%">Partido</th>
+                                            <th style="width: 5%">Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- FIM - Listagem -->
                         </div>
                     </div>
                 </div>
 
             </div>
+        </div>
+    </div>
+
+
+    <div id="modalGrafico" class="modal container fixedwidth hide fade" tabindex="-1" data-backdrop="fixed">
+        <div class="portlet box light-grey">
+            <div class="portlet-title">
+                <div class="caption"><i class="icon-pencil"></i>Candidato - <span class="lblTituloModal"></span></div>
+            </div>
+        </div>
+        <div class="modal-body">
+
+            <div class="row-fluid">
+                <div id="grafico" style="min-width: 400px; height: 400px; margin: 0 auto">
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <a type="button" class="btn btn-margin-5px" id="btnFechar" data-dismiss="modal">Fechar | <i class="icon-off"></i></a>
         </div>
     </div>
 

@@ -172,7 +172,7 @@ var HelperJS = function () {
 
             if (jqXHR != null) {
                 if (jqXHR.status == 405) {//Erro de validação
-                    $('*[dataFieldIhara]').each(function () { $(this).removeClass("required"); });
+                    $('*[dataFieldUFSCar]').each(function () { $(this).removeClass("required"); });
                     var titulo = "Atenção";
                     var texto = "";
                     for (var i = 0; i < jqXHR.responseJSON.length; i++) {
@@ -286,8 +286,8 @@ var HelperJS = function () {
         },
 
         pintaValidacoes: function (idControle) {
-            $('*[dataFieldIhara]').each(function () {
-                if (idControle == $(this).attr("dataFieldIhara"))
+            $('*[dataFieldUFSCar]').each(function () {
+                if (idControle == $(this).attr("dataFieldUFSCar"))
                     $(this).addClass("required");
             });
         },
@@ -672,7 +672,7 @@ var HelperJS = function () {
             var idPesquisa = HelperJS.getId(containerHml, dataField);
 
             if (dataField == null || dataField == undefined) {
-                dataField = "dataFieldIhara";
+                dataField = "dataFieldUFSCar";
             }
 
             $(idPesquisa).each(function () {
@@ -690,7 +690,7 @@ var HelperJS = function () {
 
 
                     //inicio - esse pedaço é usado para montar o json quando usamos o componente de data com intervalo, ele já monta o objeto com a data inicial e final
-                    // informar no atributo do html o datafield ex: dataFieldIhara="NomeAtributoJson1,NomeAtributoJson1", senão ele pega por padrão (DataInicio,DataFim)
+                    // informar no atributo do html o datafield ex: dataFieldUFSCar="NomeAtributoJson1,NomeAtributoJson1", senão ele pega por padrão (DataInicio,DataFim)
                     //Pode incluir qtos atributos achar necessário no atributo
                 else if ($(this).hasClass("periododata")) {
                     var atributosSplit = null;
@@ -710,7 +710,7 @@ var HelperJS = function () {
 
 
                     //inicio - esse pedaço é usado para montar o json quando usamos intervalo de valor. Exemplo: 0-100
-                    // informar no atributo do html o datafield ex: dataFieldIhara="Valor1,Valor1", senão ele pega por padrão (Range1,Range2). 
+                    // informar no atributo do html o datafield ex: dataFieldUFSCar="Valor1,Valor1", senão ele pega por padrão (Range1,Range2). 
                     // Pode incluir qtos atributos achar necessário no atributo
                 else if ($(this).hasClass("rangepadrao")) {
                     var atributosSplit = null;
@@ -739,7 +739,7 @@ var HelperJS = function () {
             var idPesquisa = HelperJS.getId(containerHml, dataField);
 
             if (dataField == null || dataField == undefined) {
-                dataField = "dataFieldIhara";
+                dataField = "dataFieldUFSCar";
             }
 
 
@@ -748,7 +748,7 @@ var HelperJS = function () {
                 var value;
                 var bindDataField = $(this).attr(dataField);
 
-                if (bindDataField.split('.').length > 1) { // nesse caso eu posso recuperar e preencher um controle que contenha várias propriedades. Ex: dataFieldIhara="Evento.Participante.Nome"
+                if (bindDataField.split('.').length > 1) { // nesse caso eu posso recuperar e preencher um controle que contenha várias propriedades. Ex: dataFieldUFSCar="Evento.Participante.Nome"
                     var objSplit = bindDataField.split('.');
                     var objAux = jsonDados[objSplit[0]];
                     if (objAux != null) {
@@ -810,12 +810,12 @@ var HelperJS = function () {
             var idPesquisa = HelperJS.getId(containerHml, dataField);
 
             if (dataField == null || dataField == undefined) {
-                dataField = "dataFieldIhara";
+                dataField = "dataFieldUFSCar";
             }
 
             $(idPesquisa).each(function () {
                 var bindDataField = $(this).attr(dataField);
-                var tipo = $(this).attr("dataTypeIhara");
+                var tipo = $(this).attr("dataTypeUFSCar");
                 var value = 0;
 
                 for (var i = 0; i < jsonDados.length; i++) {
@@ -897,7 +897,7 @@ var HelperJS = function () {
 
         getId: function (containerHml, dataField) {
             var idPesquisa = "";
-            var idDataField = "dataFieldIhara"
+            var idDataField = "dataFieldUFSCar"
 
             idPesquisa = "*[" + idDataField + "]";
 
@@ -1337,7 +1337,7 @@ var HelperJS = function () {
 
         },
 
-        //verificar se o sistema eh offline ou iharaweb
+        //verificar se o sistema eh offline ou UFSCarweb
         ehLocal: function () {
             var valor = $.cookie('conexaolocal');
             if (valor != undefined && valor != null && valor.toString().toLowerCase() == "true") {
@@ -1494,6 +1494,19 @@ var HelperJS = function () {
                 return "";
         },
 
+
+        ajustarPosicaoModal: function (controle, milisegundos) {
+            var tempo = 0;
+
+            if (milisegundos != undefined || milisegundos != null) {
+                tempo = milisegundos;
+            }
+
+            setTimeout(function () {
+                $(controle).modal('layout');
+            },
+            tempo);
+        },
 
     };
 

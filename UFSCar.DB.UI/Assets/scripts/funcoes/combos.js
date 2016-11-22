@@ -9,7 +9,7 @@
     $.fn.autoCompleteCliente = function () {
         var hiddenId = $(this).prop('id');
         var selectId = $(this).prop('for');
-        Ihara.ComboAutoComplete(APIs.API_CLIENTE, hiddenId, selectId, "Digite um código ou nome", "clientecadastro/listarautocomplete", false,
+        UFSCar.ComboAutoComplete(APIs.API_CLIENTE, hiddenId, selectId, "Digite um código ou nome", "clientecadastro/listarautocomplete", false,
                    formataResultadoClientes, formataClientes, funcaoClientes, 3, null, true);
 
 
@@ -62,7 +62,7 @@
             nivel = "DCM";
         }
 
-        Ihara.callApi(APIs.API_TAIO, "cliente/listarRegioes/" + ano + "/" + nivel, "GET", null, carregarRegiaoComercialSucesso, Ihara.showError);
+        UFSCar.callApi(APIs.API_TAIO, "cliente/listarRegioes/" + ano + "/" + nivel, "GET", null, carregarRegiaoComercialSucesso, UFSCar.showError);
     };
 
     function carregarRegiaoComercialSucesso(data) {
@@ -96,7 +96,7 @@
         oSettings.UfIgnorada = settings.UfIgnorada;
         oSettings.ValorSelecionado = settings.ValorSelecionado;
 
-        Ihara.callApi(APIs.API_GENERICA, "estado/listar", "GET", null,
+        UFSCar.callApi(APIs.API_GENERICA, "estado/listar", "GET", null,
              function (data) {
                  var controle = '#' + controleId;
                  $(controle).empty().trigger("liszt:updated");
@@ -129,7 +129,7 @@
                      });
                  }
              }
-         , Ihara.showError);
+         , UFSCar.showError);
     };
 })(jQuery);
 
@@ -142,12 +142,12 @@
         var hiddenId = $(this).prop('id');
         var selectId = $(this).attr('for');
         if (settings.Uf != undefined && settings.Uf != null && settings.Uf != "") {
-            Ihara.ComboAutoComplete(APIs.API_GENERICA, hiddenId, selectId, "Digite um código ou nome", "cidade/listarautocomplete/" + (settings.Uf == "*" ? "EX" : settings.Uf), false,
+            UFSCar.ComboAutoComplete(APIs.API_GENERICA, hiddenId, selectId, "Digite um código ou nome", "cidade/listarautocomplete/" + (settings.Uf == "*" ? "EX" : settings.Uf), false,
                 FormataResultadoCidade, FormataCidade, FuncaoCidade, 3, null, true);
         } else {
-            Ihara.ComboAutoComplete(APIs.API_GENERICA, hiddenId, selectId, "Digite um código ou nome", "cidade/listarautocomplete/" + "EX", false,
+            UFSCar.ComboAutoComplete(APIs.API_GENERICA, hiddenId, selectId, "Digite um código ou nome", "cidade/listarautocomplete/" + "EX", false,
              FormataResultadoCidade, FormataCidade, FuncaoCidade, 3, null, true);
-            Ihara.popularSelect2(hiddenId, null);
+            UFSCar.popularSelect2(hiddenId, null);
         }
     };
 

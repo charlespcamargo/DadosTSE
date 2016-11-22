@@ -170,3 +170,11 @@ D:\Google Drive\Mestrado\2016-2\BD\Projeto\DadosTSE\UFSCar.BD.API\bin\System.Web
 D:\Google Drive\Mestrado\2016-2\BD\Projeto\DadosTSE\UFSCar.BD.API\bin\System.Web.WebPages.xml
 D:\Google Drive\Mestrado\2016-2\BD\Projeto\DadosTSE\UFSCar.BD.API\bin\System.Web.WebPages.Deployment.xml
 D:\Google Drive\Mestrado\2016-2\BD\Projeto\DadosTSE\UFSCar.BD.API\bin\System.Web.WebPages.Razor.xml
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.API\bin\UFSCar.BD.Commom.dll
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.API\bin\EPPlus.dll
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.API\bin\Ionic.Zip.dll
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.API\bin\itextsharp.dll
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.API\bin\UFSCar.BD.Commom.pdb
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.API\bin\EPPlus.xml
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.API\bin\Ionic.Zip.xml
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.API\bin\itextsharp.xml

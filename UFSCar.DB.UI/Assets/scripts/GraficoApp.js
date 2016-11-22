@@ -22,7 +22,7 @@
 
                         $.each(this.points, function (i, point) {
                             var percentageDecimals = point.series.tooltipOptions.percentageDecimals;
-                            s += '<br/><span style="color:' + point.series.color + '">\u25CF</span>: <b>' + point.series.name + ': ' + "</b>" + Ihara.formatMoney(point.y, percentageDecimals, ".", ",") + point.series.tooltipOptions.valueSuffix;
+                            s += '<br/><span style="color:' + point.series.color + '">\u25CF</span>: <b>' + point.series.name + ': ' + "</b>" + UFSCar.formatMoney(point.y, percentageDecimals, ".", ",") + point.series.tooltipOptions.valueSuffix;
                         });
 
                         return s;

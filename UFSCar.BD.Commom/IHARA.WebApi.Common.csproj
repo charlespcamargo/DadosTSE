@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{30A8DD59-9C44-4D2B-AD76-CF64EA08FB1A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IHARA.WebApi.Common</RootNamespace>
+    <AssemblyName>IHARA.WebApi.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'LocalOffLine|AnyCPU'">
+    <OutputPath>bin\LocalOffLine\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EPPlus">
+      <HintPath>packages\EPPlus.4.0.1.1\lib\net20\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Ihara.Core">
+      <HintPath>..\API.Acesso\packages\Ihara.Core\Ihara.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>packages\DotNetZip.1.9.3\lib\net20\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.3.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\iTextSharp.5.5.3\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\API.Acesso\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.DirectoryServices.Protocols" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\API.Acesso\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\API.Acesso\packages\Microsoft.AspNet.WebApi.Core.5.2.2\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\API.Acesso\packages\Microsoft.AspNet.WebApi.WebHost.5.2.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Atributos\CepAttribute.cs" />
+    <Compile Include="Atributos\CPF_CNPJttribute.cs" />
+    <Compile Include="Atributos\CustomAnnotationUtil.cs" />
+    <Compile Include="Atributos\DateAttribute.cs" />
+    <Compile Include="Atributos\FracaoDolarAttribute.cs" />
+    <Compile Include="Atributos\FracaoRealAttribute.cs" />
+    <Compile Include="Atributos\DoubleAttribute.cs" />
+    <Compile Include="Atributos\EmailAttribute.cs" />
+    <Compile Include="Atributos\ExtensoesAttribute.cs" />
+    <Compile Include="Atributos\TelAttribute.cs" />
+    <Compile Include="Atributos\UrlAttribute.cs" />
+    <Compile Include="Autenticacao\Token.cs" />
+    <Compile Include="Conversores\ConversorValores.cs" />
+    <Compile Include="Conversores\CustomDateTime.cs" />
+    <Compile Include="Conversores\CustomCPFCNPJ.cs" />
+    <Compile Include="Conversores\CustomMoneyDolar.cs" />
+    <Compile Include="Conversores\CustomMoneyReal.cs" />
+    <Compile Include="Conversores\CustomTelefone.cs" />
+    <Compile Include="Erros\ErrorMessage.cs" />
+    <Compile Include="Extensions\AccountManagementExtensions.cs" />
+    <Compile Include="Extensions\ConverteExtensions.cs" />
+    <Compile Include="Extensions\DateExtensions.cs" />
+    <Compile Include="Extensions\CurrencyExtensions.cs" />
+    <Compile Include="Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Extensions\FileExtension.cs" />
+    <Compile Include="Extensions\FormatsExtensions.cs" />
+    <Compile Include="Extensions\ListExtensions.cs" />
+    <Compile Include="Password\PasswordGenerator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Atributos\ValidateModel.cs" />
+    <Compile Include="Util\Captcha\CaptchaCreate.cs" />
+    <Compile Include="Util\Captcha\Encrypting.cs" />
+    <Compile Include="Util\Excel\ExcelImportacao.cs" />
+    <Compile Include="Util\Excel\Exportacao.cs" />
+    <Compile Include="Util\Excel\Importacao.cs" />
+    <Compile Include="Util\LogErroXML\LogErro.cs" />
+    <Compile Include="Util\PDF\HtmlToPdfBuilder.cs" />
+    <Compile Include="Util\Reflector\GerarObjetoDinamico.cs" />
+    <Compile Include="Util\Reflector\RefletorDinamico.cs" />
+    <Compile Include="Util\Tools\Formatar.cs" />
+    <Compile Include="Util\Tools\ValidadorErros.cs" />
+    <Compile Include="Util\Zip\Zip.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

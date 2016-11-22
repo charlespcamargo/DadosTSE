@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UFSCar.BD.Commom.Conversores;
 
 namespace UFSCar.BD.BackEnd.Model
 {
@@ -20,10 +22,13 @@ namespace UFSCar.BD.BackEnd.Model
 
         public string Ocupacao { get; set; }
 
+        [JsonConverter(typeof(CustomMoneyReal))]
         public decimal VlrMedioOcupacao { get; set; }
 
+        [JsonConverter(typeof(CustomMoneyReal))]
         public decimal VlrTotalDeclarado { get; set; }
 
+        [JsonConverter(typeof(CustomMoneyReal))]
         public decimal DiferencaMedia { get; set; }
 
         public string CargoPolitico { get; set; }
@@ -31,10 +36,7 @@ namespace UFSCar.BD.BackEnd.Model
         public string Partido { get; set; }
 
         public string CPF { get; set; }
-
-        public decimal[] lstVlrTotalDeclarado { get; set; }
-
-        public decimal[] lstVlrMedioOcupacao { get; set; }
+         
 
     }
      
