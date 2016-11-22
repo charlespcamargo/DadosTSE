@@ -10,6 +10,7 @@
             EvolucaoPatrimonial.inicializarGoogleCharts();
             EvolucaoPatrimonial.eventos();
             EvolucaoPatrimonial.inicializarControles();
+            EvolucaoPatrimonial.hardCode();
         },
 
         eventos: function () {
@@ -94,9 +95,6 @@
         buscar: function () {
             var filtro = EvolucaoPatrimonial.montarFiltro();
             HelperJS.callApi(APIs.API_TSE, "/consultas/patrimonio/", "POST", filtro, EvolucaoPatrimonial.buscar_sucesso, HelperJS.showError);
-
-            //EvolucaoPatrimonial.drawChart();
-
         },
 
         montarFiltro: function () {
@@ -159,6 +157,50 @@
 
         drawChart: function () {
 
+            var data = google.visualization.arrayToDataTable([
+              ['Ano', 'C1', 'C2', 'C3', 'C1M', 'c2M', 'c3M'],
+              ['2006', 8175000, 8008000, 8008000, 4000000, 3000000, 2000000],
+              ['2008', 3792000, 3694000, 3694000, 4000000, 3000000, 2000000],
+              ['2010', 2695000, 2896000, 2896000, 4000000, 3000000, 2000000],
+              ['2012', 2099000, 1953000, 1953000, 4000000, 3000000, 2000000],
+              ['2014', 2099000, 1953000, 1953000, 4000000, 3000000, 2000000],
+              ['2015', 2099000, 1953000, 1953000, 4000000, 3000000, 2000000],
+            ]);
+
+
+            var dv = new google.visualization.DataView(data);
+            dv.setColumns([0, 1, {
+                type: 'number',
+                label: 'average',
+                calc: function (dt, row) {
+                    return dt.Nf[row].c[3].v;
+                }
+            }]);
+
+            var options =
+                {
+                    title: 'Population of Largest U.S. Cities', 
+                    vAxis: {
+                        title: 'Total Population',
+                        minValue: 0
+                    },
+                    hAxis: {
+                        title: 'City'
+                    },
+                    series: {
+
+
+                    }
+                };
+
+            var chart = new google.visualization.BarChart(document.getElementById('grafico'));
+            chart.draw(data, options);
+
+        },
+
+        /*
+        drawChart: function () {
+
             var lstDados = [];
             var item = {};
             var ocupacao = {};
@@ -183,21 +225,21 @@
                 item.name = obj.Nome;
                 item.data = obj.lstVlrTotalDeclarado;
                 item.tooltip = { valuePrefix: 'R$' };
-                //item.pointPadding = 0.3;
-                item.pointPlacement = "on";//posicao[i];
+                item.pointPadding = 0.1;
+                //item.pointPlacement = "on";//posicao[i];
                 lstDados.push(item);
 
                 ocupacao = {};
                 ocupacao.name = obj.Ocupacao;
                 ocupacao.data = obj.lstVlrMedioOcupacao;
                 ocupacao.tooltip = { valuePrefix: 'R$' };
-                //ocupacao.pointPadding = 0.4;
-                ocupacao.pointPlacement = "on";//posicao[i];
+                ocupacao.pointPadding = 0.2;
+                //ocupacao.pointPlacement = "on";//posicao[i];
                 lstDados.push(ocupacao);
             });
               
 
-            $("#high_chart").highcharts({
+            $("#grafico").highcharts({
                 chart: { type: 'column' },
                 title: { text: 'Evolução Patrimonial' },
                 xAxis: { categories: [2006, 2008, 2010, 2012, 2014, 2016 ] },
@@ -211,9 +253,7 @@
                 plotOptions:
                 {
                     column: {
-                        grouping: false,
-                        shadow: false,
-                        borderWidth: 0
+                        stacking: 'normal'
                     }
                 },
                 series: lstDados
@@ -222,6 +262,16 @@
 
         },
 
+        */
+
+        hardCode: function () {
+            $("#ddlAnoEleitoral").val('2016').trigger("liszt:updated");
+            var votorantim = {};
+            votorantim.ID = 5580;
+            votorantim.Nome = "Votorantim";
+            HelperJS.popularSelect2("hfMunicipio", votorantim);
+            $("#ddlCargoPretendido").val('8').trigger("liszt:updated");
+        },
 
     }
 }();
