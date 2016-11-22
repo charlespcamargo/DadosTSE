@@ -1120,6 +1120,7 @@
     <Content Include="Assets\scripts\table-fnReloadAjax.js" />
     <Content Include="Assets\scripts\tableHeadFixer.js" />
     <Content Include="Default.aspx" />
+    <Content Include="icones.html" />
     <Content Include="Menu\BancoDados.xml" />
     <Content Include="Models\MasterMenu.js" />
     <Content Include="packages.config" />
