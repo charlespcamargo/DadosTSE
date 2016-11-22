@@ -10,6 +10,8 @@ namespace UFSCar.BD.BackEnd.Model
     {
         public int Ano { get; set; }
 
+        public bool? TodosAnos { get; set; }
+
         public string Sexo { get; set; }
 
         public int EscolaridadeID { get; set; }

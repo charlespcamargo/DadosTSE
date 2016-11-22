@@ -49,7 +49,7 @@
                     <div class="portlet-body">
                         <div class="row-fluid">
                             <div class="controls span2">
-                                <h4>Ano Eleitoral</h4>
+                                <h4>Candidatura no Ano</h4>
                                 <select class="span12 m-wrap" id="ddlAnoEleitoral" data-placeholder="Selecione">
                                     <option value=""></option>
                                     <option value="2016">2016</option>
@@ -61,6 +61,10 @@
                                 </select>
                             </div>
                             <div class="controls span2">
+                                <h4>Outros Anos</h4>
+                                <input type="checkbox" id="chkTodosAnos" checked="checked" /> Todos
+                            </div>
+                            <div class="controls span2">
                                 <h4>Sexo</h4>
                                 <select class="span12 m-wrap" id="ddlSexo" data-placeholder="Selecione">
                                     <option value=""></option>
@@ -68,7 +72,7 @@
                                     <option value="FEMININO">Feminino</option>
                                 </select>
                             </div>
-                            <div class="controls span4">
+                            <div class="controls span2">
                                 <h4>Escolaridade</h4>
                                 <select class="span12 m-wrap" id="ddlEscolaridade" data-placeholder="Selecione">
                                     <option value=""></option>

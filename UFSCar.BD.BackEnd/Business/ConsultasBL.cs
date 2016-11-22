@@ -33,6 +33,13 @@ namespace UFSCar.BD.BackEnd.Business
                 parametro.Value = DBNull.Value;
             lstParametros.Add(parametro);
 
+            parametro = GenericParameter.Create("@TODOSANOS", System.Data.DbType.Boolean);
+            if (filtro.TodosAnos.HasValue)
+                parametro.Value = filtro.TodosAnos;
+            else
+                parametro.Value = DBNull.Value;
+            lstParametros.Add(parametro);
+
             parametro = GenericParameter.Create("@SEXO", System.Data.DbType.AnsiString);
             if (!String.IsNullOrEmpty(filtro.Sexo))
                 parametro.Value = filtro.Sexo;
@@ -95,7 +102,7 @@ namespace UFSCar.BD.BackEnd.Business
 
             using (UnitOfWork UoW = new UnitOfWork())
             {
-                string script = "SP_ANALISE1_1  @ANO, @SEXO, @IDESCOLARIDADE, @IDOCUPACAO, @REGIAO, @SIGLAESTADO, @IDMUNICIPIO, @SIGLAPARTIDO, @IDCARGOPRETENDIDO ";
+                string script = "SP_ANALISE1_1  @ANO, @TODOSANOS, @SEXO, @IDESCOLARIDADE, @IDOCUPACAO, @REGIAO, @SIGLAESTADO, @IDMUNICIPIO, @SIGLAPARTIDO, @IDCARGOPRETENDIDO ";
 
                 lst = UoW.GetContext().Database.SqlQuery<ANALISE1_1>(script, lstParametros.ToArray()).ToList();
             }
@@ -105,36 +112,42 @@ namespace UFSCar.BD.BackEnd.Business
 
             if (lst != null && lst.Count > 0)
             {
-                List<ANALISE1_1> candidatos = lst.GroupBy(group => new { group.SiglaEstado, group.Municipio, group.Nome }).
+                List<ANALISE1_1> candidatos = lst.GroupBy(group => new { group.CPF }).
                                                          Select(unico => new ANALISE1_1()
                                                          {
-                                                             SiglaEstado = unico.Key.SiglaEstado,
-                                                             Municipio = unico.Key.Municipio,
-                                                             Nome = unico.Key.Nome
+                                                             CPF = unico.Key.CPF
                                                          }).ToList();
 
-                List<ANALISE1_1> lstEleicoesDoCandidato = null;
+
                 ANALISE1_1 entidade = null;
 
                 foreach (ANALISE1_1 unico in candidatos)
                 {
-                    lstEleicoesDoCandidato = lst.Where(w => w.SiglaEstado == unico.SiglaEstado && w.Municipio == unico.Municipio && w.Nome == unico.Nome).ToList();
-
-                    entidade = lstEleicoesDoCandidato.FirstOrDefault();
-                    entidade.lstVlrMedioOcupacao = new decimal[lstEleicoesDoCandidato.Count];
-                    entidade.lstVlrTotalDeclarado = new decimal[lstEleicoesDoCandidato.Count];
-
-                    for (int i = 0; i < lstEleicoesDoCandidato.Count; i++)
-                    {
-                        entidade.lstVlrMedioOcupacao[i] = lstEleicoesDoCandidato[i].VlrMedioOcupacao;
-                        entidade.lstVlrTotalDeclarado[i] = lstEleicoesDoCandidato[i].VlrTotalDeclarado;
-                    }
+                    entidade = lst.FirstOrDefault(w => w.CPF == unico.CPF);
+                    entidade.lstVlrMedioOcupacao = new decimal[6];
+                    entidade.lstVlrTotalDeclarado = new decimal[6];
+                    Preencher(lst, entidade, unico, 2006, 0);
+                    Preencher(lst, entidade, unico, 2008, 1);
+                    Preencher(lst, entidade, unico, 2010, 2);
+                    Preencher(lst, entidade, unico, 2012, 3);
+                    Preencher(lst, entidade, unico, 2014, 4);
+                    Preencher(lst, entidade, unico, 2016, 5);
 
                     lstRelatorio.Add(entidade);
                 }
             }
 
             return lstRelatorio;
+        }
+
+        public void Preencher(List<ANALISE1_1> lst, ANALISE1_1 entidade, ANALISE1_1 unico, int ano, int i)
+        {
+            ANALISE1_1 encontrarAno = lst.FirstOrDefault(w => w.CPF == unico.CPF && w.Ano == ano);
+            if (encontrarAno != null)
+            {
+                entidade.lstVlrMedioOcupacao[i] = encontrarAno.VlrMedioOcupacao;
+                entidade.lstVlrTotalDeclarado[i] = encontrarAno.VlrTotalDeclarado;
+            }
         }
 
         public List<ANALISE3_2> PorSexo(AnaliseFiltro filtro)

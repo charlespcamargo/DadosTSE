@@ -107,6 +107,8 @@
             else
                 filtro.Ano = 0;
 
+            filtro.TodosAnos = $("#chkTodosAnos").prop("checked");
+
             if (HelperJS.temValor($("#ddlSexo").val()))
                 filtro.Sexo = $("#ddlSexo").val();
             else
@@ -162,77 +164,43 @@
             var ocupacao = {};
 
             var posicao = [
-                            [0.3, -0.2],
-                            [0.45, -0.2],
-                            [0.3, 0.2],
-                            [0.45, 0.2],
-                            [0.3, -0.2],
-                            [0.45, -0.2],
-                            [0.3, 0.2],
-                            [0.45, 0.2],
-                            [0.3, -0.2],
-                            [0.45, -0.2],
-                            [0.3, 0.2],
-                            [0.45, 0.2],
-                            [0.3, -0.2],
-                            [0.45, -0.2],
-                            [0.3, 0.2],
-                            [0.45, 0.2],
-                            [0.3, -0.2],
-                            [0.45, -0.2],
-                            [0.3, 0.2],
-                            [0.45, 0.2],
-                            [0.3, -0.2],
-                            [0.45, -0.2],
-                            [0.3, 0.2],
-                            [0.45, 0.2],
-                            [0.3, -0.2],
-                            [0.45, -0.2],
-                            [0.3, 0.2],
-                            [0.45, 0.2],
-                            [0.3, -0.2],
-                            [0.45, -0.2],
-                            [0.3, 0.2],
-                            [0.45, 0.2],
-                            [0.3, -0.2],
-                            [0.45, -0.2],
-                            [0.3, 0.2],
-                            [0.45, 0.2],
-                            [0.3, -0.2],
-                            [0.45, -0.2],
-                            [0.3, 0.2],
-                            [0.45, 0.2],
-                            [0.3, -0.2],
-                            [0.45, -0.2],
-                            [0.3, 0.2],
-                            [0.45, 0.2]
+                            -0.9,
+                            -0.7,
+                            -0.5,
+                            -0.3,
+                            -0.1,
+                            0.1,
+                            0.3,
+                            0.5,
+                            0.7,
+                            0.9
             ];
 
-            
+
             $.each(lst, function (i, obj)
-            {
+            { 
                 item = {};
                 item.name = obj.Nome;
                 item.data = obj.lstVlrTotalDeclarado;
                 item.tooltip = { valuePrefix: 'R$' };
-                item.pointPadding = posicao[i][0];
-                item.pointPlacement = posicao[i][1];
+                //item.pointPadding = 0.3;
+                item.pointPlacement = "on";//posicao[i];
                 lstDados.push(item);
 
                 ocupacao = {};
                 ocupacao.name = obj.Ocupacao;
                 ocupacao.data = obj.lstVlrMedioOcupacao;
                 ocupacao.tooltip = { valuePrefix: 'R$' };
-                ocupacao.pointPadding = posicao[i + 1][0];
-                ocupacao.pointPlacement = posicao[i + 1][1];
+                //ocupacao.pointPadding = 0.4;
+                ocupacao.pointPlacement = "on";//posicao[i];
                 lstDados.push(ocupacao);
             });
-             
+              
 
             $("#high_chart").highcharts({
                 chart: { type: 'column' },
                 title: { text: 'Evolução Patrimonial' },
-                xAxis: { categories: [2006, 2008, 2010, 2012, 2014, 2016] },
+                xAxis: { categories: [2006, 2008, 2010, 2012, 2014, 2016 ] },
                 yAxis: [{ min: 0, title: { text: 'Candidatos' } },
                         {
                             title: { text: 'Valor declardo de Bens' },
