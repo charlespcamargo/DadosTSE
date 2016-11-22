@@ -155,42 +155,98 @@
             google.charts.setOnLoadCallback(EvolucaoPatrimonial.drawChart);
         },
 
-        drawChart: function ()
-        {
+        drawChart: function () {
             console.log(lst);
 
-            var data = google.visualization.arrayToDataTable([               
-              lst
-            ]);
+            var anos = [];
+
+            var candidatos = [];
+
+            for (var i = 1; i < lst.length; i++) {
+                anos.push(lst[i].lstColuna[0].Valor);
+            }
+            console.log(anos);
 
 
-            var dv = new google.visualization.DataView(data);
-            dv.setColumns([0, 1, {
-                type: 'number',
-                label: 'average',
-                calc: function (dt, row) {
-                    return dt.Nf[row].c[3].v;
-                }
-            }]);
 
-            var options =
-                {
-                    title: 'Population of Largest U.S. Cities', 
-                    vAxis: {
-                        title: 'Total Population',
-                        minValue: 0
-                    },
-                    hAxis: {
-                        title: 'City'
-                    },
-                    series: {
+            var pointPlacement = (((lst[0].lstColuna.length) / 2)
+                 / 10.0
+                ) * -1;
 
+            
+            var step = 0.2;
+
+
+            var size = pointPlacement * -0.9;
+
+            pointPlacement += 0.15;
+
+            for (var i = 1; i < lst[0].lstColuna.length; i += 2) {
+                var cand = lst[0].lstColuna[i].Valor;
+
+                candidatos.push(
+                    {
+                        name: cand,
+                        //color: 'rgba(255,0,0,1)',
+                        data: HelperJS.getCol(lst, i),
+                        pointPlacement: pointPlacement,
+                        pointPadding: size,
 
                     }
-                };
+                );
+                console.log(cand);
+                console.log(pointPlacement);
+                console.log(size);
 
-            var chart = new google.visualization.BarChart(document.getElementById('grafico'));
-            chart.draw(data, options);
+                candidatos.push(
+                    {
+                        name: cand + 'Media',
+                        color: 'rgba(255,0,0,1)',
+                        data: HelperJS.getCol(lst, i + 1),
+                        pointPlacement: pointPlacement,
+                        pointPadding: size + (size * 0.2),
+
+                    }
+                );
+                pointPlacement += step;
+            }
+            console.log(candidatos);
+            Highcharts.chart('grafico', {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Efficiency Optimization by Branch'
+                },
+                xAxis: {
+                    categories: anos
+                },
+                yAxis: [{
+                    min: 0,
+                    title: {
+                        text: 'Employees'
+                    }
+                }, {
+                    title: {
+                        text: 'Profit (millions)'
+                    },
+                    opposite: true
+                }],
+                legend: {
+                    shadow: false
+                },
+                tooltip: {
+                    shared: true
+                },
+                plotOptions: {
+                    column: {
+                        grouping: false,
+                        shadow: false,
+                        borderWidth: 0
+                    }
+                },
+                series: candidatos
+            });
 
         },
 

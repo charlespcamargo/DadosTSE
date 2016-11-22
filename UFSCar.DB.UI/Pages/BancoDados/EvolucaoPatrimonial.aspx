@@ -2,8 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
+    <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="EvolucaoPatrimonial.js"></script> 
-    <script src="/Assets/Plugins/highcharts/highcharts.js"></script>     
+        
 
 </asp:Content>
 
