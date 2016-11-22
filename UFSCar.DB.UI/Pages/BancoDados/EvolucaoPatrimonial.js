@@ -155,16 +155,12 @@
             google.charts.setOnLoadCallback(EvolucaoPatrimonial.drawChart);
         },
 
-        drawChart: function () {
+        drawChart: function ()
+        {
+            console.log(lst);
 
-            var data = google.visualization.arrayToDataTable([
-              ['Ano', 'C1', 'C2', 'C3', 'C1M', 'c2M', 'c3M'],
-              ['2006', 8175000, 8008000, 8008000, 4000000, 3000000, 2000000],
-              ['2008', 3792000, 3694000, 3694000, 4000000, 3000000, 2000000],
-              ['2010', 2695000, 2896000, 2896000, 4000000, 3000000, 2000000],
-              ['2012', 2099000, 1953000, 1953000, 4000000, 3000000, 2000000],
-              ['2014', 2099000, 1953000, 1953000, 4000000, 3000000, 2000000],
-              ['2015', 2099000, 1953000, 1953000, 4000000, 3000000, 2000000],
+            var data = google.visualization.arrayToDataTable([               
+              lst
             ]);
 
 

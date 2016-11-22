@@ -22,13 +22,13 @@ namespace UFSCar.BD.API.Controllers
         [Route("patrimonio")]
         public HttpResponseMessage Patrimonio([FromBody] AnaliseFiltro filtro)
         {
-            List<ANALISE1_1> lst = null;
+            ANALISE1_1_RELATORIO relatorio = null;
 
             try
             {
-                lst = ConsultasBL.New.EvolucaoPatrimonial(filtro);
+                relatorio = ConsultasBL.New.EvolucaoPatrimonial(filtro);
 
-                return Request.CreateResponse(HttpStatusCode.OK, lst);
+                return Request.CreateResponse(HttpStatusCode.OK, relatorio.lstLinha);
             }
             catch (ArgumentException aex)
             {

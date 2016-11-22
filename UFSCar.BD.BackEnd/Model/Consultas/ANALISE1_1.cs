@@ -37,4 +37,35 @@ namespace UFSCar.BD.BackEnd.Model
         public decimal[] lstVlrMedioOcupacao { get; set; }
 
     }
+
+
+    public class ANALISE1_1_RELATORIO
+    {
+        public ANALISE1_1_RELATORIO()
+        {
+            lstLinha = new List<Model.ANALISE1_1_LINHA>();
+        }
+
+        public List<ANALISE1_1_LINHA> lstLinha { get; set; }
+    }
+
+    public class ANALISE1_1_LINHA
+    {
+        public ANALISE1_1_LINHA()
+        {
+            lstColuna = new List<Model.ANALISE1_1_COLUNA>();
+        }
+
+        public List<ANALISE1_1_COLUNA> lstColuna { get; set; }
+    }
+
+    public class ANALISE1_1_COLUNA
+    {
+        public ANALISE1_1_COLUNA(string valor)
+        {
+            Valor = valor;
+        }
+
+        public string Valor { get; set; }
+    }
 }
