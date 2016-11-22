@@ -185,7 +185,9 @@
                         </div>
                     </div>
                     <div class="portlet-body">
-                        <div id="chart_div" style="min-height: 100px">
+                        <div id="chart_div" style="min-height: 100%; min-width: 100%">
+                        </div>
+                        <div id="chart_tooltip_div" style="/*min-height: 100px; min-width: 100px;*/ display: none">
                         </div>
                         <div id="table_div" style="min-height: 100px" class="portlet-body no-more-tables">
                             <table id="gridPorSexo" class="display" class="table table-striped table-bordered table-hover table-full-width" cellspacing="0" width="100%">
