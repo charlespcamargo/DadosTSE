@@ -15,11 +15,11 @@ var HelperJS = function () {
                     selector: '[data-toggle=tooltip]'
                 });
             }
-             
+
             HelperJS.ConfiguraEventosGlobais();
         },
-         
-         
+
+
 
         getBaseURL: function (api) {
             var apiUrl = "";
@@ -55,7 +55,7 @@ var HelperJS = function () {
 
         callApi: function (api, url, type, dataSend, functionOnSucess, functionOnError) {
 
-            
+
             if (App.isIE8() || App.isIE9()) {
                 HelperJS.callApiIE(api, url, type, dataSend, functionOnSucess, functionOnError);
             }
@@ -79,7 +79,7 @@ var HelperJS = function () {
 
         callApiIE: function (api, url, type, dataSend, functionOnSucess, functionOnError) {
 
-            var urlProxy = "/proxy.ashx?tipo=" + type + "&api=" + HelperJS.getBaseURL(api) + "&url=" + url +  "&";
+            var urlProxy = "/proxy.ashx?tipo=" + type + "&api=" + HelperJS.getBaseURL(api) + "&url=" + url + "&";
 
             $.ajax({
                 global: true,
@@ -104,7 +104,7 @@ var HelperJS = function () {
             if (dataSend != undefined && dataSend != null && ($.isArray(dataSend) || typeof dataSend != 'object')) {
                 dataSend = { '': dataSend };
             }
-           
+
             $.ajax({
                 global: true,
                 type: type,
@@ -142,7 +142,7 @@ var HelperJS = function () {
             });
         },
 
-        getURLApi: function (url, api) { 
+        getURLApi: function (url, api) {
 
             var baseURL = HelperJS.getBaseURL(api);
 
@@ -476,7 +476,7 @@ var HelperJS = function () {
         },
 
 
-         LoadDataTable: function (api, ACAO, tipo, ID, columns, sorter, drawCallback, completeCallBack) {
+        LoadDataTable: function (api, ACAO, tipo, ID, columns, sorter, drawCallback, completeCallBack) {
 
             if (!jQuery().dataTable) {
                 return;
@@ -544,7 +544,7 @@ var HelperJS = function () {
         },
 
         iniciarUploadify: function (api, controleId, ehMultiplo, recurso, onUploadComplete, formato, limiteFila) {
-             
+
 
             $(controleId).uploadify({
                 'successTimeout': 1200000,
@@ -579,7 +579,7 @@ var HelperJS = function () {
         },
 
         ComboAutoComplete: function (api, hiddenID, valueID, tituloCampo, URLApi, isMultiple, funcaoRender, funcaoSelection, funcaoID, qtdCaracteres, changeEvent, allowClear, ajaxOption) {
-             
+
 
             var sid = '#' + hiddenID;
 
@@ -602,7 +602,7 @@ var HelperJS = function () {
                         };
                     },
                     params: {
-                        
+
                     },
                     results: function (data) {
                         return { results: data };
@@ -620,7 +620,7 @@ var HelperJS = function () {
                         {
                             dataType: "json",
                             params: {
-                                
+
                             }
 
                         }).done(function (data) { callback(data); });
@@ -988,7 +988,7 @@ var HelperJS = function () {
         apagarCookie: function (strCookie) {
             $.cookie(strCookie, null);
         },
-         
+
 
         obterDatasCalendarioPorAnoInformado: function (ano) {
 
@@ -1363,6 +1363,16 @@ var HelperJS = function () {
                 return obj;
         },
 
+        formatarDecimalBR: function(number) {
+            var postComma, preComma, stringReverse, _ref;
+            stringReverse = function(str) {
+                return str.split('').reverse().join('');
+            };
+            _ref = number.toFixed(2).split('.'), preComma = _ref[0], postComma = _ref[1];
+            preComma = stringReverse(stringReverse(preComma).match(/.{1,3}/g).join('.'));
+            return "" + preComma + "," + postComma;
+        },
+
         formatarPercentual: function (valor, exibicao) {
 
             if (valor == undefined || valor == null || valor == '')
@@ -1408,7 +1418,7 @@ var HelperJS = function () {
         formatarData: function (valor, exibicao) {
             var format = "dd/mm/yyyy";
             if (exibicao && exibicao != null && exibicao != undefined && typeof exibicao === "string")
-                format = exibicao.toLowerCase(); 
+                format = exibicao.toLowerCase();
 
             format = HelperJS.parseFormat(format);
 
@@ -1433,7 +1443,7 @@ var HelperJS = function () {
 
         //função de upload usando HTML 5
         iniciarUploadifive: function (api, controleId, ehMultiplo, recurso, onUploadComplete, formato, limiteFila) {
-            
+
             $(controleId).uploadifive({
                 'successTimeout': 1200000,
                 'queueSizeLimit': limiteFila,
@@ -1488,4 +1498,3 @@ var HelperJS = function () {
     };
 
 }();
- 
