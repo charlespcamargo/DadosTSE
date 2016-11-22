@@ -93,9 +93,9 @@
 
         buscar: function () {
             var filtro = EvolucaoPatrimonial.montarFiltro();
-            //HelperJS.callApi(APIs.API_TSE, "/consultas/patrimonio/", "POST", filtro, EvolucaoPatrimonial.buscar_sucesso, HelperJS.showError);
+            HelperJS.callApi(APIs.API_TSE, "/consultas/patrimonio/", "POST", filtro, EvolucaoPatrimonial.buscar_sucesso, HelperJS.showError);
 
-            EvolucaoPatrimonial.drawChart();
+            //EvolucaoPatrimonial.drawChart();
 
         },
 
@@ -159,87 +159,99 @@
 
             var lstDados = [];
             var item = {};
+            var ocupacao = {};
 
-            //$.each(lst, function (i, obj)
-            //{
-            //    item = {};
-            //    item.name = obj.Nome;
-            //    item.data = obj.lstVlrTotalDeclarado;
-            //    item.tooltip = { valuePrefix: 'R$' };
-            //    item.pointPadding = 0.3;
-            //    item.pointPlacement = -0.2;
-            //    lstDados.push(item);
+            var posicao = [
+                            [0.3, -0.2],
+                            [0.45, -0.2],
+                            [0.3, 0.2],
+                            [0.45, 0.2],
+                            [0.3, -0.2],
+                            [0.45, -0.2],
+                            [0.3, 0.2],
+                            [0.45, 0.2],
+                            [0.3, -0.2],
+                            [0.45, -0.2],
+                            [0.3, 0.2],
+                            [0.45, 0.2],
+                            [0.3, -0.2],
+                            [0.45, -0.2],
+                            [0.3, 0.2],
+                            [0.45, 0.2],
+                            [0.3, -0.2],
+                            [0.45, -0.2],
+                            [0.3, 0.2],
+                            [0.45, 0.2],
+                            [0.3, -0.2],
+                            [0.45, -0.2],
+                            [0.3, 0.2],
+                            [0.45, 0.2],
+                            [0.3, -0.2],
+                            [0.45, -0.2],
+                            [0.3, 0.2],
+                            [0.45, 0.2],
+                            [0.3, -0.2],
+                            [0.45, -0.2],
+                            [0.3, 0.2],
+                            [0.45, 0.2],
+                            [0.3, -0.2],
+                            [0.45, -0.2],
+                            [0.3, 0.2],
+                            [0.45, 0.2],
+                            [0.3, -0.2],
+                            [0.45, -0.2],
+                            [0.3, 0.2],
+                            [0.45, 0.2],
+                            [0.3, -0.2],
+                            [0.45, -0.2],
+                            [0.3, 0.2],
+                            [0.45, 0.2]
+            ];
 
+            
+            $.each(lst, function (i, obj)
+            {
+                item = {};
+                item.name = obj.Nome;
+                item.data = obj.lstVlrTotalDeclarado;
+                item.tooltip = { valuePrefix: 'R$' };
+                item.pointPadding = posicao[i][0];
+                item.pointPlacement = posicao[i][1];
+                lstDados.push(item);
 
-            //    item.name = obj.lstOcupacao;
-            //    item.data = obj.lstVlrMedioOcupacao;
-            //    item.tooltip = { valuePrefix: 'R$' };
-            //    item.pointPadding = 0.4;
-            //    item.pointPlacement = -0.2;
-            //    lstDados.push(item);
-            //});
-
-
-            item = {};
-            item.name = "Deputado";
-            item.data = [5800, 5850, 5860, 5890, 5900, 5910];
-            item.tooltip = {
-                valuePrefix: 'R$',
-                valueSuffix: ''
-            };
-            item.pointPadding = 0.4;
-            item.pointPlacement = -0.2;
-            lstDados.push(item);
-
-
-
-            item = {};
-            item.name = "Marcelo Crivella";
-            item.data = [20000, 20500, 30000];
-            item.tooltip = {
-                valuePrefix: 'R$',
-                valueSuffix: ''
-            };
-            item.pointPadding = 0.3;
-            item.pointPlacement = 0.2;
-            lstDados.push(item);
-
-
-            item = {};
-            item.name = "SENADOR";
-            item.data = [22000, 27000, 32000];
-            item.tooltip = {
-                valuePrefix: 'R$',
-                valueSuffix: ''
-            };
-            item.pointPadding = 0.4;
-            item.pointPlacement = 0.2;
-            lstDados.push(item);
-
-            $("#high_chart").highcharts(
-                {
-                    chart: { type: 'column' },
-                    title: { text: 'Evolução Patrimonial' },
-                    xAxis: { categories:  [2006, 2008, 2010, 2012, 2014, 2016] },
-                    yAxis: [{ min: 0, title: { text: 'Candidatos' } },
-                            {
-                                title: { text: 'Valor declardo de Bens' },
-                                opposite: true
-                            }],
-                    legend: { shadow: false },
-                    tooltip: { shared: true },
-                    plotOptions:
-                    {
-                        column: {
-                            grouping: false,
-                            shadow: false,
-                            borderWidth: 0
-                        }
-                    },
-                    series: lstDados
-                });
-
+                ocupacao = {};
+                ocupacao.name = obj.Ocupacao;
+                ocupacao.data = obj.lstVlrMedioOcupacao;
+                ocupacao.tooltip = { valuePrefix: 'R$' };
+                ocupacao.pointPadding = posicao[i + 1][0];
+                ocupacao.pointPlacement = posicao[i + 1][1];
+                lstDados.push(ocupacao);
+            });
              
+
+            $("#high_chart").highcharts({
+                chart: { type: 'column' },
+                title: { text: 'Evolução Patrimonial' },
+                xAxis: { categories: [2006, 2008, 2010, 2012, 2014, 2016] },
+                yAxis: [{ min: 0, title: { text: 'Candidatos' } },
+                        {
+                            title: { text: 'Valor declardo de Bens' },
+                            opposite: true
+                        }],
+                legend: { shadow: false },
+                tooltip: { shared: true },
+                plotOptions:
+                {
+                    column: {
+                        grouping: false,
+                        shadow: false,
+                        borderWidth: 0
+                    }
+                },
+                series: lstDados
+            });
+
+
         },
 
 

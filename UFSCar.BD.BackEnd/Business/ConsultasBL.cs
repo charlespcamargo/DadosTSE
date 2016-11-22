@@ -100,12 +100,41 @@ namespace UFSCar.BD.BackEnd.Business
                 lst = UoW.GetContext().Database.SqlQuery<ANALISE1_1>(script, lstParametros.ToArray()).ToList();
             }
 
-            //if (lst != null && lst.Count > 0)
-            //{
-            //    lst = lst.GroupBy(by => by.Nome).Select(s => s).ToList();
-            //}
 
-            return lst;
+            List<ANALISE1_1> lstRelatorio = new List<ANALISE1_1>();
+
+            if (lst != null && lst.Count > 0)
+            {
+                List<ANALISE1_1> candidatos = lst.GroupBy(group => new { group.SiglaEstado, group.Municipio, group.Nome }).
+                                                         Select(unico => new ANALISE1_1()
+                                                         {
+                                                             SiglaEstado = unico.Key.SiglaEstado,
+                                                             Municipio = unico.Key.Municipio,
+                                                             Nome = unico.Key.Nome
+                                                         }).ToList();
+
+                List<ANALISE1_1> lstEleicoesDoCandidato = null;
+                ANALISE1_1 entidade = null;
+
+                foreach (ANALISE1_1 unico in candidatos)
+                {
+                    lstEleicoesDoCandidato = lst.Where(w => w.SiglaEstado == unico.SiglaEstado && w.Municipio == unico.Municipio && w.Nome == unico.Nome).ToList();
+
+                    entidade = lstEleicoesDoCandidato.FirstOrDefault();
+                    entidade.lstVlrMedioOcupacao = new decimal[lstEleicoesDoCandidato.Count];
+                    entidade.lstVlrTotalDeclarado = new decimal[lstEleicoesDoCandidato.Count];
+
+                    for (int i = 0; i < lstEleicoesDoCandidato.Count; i++)
+                    {
+                        entidade.lstVlrMedioOcupacao[i] = lstEleicoesDoCandidato[i].VlrMedioOcupacao;
+                        entidade.lstVlrTotalDeclarado[i] = lstEleicoesDoCandidato[i].VlrTotalDeclarado;
+                    }
+
+                    lstRelatorio.Add(entidade);
+                }
+            }
+
+            return lstRelatorio;
         }
 
     }

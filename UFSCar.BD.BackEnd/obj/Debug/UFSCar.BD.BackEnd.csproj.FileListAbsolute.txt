@@ -15,6 +15,6 @@ P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.BackEnd\bin\Debug\EntityFramework.dll
 P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.BackEnd\bin\Debug\EntityFramework.SqlServer.dll
 P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.BackEnd\bin\Debug\EntityFramework.xml
 P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.BackEnd\bin\Debug\EntityFramework.SqlServer.xml
-P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.BackEnd\obj\Debug\UFSCar.BD.BackEnd.csprojResolveAssemblyReference.cache
 P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.BackEnd\obj\Debug\UFSCar.BD.BackEnd.dll
 P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.BackEnd\obj\Debug\UFSCar.BD.BackEnd.pdb
+P:\Projetos\Mestrado\DadosTSE\UFSCar.BD.BackEnd\obj\Debug\UFSCar.BD.BackEnd.csprojResolveAssemblyReference.cache
