@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <script src="EvolucaoPatrimonial.js"></script>
-    <script src="/Assets/Plugins/highcharts/highcharts.js"></script>
+    <script src="/Assets/Plugins/highcharts/highcharts.js"></script> 
 
 </asp:Content>
 
@@ -231,7 +231,7 @@
     </div>
 
 
-    <div id="modalGrafico" class="modal container fixedwidth hide fade" tabindex="-1" data-backdrop="fixed">
+    <div id="modalGrafico" class="modal container hide fade" tabindex="-1" data-backdrop="fixed">
         <div class="portlet box light-grey">
             <div class="portlet-title">
                 <div class="caption"><i class="icon-pencil"></i>Candidato - <span class="lblTituloModal"></span></div>

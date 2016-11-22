@@ -1362,6 +1362,13 @@ var HelperJS = function () {
             else
                 return obj;
         },
+        getCol: function (matrix, col){
+            var column = [];
+            for(var i=1; i<matrix.length; i++){
+                column.push(Number(matrix[i].lstColuna[col].Valor.replace(',', '.')));
+            }
+            return column;
+        },
 
         formatarDecimalBR: function(number) {
             var postComma, preComma, stringReverse, _ref;
@@ -1373,126 +1380,126 @@ var HelperJS = function () {
             return "" + preComma + "," + postComma;
         },
 
-        formatarPercentual: function (valor, exibicao) {
+    formatarPercentual: function (valor, exibicao) {
 
-            if (valor == undefined || valor == null || valor == '')
-                valor = 0;
+        if (valor == undefined || valor == null || valor == '')
+            valor = 0;
 
-            if (exibicao) {
-                if (typeof (valor) == "string") {
-                    // removo todos os pontos e substituo a virgula pelo ponto, ficando somente um ponto
-                    // exemplo: Valor em pt-BR (ponto pra milhar e virgula decimal) "1.234.567,89" fica assim "1234567.89"
-                    valor = valor.replace(/\./g, "").replace(",", ".");
+        if (exibicao) {
+            if (typeof (valor) == "string") {
+                // removo todos os pontos e substituo a virgula pelo ponto, ficando somente um ponto
+                // exemplo: Valor em pt-BR (ponto pra milhar e virgula decimal) "1.234.567,89" fica assim "1234567.89"
+                valor = valor.replace(/\./g, "").replace(",", ".");
 
-                    return HelperJS.formatMoney(valor.toString().replace(".", "").replace(",", "."), 2, ".", ","); // string
-                }
-                else
-                    return HelperJS.formatMoney(valor, 2, ".", ",");
+                return HelperJS.formatMoney(valor.toString().replace(".", "").replace(",", "."), 2, ".", ","); // string
             }
             else
-                return Number(HelperJS.formataDecimal(valor)); // number
-        },
+                return HelperJS.formatMoney(valor, 2, ".", ",");
+        }
+        else
+            return Number(HelperJS.formataDecimal(valor)); // number
+    },
 
-        //Verificar se o browser tem suporte ou plugin de flash habilitado
-        temSuporteFlash: function () {
-            var hasFlash = false;
-            try {
-                hasFlash = Boolean(new ActiveXObject('ShockwaveFlash.ShockwaveFlash'));
-            } catch (exception) {
-                hasFlash = ('undefined' != typeof navigator.mimeTypes['application/x-shockwave-flash']);
-            }
-            return hasFlash;
-        },
+    //Verificar se o browser tem suporte ou plugin de flash habilitado
+    temSuporteFlash: function () {
+        var hasFlash = false;
+        try {
+            hasFlash = Boolean(new ActiveXObject('ShockwaveFlash.ShockwaveFlash'));
+        } catch (exception) {
+            hasFlash = ('undefined' != typeof navigator.mimeTypes['application/x-shockwave-flash']);
+        }
+        return hasFlash;
+    },
 
-        validParts: /dd?|DD?|mm?|MM?|yy(?:yy)?/g,
-        parseFormat: function (format) {
-            // IE treats \0 as a string end in inputs (truncating the value),
-            // so it's a bad format delimiter, anyway
-            var separators = format.replace(this.validParts, '\0').split('\0'),
-				parts = format.match(this.validParts);
-            if (!separators || !separators.length || !parts || parts.length === 0) {
-                throw new Error("Invalid date format.");
-            }
-            return { separators: separators, parts: parts };
-        },
-        formatarData: function (valor, exibicao) {
-            var format = "dd/mm/yyyy";
-            if (exibicao && exibicao != null && exibicao != undefined && typeof exibicao === "string")
-                format = exibicao.toLowerCase();
+    validParts: /dd?|DD?|mm?|MM?|yy(?:yy)?/g,
+    parseFormat: function (format) {
+        // IE treats \0 as a string end in inputs (truncating the value),
+        // so it's a bad format delimiter, anyway
+        var separators = format.replace(this.validParts, '\0').split('\0'),
+            parts = format.match(this.validParts);
+        if (!separators || !separators.length || !parts || parts.length === 0) {
+            throw new Error("Invalid date format.");
+        }
+        return { separators: separators, parts: parts };
+    },
+    formatarData: function (valor, exibicao) {
+        var format = "dd/mm/yyyy";
+        if (exibicao && exibicao != null && exibicao != undefined && typeof exibicao === "string")
+            format = exibicao.toLowerCase();
 
-            format = HelperJS.parseFormat(format);
+        format = HelperJS.parseFormat(format);
 
-            var date = new Date(valor);
-            var val = {
-                d: date.getUTCDate(),
-                m: date.getUTCMonth() + 1,
-                yy: date.getUTCFullYear().toString().substring(2),
-                yyyy: date.getUTCFullYear()
-            };
-            val.dd = (val.d < 10 ? '0' : '') + val.d;
-            val.mm = (val.m < 10 ? '0' : '') + val.m;
-            var date = [],
-				seps = $.extend([], format.separators);
-            for (var i = 0, cnt = format.parts.length; i <= cnt; i++) {
-                if (seps.length)
-                    date.push(seps.shift());
-                date.push(val[format.parts[i]]);
-            }
-            return date.join('');
-        },
+        var date = new Date(valor);
+        var val = {
+            d: date.getUTCDate(),
+            m: date.getUTCMonth() + 1,
+            yy: date.getUTCFullYear().toString().substring(2),
+            yyyy: date.getUTCFullYear()
+        };
+        val.dd = (val.d < 10 ? '0' : '') + val.d;
+        val.mm = (val.m < 10 ? '0' : '') + val.m;
+        var date = [],
+            seps = $.extend([], format.separators);
+        for (var i = 0, cnt = format.parts.length; i <= cnt; i++) {
+            if (seps.length)
+                date.push(seps.shift());
+            date.push(val[format.parts[i]]);
+        }
+        return date.join('');
+    },
 
-        //função de upload usando HTML 5
-        iniciarUploadifive: function (api, controleId, ehMultiplo, recurso, onUploadComplete, formato, limiteFila) {
+    //função de upload usando HTML 5
+    iniciarUploadifive: function (api, controleId, ehMultiplo, recurso, onUploadComplete, formato, limiteFila) {
 
-            $(controleId).uploadifive({
-                'successTimeout': 1200000,
-                'queueSizeLimit': limiteFila,
-                'buttonText': "Selecione o arquivo",
-                'preventCaching': false,
-                'sizeLimit': '10000000',
-                'auto': false,
-                'multi': ehMultiplo,
-                'uploadScript': HelperJS.getURLApi(recurso, api),
-                'fileTypeExts': formato,
-                'fileType': true,
-                'width': 180,
-                'onUploadComplete': onUploadComplete
-            });
-        },
+        $(controleId).uploadifive({
+            'successTimeout': 1200000,
+            'queueSizeLimit': limiteFila,
+            'buttonText': "Selecione o arquivo",
+            'preventCaching': false,
+            'sizeLimit': '10000000',
+            'auto': false,
+            'multi': ehMultiplo,
+            'uploadScript': HelperJS.getURLApi(recurso, api),
+            'fileTypeExts': formato,
+            'fileType': true,
+            'width': 180,
+            'onUploadComplete': onUploadComplete
+        });
+    },
 
 
-        // Replace caracteres (Windows1252) replace para caracteres ASCII ou ISO-8859-1
-        // Sybase não suporta alguns caracteres da (tabela Windows-1252)
-        // CONSULTAR EM: en.wikipedia.org/wiki/Windows-1252#Codepage_layout
-        replaceWordChars: function (text) {
-            if (text != null && text != undefined) {
-                var s = text;
-                // smart single quotes and apostrophe
-                s = s.replace(/[\u2018\u2019\u201A]/g, "\'");
-                // smart double quotes
-                s = s.replace(/[\u201C\u201D\u201E]/g, "\"");
-                // ellipsis
-                s = s.replace(/\u2026/g, "...");
-                // dashes
-                s = s.replace(/[\u2013\u2014]/g, "-");
-                // circumflex
-                s = s.replace(/\u02C6/g, "^");
-                // open angle bracket
-                s = s.replace(/\u2039/g, "<");
-                // close angle bracket
-                s = s.replace(/\u203A/g, ">");
-                // spaces
-                s = s.replace(/[\u02DC\u00A0]/g, " ");
-                //Bullets
-                s = s.replace(/[\u002E\u2022]/g, "-");
-                //Replace others
-                s = s.replace(/[\u2020\u2021\u02C6\u2030\u20AC]/g, " ");
+    // Replace caracteres (Windows1252) replace para caracteres ASCII ou ISO-8859-1
+    // Sybase não suporta alguns caracteres da (tabela Windows-1252)
+    // CONSULTAR EM: en.wikipedia.org/wiki/Windows-1252#Codepage_layout
+    replaceWordChars: function (text) {
+        if (text != null && text != undefined) {
+            var s = text;
+            // smart single quotes and apostrophe
+            s = s.replace(/[\u2018\u2019\u201A]/g, "\'");
+            // smart double quotes
+            s = s.replace(/[\u201C\u201D\u201E]/g, "\"");
+            // ellipsis
+            s = s.replace(/\u2026/g, "...");
+            // dashes
+            s = s.replace(/[\u2013\u2014]/g, "-");
+            // circumflex
+            s = s.replace(/\u02C6/g, "^");
+            // open angle bracket
+            s = s.replace(/\u2039/g, "<");
+            // close angle bracket
+            s = s.replace(/\u203A/g, ">");
+            // spaces
+            s = s.replace(/[\u02DC\u00A0]/g, " ");
+            //Bullets
+            s = s.replace(/[\u002E\u2022]/g, "-");
+            //Replace others
+            s = s.replace(/[\u2020\u2021\u02C6\u2030\u20AC]/g, " ");
 
-                return s;
-            }
-            else
-                return "";
-        },
+            return s;
+        }
+        else
+            return "";
+    },
 
 
         ajustarPosicaoModal: function (controle, milisegundos) {

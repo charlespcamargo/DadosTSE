@@ -29,8 +29,7 @@
             EvolucaoPatrimonial.inicializarGrid();
         },
 
-        inicializarGrid: function ()
-        {
+        inicializarGrid: function () {
             HelperJS.dataTableResult("gridResultado", EvolucaoPatrimonial.montarColunasGrid(), [[0, 'asc'], [1, 'asc']], lst);
         },
 
@@ -157,8 +156,7 @@
             return filtro;
         },
 
-        buscar_sucesso: function (data)
-        {
+        buscar_sucesso: function (data) {
             if (data != null)
                 lst = data;
             else
@@ -167,15 +165,13 @@
             HelperJS.dataTableResult("gridResultado", EvolucaoPatrimonial.montarColunasGrid(), [[0, 'asc'], [1, 'asc']], lst);
         },
 
-        exibirGrafico: function (cpf)
-        {
+        exibirGrafico: function (cpf) {
             $("#modalGrafico").modal();
 
             HelperJS.callApi(APIs.API_TSE, "/consultas/patrimoniografico/" + cpf, "GET", null, EvolucaoPatrimonial.exibirGrafico_sucesso, HelperJS.showError);
         },
 
-        exibirGrafico_sucesso: function (dataSource)
-        {
+        exibirGrafico_sucesso: function (dataSource) {
             google.charts.setOnLoadCallback(EvolucaoPatrimonial.drawChart);
         },
 
@@ -183,7 +179,7 @@
 
             var colunas = [];
 
-            colunas.push({ "mData": "Ano" }); 
+            colunas.push({ "mData": "Ano" });
             colunas.push({ "mData": "SiglaEstado" });
             colunas.push({ "mData": "Municipio" });
             colunas.push({ "mData": "Nome" });
@@ -192,12 +188,11 @@
             colunas.push({ "mData": "VlrTotalDeclarado" });
             colunas.push({ "mData": "DiferencaMedia" });
             colunas.push({ "mData": "CargoPolitico" });
-            colunas.push({ "mData": "Partido" });  
+            colunas.push({ "mData": "Partido" });
             colunas.push({
                 "mData": "CPF",
-                "mRender": function (source, type, full)
-                {
-                    var exibirGrafico = "<a class='icons-dataTable tooltips' data-toggle='tooltip' data-original-title='Exibir Gráfico' onclick='EvolucaoPatrimonial.exibirGrafico('" + full.CPF + "')' href='javascript:;'><i class='icon-bar-chart'></i></a>";
+                "mRender": function (source, type, full) {
+                    var exibirGrafico = "<a class='icons-dataTable tooltips' data-toggle='tooltip' data-original-title='Exibir Gráfico' onclick='EvolucaoPatrimonial.exibirGrafico(\"" + full.CPF + "\")' href='javascript:;'><i class='icon-bar-chart'></i></a>";
                     return "<center>" + exibirGrafico + "</center>";
                 }
             });
@@ -206,111 +201,14 @@
         },
 
 
-        drawChart: function ()
-        {
+        drawChart: function () {
             console.log(dataSource);
 
-            var data = google.visualization.arrayToDataTable([dataSource]);
-
-
-            var dv = new google.visualization.DataView(data);
-
-            dv.setColumns([0, 1,
-                {
-                    type: 'number',
-                    label: 'average',
-                    calc: function (dt, row) {
-                        return dt.Nf[row].c[3].v;
-                    }
-                }]);
-
-            var options =
-                {
-                    title: 'Population of Largest U.S. Cities',
-                    vAxis: {
-                        title: 'Total Population',
-                        minValue: 0
-                    },
-                    hAxis: {
-                        title: 'City'
-                    },
-                    series:
-                    {
-
-                    }
-                };
-
-            var chart = new google.visualization.BarChart(document.getElementById('grafico'));
-            chart.draw(data, options);
+            //var data = google.visualization.arrayToDataTable([dataSource]);
 
             HelperJS.ajustarPosicaoModal("#modalGrafico");
         },
 
-        /*
-        drawChart: function () {
-
-            var lstDados = [];
-            var item = {};
-            var ocupacao = {};
-
-            var posicao = [
-                            -0.9,
-                            -0.7,
-                            -0.5,
-                            -0.3,
-                            -0.1,
-                            0.1,
-                            0.3,
-                            0.5,
-                            0.7,
-                            0.9
-            ];
-
-
-            $.each(lst, function (i, obj)
-            { 
-                item = {};
-                item.name = obj.Nome;
-                item.data = obj.lstVlrTotalDeclarado;
-                item.tooltip = { valuePrefix: 'R$' };
-                item.pointPadding = 0.1;
-                //item.pointPlacement = "on";//posicao[i];
-                lstDados.push(item);
-
-                ocupacao = {};
-                ocupacao.name = obj.Ocupacao;
-                ocupacao.data = obj.lstVlrMedioOcupacao;
-                ocupacao.tooltip = { valuePrefix: 'R$' };
-                ocupacao.pointPadding = 0.2;
-                //ocupacao.pointPlacement = "on";//posicao[i];
-                lstDados.push(ocupacao);
-            });
-              
-
-            $("#grafico").highcharts({
-                chart: { type: 'column' },
-                title: { text: 'Evolução Patrimonial' },
-                xAxis: { categories: [2006, 2008, 2010, 2012, 2014, 2016 ] },
-                yAxis: [{ min: 0, title: { text: 'Candidatos' } },
-                        {
-                            title: { text: 'Valor declardo de Bens' },
-                            opposite: true
-                        }],
-                legend: { shadow: false },
-                tooltip: { shared: true },
-                plotOptions:
-                {
-                    column: {
-                        stacking: 'normal'
-                    }
-                },
-                series: lstDados
-            });
-
-
-        },
-
-        */
 
         hardCode: function () {
             $("#ddlAnoEleitoral").val('2016').trigger("liszt:updated");
