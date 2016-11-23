@@ -3,14 +3,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPrincipal" runat="server">
 
     <script src="EvolucaoPatrimonial.js"></script>
-<<<<<<< 9018fd183bea638754aa6973f326353c31baa4a7
+    <<<<<<< 9018fd183bea638754aa6973f326353c31baa4a7
     
 =======
     <script src="/Assets/Plugins/highcharts/highcharts.js"></script>
 
->>>>>>> 7c1ad28b67310c1c3463c384c674007f85312c48
+    >>>>>>> 7c1ad28b67310c1c3463c384c674007f85312c48
 </asp:Content>
- 
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPrincipal" runat="server">
 
     <h3 class="page-title">Consultas 
@@ -30,7 +30,7 @@
         <li>
             <a href="default.aspx">Evolução Patrimonial</a>
         </li>
-        
+
     </ul>
 
     <div class="container-fluid">
@@ -235,15 +235,12 @@
             </div>
         </div>
         <div class="modal-body">
-<<<<<<< 9018fd183bea638754aa6973f326353c31baa4a7
-            <div id="grafico" style="width: 900px; height: 500px;">
-=======
 
-            <div class="row-fluid">
-                <div id="grafico" style="min-width: 100%; height: 100%; margin: 0 auto">
+            <div style="min-width: 900px">
+                <div id="grafico">
                 </div>
->>>>>>> 7c1ad28b67310c1c3463c384c674007f85312c48
             </div>
+
         </div>
         <div class="modal-footer">
             <a type="button" class="btn btn-margin-5px" id="btnFechar" data-dismiss="modal">Fechar | <i class="icon-off"></i></a>

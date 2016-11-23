@@ -262,3 +262,13 @@ __pycache__/
 #Google Drive
 *.desktop.ini
 *desktop.ini
+
+#Arquivos Chatos
+*DesignTimeResolveAssemblyReferencesInput.cache
+*FSCar.BD.API.csproj.FileListAbsolute.txt
+*esignTimeResolveAssemblyReferencesInput.cache
+*FSCar.BD.BackEnd.csproj.FileListAbsolute.txt
+*FSCar.BD.Importacao.csproj.FileListAbsolute.txt
+*esignTimeResolveAssemblyReferencesInput.cache
+*FSCar.DB.UI.csproj.FileListAbsolute.txt
+

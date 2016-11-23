@@ -34,11 +34,8 @@
         },
 
         inicializarGoogleCharts: function () {
-<<<<<<< 9018fd183bea638754aa6973f326353c31baa4a7
-            google.charts.load('current', { 'packages': ['bar'] });
-=======
+
             google.charts.load('current', { packages: ['corechart', 'bar'] });
->>>>>>> 7c1ad28b67310c1c3463c384c674007f85312c48
         },
 
         alterouRegiao: function () {
@@ -173,24 +170,16 @@
 
         exibirGrafico: function (cpf) {
             $("#modalGrafico").modal();
-
             EvolucaoPatrimonial.exibirGrafico_sucesso(cpf);
         },
 
-<<<<<<< 9018fd183bea638754aa6973f326353c31baa4a7
-        exibirGrafico_sucesso: function (data) {
 
-            if (data != null)
-                dataSource = data;
-            else
-                dataSource = [];
+        //google.charts.setOnLoadCallback(EvolucaoPatrimonial.drawChart);
 
-            //google.charts.setOnLoadCallback(EvolucaoPatrimonial.drawChart);
-=======
-        exibirGrafico_sucesso: function (cpf) {            
+        exibirGrafico_sucesso: function (cpf) {
             EvolucaoPatrimonial.cpf = cpf;
             google.charts.setOnLoadCallback(EvolucaoPatrimonial.drawChart);
->>>>>>> 7c1ad28b67310c1c3463c384c674007f85312c48
+
         },
 
         montarColunasGrid: function () {
@@ -220,81 +209,14 @@
 
 
         drawChart: function () {
-<<<<<<< 9018fd183bea638754aa6973f326353c31baa4a7
-            //console.log(dataSource);
-            //var data = google.visualization.arrayToDataTable([
-            //                                                    ['Ano', 'FERNANDO OLIVEIRA', 'Média de Sua Ocupação'],
-            //                                                    ['2006', 89000.00, 102874.19],
-            //                                                    ['2008', 99490.00, 102874.19],
-            //                                                    ['2010', 139136.38, 102874.19],
-            //                                                    ['2012', 151439.17, 102874.19],
-            //                                                    ['2014', 600712.92, 102874.19],
-            //                                                    ['2016', 106463.63, 102874.19]
-            //]);
-
-            //dataSource = data;
-
-            //var options =
-            //{
-            //    title: '',
-            //    vAxis: { title: 'Bens Declarados', prefix: 'R$ ' },
-            //    hAxis: { title: 'Eleições', prefix: 'R$ ' },
-            //    seriesType: 'bars',
-            //    width: 1000,
-            //    height: 400,
-            //    series: { 5: { type: 'line' } }
-            //};
-
-
-            //console.log(dataSource);
-
-            //var chart = new google.visualization.ComboChart(document.getElementById('grafico'));
-            //chart.draw(dataSource, options);
-
-            //HelperJS.ajustarPosicaoModal("#modalGrafico");
-
-            //var data = google.visualization.arrayToDataTable([
-            //                                                        ['Year', 'Fernando', 'Média'],
-            //                                                        ['2014', 1000, 200],
-            //                                                        ['2015', 1170, 250],
-            //                                                        ['2016', 660, 1300],
-            //                                                        ['2017', 1030, 350]
-            //]);
-
-            var data = google.visualization.arrayToDataTable([
-                                                                  ['Year', 'Sales', 'Expenses', 'Profit'],
-                                                                  ['2014', 1000, 400, 200],
-                                                                  ['2015', 1170, 460, 250],
-                                                                  ['2016', 660, 1120, 300],
-                                                                  ['2017', 1030, 540, 350]
-            ]);
-
-            var options = {
-                chart: {
-                    title: 'Company Performance',
-                    subtitle: 'Sales, Expenses, and Profit: 2014-2017',
-                },
-                bars: 'vertical',
-                vAxis: { format: 'decimal' },
-                height: 400,
-                colors: ['#1b9e77', '#d95f02', '#7570b3']
-            };
-
-            var chart = new google.charts.Bar(document.getElementById('grafico'));
-            chart.draw(data, google.charts.Bar.convertOptions(options));
-        },
-
-
-=======
             var data = new google.visualization.DataTable();
             var rows = [];
             EvolucaoPatrimonial.current = undefined;
             for (var i = 0; i < EvolucaoPatrimonial.datasource.length; i++) {
                 var item = EvolucaoPatrimonial.datasource[i];
-                if (item.CPF == EvolucaoPatrimonial.cpf)
-                {
-                    EvolucaoPatrimonial.current  = item;
-                    rows.push([item.Ano + '', HelperJS.toNumber(item.VlrMedioOcupacao), HelperJS.toNumber(item.VlrTotalDeclarado)]);
+                if (item.CPF == EvolucaoPatrimonial.cpf) {
+                    EvolucaoPatrimonial.current = item;
+                    rows.push([item.Ano + '', HelperJS.toNumber(item.VlrTotalDeclarado), HelperJS.toNumber(item.VlrMedioOcupacao)]);
                 }
             }
 
@@ -305,23 +227,24 @@
             data.addRows(rows);
 
             var options = {
-                title: 'Evolução Patrimonial',
-                chartArea: { width: '50%' },                
+                title: 'Evolução Patrimonial - ' + EvolucaoPatrimonial.current.Nome,
                 vAxis: {
                     title: 'Valor em R$'
                 },
+                chartArea: { left: 150,  width: '60%'},
                 hAxis: {
                     title: 'Ano',
                     minValue: 2006
-                }
+                },
+                width: 900,
+                heigth: 400,
             };
 
             var chart = new google.visualization.ColumnChart(document.getElementById('grafico'));
             chart.draw(data, options);
->>>>>>> 7c1ad28b67310c1c3463c384c674007f85312c48
 
 
-
+        },
         hardCode: function () {
             $("#ddlAnoEleitoral").val('2016').trigger("liszt:updated");
             var votorantim = {};
@@ -329,7 +252,8 @@
             votorantim.Nome = "Votorantim";
             HelperJS.popularSelect2("hfMunicipio", votorantim);
             $("#ddlCargoPretendido").val('8').trigger("liszt:updated");
-        },
 
+
+        }
     }
 }();
