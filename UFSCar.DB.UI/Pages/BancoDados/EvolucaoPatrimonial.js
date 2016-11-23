@@ -247,10 +247,10 @@
         },
         hardCode: function () {
             $("#ddlAnoEleitoral").val('2016').trigger("liszt:updated");
-            var votorantim = {};
-            votorantim.ID = 5580;
-            votorantim.Nome = "Votorantim";
-            HelperJS.popularSelect2("hfMunicipio", votorantim);
+            var cidade = {};
+            cidade.ID = 4884;
+            cidade.Nome = "São Paulo";
+            HelperJS.popularSelect2("hfMunicipio", cidade);
             $("#ddlCargoPretendido").val('8').trigger("liszt:updated");
 
 
