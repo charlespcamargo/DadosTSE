@@ -55,6 +55,13 @@ body {
   width: auto !important; 
 }
 
+#collapseOne {
+    overflow: hidden;
+}
+#collapseOne.in {
+    overflow: visible;
+}
+
 /***
 General typography 
 ***/

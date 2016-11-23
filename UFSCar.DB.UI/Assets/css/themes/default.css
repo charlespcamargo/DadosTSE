@@ -4,6 +4,22 @@ Default theme
 /***
 Reset and overrides  
 ***/
+
+#collapseOne {
+    overflow: hidden;
+}
+#collapseOne.in {
+    overflow: visible;
+}
+
+.chosen-drop {
+    z-index: 999999 !important;
+}
+
+.chzn-drop {
+    z-index: 999999 !important;
+}
+
 body {
   background-color: #3d3d3d !important;
 }
