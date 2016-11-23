@@ -36,7 +36,7 @@ BEGIN
 								@IDOCUPACAO			= NULL,
 								@REGIAO				= NULL,
 								@SIGLAESTADO		= NULL,
-								@IDMUNICIPIO		= 5580,
+								@IDMUNICIPIO		= 4884,
 								@SIGLAPARTIDO		= NULL,
 								@IDCARGOPRETENDIDO	= 8
 
