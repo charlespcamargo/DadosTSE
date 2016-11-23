@@ -17,7 +17,7 @@ CREATE PROCEDURE SP_ANALISE3_1(
 	@ANO INT = NULL,
 	@SEXO VARCHAR(20) = NULL,
 	@IDESCOLARIDADE INT = NULL,
-	@IDOCUPACAO INT = NULL,
+	@OCUPACAO VARCHAR(100) = NULL,
 	@REGIAO VARCHAR(50) = NULL,
 	@SIGLAESTADO VARCHAR(2) = NULL,
 	@IDMUNICIPIO INT = NULL,
@@ -89,25 +89,23 @@ BEGIN
 		INNER JOIN TDOcupacao ON TFDadoEleitoral.OcupacaoID = TDOcupacao.ID
 		INNER JOIN TDPartidoColigacao ON TFDadoEleitoral.PartidoColigacaoID = TDPartidoColigacao.ID
 		WHERE 	
-			--	ISNULL(@ANO,TFDadoEleitoral.Ano) = TFDadoEleitoral.Ano
-			--AND 
-			--	ISNULL(@SEXO,TDCandidato.Sexo) = TDCandidato.Sexo		
-			--AND 
-			--	ISNULL(@IDESCOLARIDADE,TPCandidatoEscolaridade.EscolaridadeID) = TPCandidatoEscolaridade.EscolaridadeID
-			--AND 
-			--	ISNULL(@IDOCUPACAO,TDOcupacao.ID) = TDOcupacao.ID
-			--AND 
-			--	ISNULL(@REGIAO,TDLocalidade.Regiao) = TDLocalidade.Regiao
-			--AND 
-			--	ISNULL(@SIGLAESTADO,TDLocalidade.SiglaEstado) = TDLocalidade.SiglaEstado
-			--AND 
-			--	ISNULL(@IDMUNICIPIO,TDLocalidade.ID) = TDLocalidade.ID
-			--AND 
-			--	ISNULL(@SIGLAPARTIDO,TDPartidoColigacao.Partido) = TDPartidoColigacao.Partido
-			--AND 
-			--	ISNULL(@IDCARGOPRETENDIDO,TDCargoPolitico.ID) = TDCargoPolitico.ID
-
-		TDPartidoColigacao.Partido = 'PT' AND TDCargoPolitico.Descricao = 'VEREADOR' AND Municipio = 'RIO DE JANEIRO'
+				ISNULL(@ANO,TFDadoEleitoral.Ano) = TFDadoEleitoral.Ano
+			AND 
+				ISNULL(@SEXO,TDCandidato.Sexo) = TDCandidato.Sexo		
+			AND 
+				ISNULL(@IDESCOLARIDADE,TPCandidatoEscolaridade.EscolaridadeID) = TPCandidatoEscolaridade.EscolaridadeID
+			AND 
+				ISNULL(@OCUPACAO,TDOcupacao.Descricao) = TDOcupacao.Descricao
+			AND 
+				ISNULL(@REGIAO,TDLocalidade.Regiao) = TDLocalidade.Regiao
+			AND 
+				ISNULL(@SIGLAESTADO,TDLocalidade.SiglaEstado) = TDLocalidade.SiglaEstado
+			AND 
+				ISNULL(@IDMUNICIPIO,TDLocalidade.ID) = TDLocalidade.ID
+			AND 
+				ISNULL(@SIGLAPARTIDO,TDPartidoColigacao.Partido) = TDPartidoColigacao.Partido
+			AND 
+				ISNULL(@IDCARGOPRETENDIDO,TDCargoPolitico.ID) = TDCargoPolitico.ID
 
 		GROUP BY 
 		   TFDadoEleitoral.Ano, 

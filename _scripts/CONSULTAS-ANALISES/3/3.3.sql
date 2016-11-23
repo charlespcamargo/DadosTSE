@@ -17,7 +17,7 @@ CREATE PROCEDURE SP_ANALISE3_3(
 	@ANO INT = NULL,
 	@SEXO VARCHAR(20) = NULL,
 	@IDESCOLARIDADE INT = NULL,
-	@IDOCUPACAO INT = NULL,
+	@OCUPACAO VARCHAR(100) = NULL,
 	@REGIAO VARCHAR(50) = NULL,
 	@SIGLAESTADO VARCHAR(2) = NULL,
 	@IDMUNICIPIO INT = NULL,
@@ -90,7 +90,7 @@ BEGIN
 			AND 
 				ISNULL(@IDESCOLARIDADE,TPCandidatoEscolaridade.EscolaridadeID) = TPCandidatoEscolaridade.EscolaridadeID
 			AND 
-				ISNULL(@IDOCUPACAO,TDOcupacao.ID) = TDOcupacao.ID
+				ISNULL(@OCUPACAO,TDOcupacao.Descricao) = TDOcupacao.Descricao
 			AND 
 				ISNULL(@REGIAO,TDLocalidade.Regiao) = TDLocalidade.Regiao
 			AND 

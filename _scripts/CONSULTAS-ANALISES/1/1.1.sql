@@ -18,7 +18,7 @@ CREATE PROCEDURE SP_ANALISE1_1
 	@TODOSANOS BIT = NULL,
 	@SEXO VARCHAR(20) = NULL,
 	@IDESCOLARIDADE INT = NULL,
-	@IDOCUPACAO INT = NULL,
+	@OCUPACAO VARCHAR(100)= NULL,
 	@REGIAO VARCHAR(50) = NULL,
 	@SIGLAESTADO VARCHAR(2) = NULL,
 	@IDMUNICIPIO INT = NULL,
@@ -79,7 +79,7 @@ BEGIN
    WHERE ISNULL(@ANO, TFDadoEleitoral.Ano) = TFDadoEleitoral.Ano
 	 AND ISNULL(@SEXO,TDCandidato.Sexo) = TDCandidato.Sexo		
 	 AND ISNULL(@IDESCOLARIDADE,TPCandidatoEscolaridade.EscolaridadeID) = TPCandidatoEscolaridade.EscolaridadeID
-	 AND ISNULL(@IDOCUPACAO,TDOcupacao.ID) = TDOcupacao.ID
+	 AND ISNULL(@OCUPACAO,TDOcupacao.Descricao) = TDOcupacao.Descricao
 	 AND ISNULL(@REGIAO,TDLocalidade.Regiao) = TDLocalidade.Regiao
 	 AND ISNULL(@SIGLAESTADO,TDLocalidade.SiglaEstado) = TDLocalidade.SiglaEstado
 	 AND ISNULL(@IDMUNICIPIO,TDLocalidade.ID) = TDLocalidade.ID
@@ -141,7 +141,7 @@ BEGIN
 								   WHERE ISNULL(@ANO, TFDadoEleitoral.Ano) = TFDadoEleitoral.Ano
 									 AND ISNULL(@SEXO,TDCandidato.Sexo) = TDCandidato.Sexo		
 									 AND ISNULL(@IDESCOLARIDADE,TPCandidatoEscolaridade.EscolaridadeID) = TPCandidatoEscolaridade.EscolaridadeID
-									 AND ISNULL(@IDOCUPACAO,TDOcupacao.ID) = TDOcupacao.ID
+									 AND ISNULL(@OCUPACAO,TDOcupacao.Descricao) = TDOcupacao.Descricao
 									 AND ISNULL(@REGIAO,TDLocalidade.Regiao) = TDLocalidade.Regiao
 									 AND ISNULL(@SIGLAESTADO,TDLocalidade.SiglaEstado) = TDLocalidade.SiglaEstado
 									 AND ISNULL(@IDMUNICIPIO,TDLocalidade.ID) = TDLocalidade.ID
