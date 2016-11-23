@@ -1,0 +1,73 @@
+.Vazio
+{
+    background-color: #ffffff !important;
+}
+.Relatorio
+{
+    font-family: Verdana;
+    font-size: 9px; /*border: 1px solid gray;*/
+    border-collapse: collapse;
+}
+.Relatorio tr td
+{
+    padding: 6px 6px 6px 6px;
+    margin-right: 1px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    border: 1px solid gray;
+}
+.Quebra1
+{
+    background-color: #4F4F4F;
+    font-weight: bold;
+    border: 1px solid gray;
+}
+.Quebra2
+{
+    background-color: #696969;
+    font-weight: bold;
+    border: 1px solid gray;
+}
+.Quebra3
+{
+    background-color: #9C9C9C;
+    font-weight: bold;
+    border: 1px solid gray;
+}
+.Quebra4
+{
+    background-color: #CFCFCF;
+    font-weight: bold;
+    border: 1px solid gray;
+}
+.Item
+{
+    background-color: #e6e6e6;
+    color: Black;
+    font-family: Verdana;
+    font-size: 10px;
+    border: 1px solid gray;
+}
+.ItemTitulo
+{
+    background-color: #e6e6e6;
+    color: Black;
+    font-family: Verdana;
+    font-size: 10px;
+    font-weight: bold;
+    border: 1px solid gray;
+}
+.Item:hover
+{
+    background-color: #7AC5CD !important;
+}
+.tralgo
+{
+    width: 20px;
+}
+.stLabelLoginTitle
+{
+	font-weight: bold;
+	font-size: 14px;
+	font-family: Verdana;
+}

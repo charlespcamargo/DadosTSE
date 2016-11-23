@@ -1,13 +1,12 @@
-﻿<%@ Page Title="UFSCar - Evolução Patrimonial" Language="C#" MasterPageFile="~/Models/MasterPage.Master" AutoEventWireup="true" CodeBehind="EvolucaoPatrimonial.aspx.cs" Inherits="UFSCar.DB.UI.Pages.BancoDados.EvolucaoPatrimonial" %>
+﻿<%@ Page Title="UFSCar - Evolução Patrimonial" Language="C#" MasterPageFile="~/Models/MasterPrincipal.Master" AutoEventWireup="true" CodeBehind="EvolucaoPatrimonial.aspx.cs" Inherits="UFSCar.DB.UI.Pages.BancoDados.EvolucaoPatrimonial" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadPrincipal" runat="server">
 
     <script src="EvolucaoPatrimonial.js"></script>
-    <script src="/Assets/Plugins/highcharts/highcharts.js"></script> 
-
+    
 </asp:Content>
-
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+ 
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPrincipal" runat="server">
 
     <h3 class="page-title">Consultas 
         <small>Métricas sobre os dados do TSE</small>
@@ -26,13 +25,7 @@
         <li>
             <a href="default.aspx">Evolução Patrimonial</a>
         </li>
-        <li class="pull-right no-text-shadow">
-            <div id="dashboard-report-range" class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change dashboard date range">
-                <i class="icon-calendar"></i>
-                <span></span>
-                <i class="icon-angle-down"></i>
-            </div>
-        </li>
+        
     </ul>
 
     <div class="container-fluid">
@@ -230,7 +223,6 @@
         </div>
     </div>
 
-
     <div id="modalGrafico" class="modal container hide fade" tabindex="-1" data-backdrop="fixed">
         <div class="portlet box light-grey">
             <div class="portlet-title">
@@ -238,12 +230,8 @@
             </div>
         </div>
         <div class="modal-body">
-
-            <div class="row-fluid">
-                <div id="grafico" style="min-width: 400px; height: 400px; margin: 0 auto">
-                </div>
+            <div id="grafico" style="width: 900px; height: 500px;">
             </div>
-
         </div>
         <div class="modal-footer">
             <a type="button" class="btn btn-margin-5px" id="btnFechar" data-dismiss="modal">Fechar | <i class="icon-off"></i></a>

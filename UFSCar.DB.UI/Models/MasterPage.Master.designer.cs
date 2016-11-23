@@ -13,6 +13,15 @@ namespace UFSCar.DB.UI.Models {
     public partial class MasterPage {
         
         /// <summary>
+        /// style_light control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlLink style_light;
+        
+        /// <summary>
         /// head control.
         /// </summary>
         /// <remarks>
@@ -58,12 +67,12 @@ namespace UFSCar.DB.UI.Models {
         protected global::System.Web.UI.WebControls.Label lblNome;
         
         /// <summary>
-        /// ContentPlaceHolder1 control.
+        /// Content control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder Content;
     }
 }

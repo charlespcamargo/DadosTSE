@@ -24,6 +24,11 @@
 
         inicializarControles: function () {
             PorSexo.carregarCombos();
+            PorSexo.inicializarGrid();
+        },
+
+        inicializarGrid: function () {
+            HelperJS.dataTableResult("gridPorSexo", PorSexo.montarColunasGrid(), [[0, 'asc'], [1, 'asc']], lst);
         },
 
         inicializarGoogleCharts: function () {

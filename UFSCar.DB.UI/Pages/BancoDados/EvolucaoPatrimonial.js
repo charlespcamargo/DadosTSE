@@ -34,7 +34,7 @@
         },
 
         inicializarGoogleCharts: function () {
-            google.charts.load('current', { 'packages': ['corechart'] });
+            google.charts.load('current', { 'packages': ['bar'] });
         },
 
         alterouRegiao: function () {
@@ -171,8 +171,14 @@
             HelperJS.callApi(APIs.API_TSE, "/consultas/patrimoniografico/" + cpf, "GET", null, EvolucaoPatrimonial.exibirGrafico_sucesso, HelperJS.showError);
         },
 
-        exibirGrafico_sucesso: function (dataSource) {
-            google.charts.setOnLoadCallback(EvolucaoPatrimonial.drawChart);
+        exibirGrafico_sucesso: function (data) {
+
+            if (data != null)
+                dataSource = data;
+            else
+                dataSource = [];
+
+            //google.charts.setOnLoadCallback(EvolucaoPatrimonial.drawChart);
         },
 
         montarColunasGrid: function () {
@@ -192,7 +198,7 @@
             colunas.push({
                 "mData": "CPF",
                 "mRender": function (source, type, full) {
-                    var exibirGrafico = "<a class='icons-dataTable tooltips' data-toggle='tooltip' data-original-title='Exibir Gráfico' onclick='EvolucaoPatrimonial.exibirGrafico(\"" + full.CPF + "\")' href='javascript:;'><i class='icon-bar-chart'></i></a>";
+                    var exibirGrafico = "<a class='icons-dataTable tooltips' data-toggle='tooltip' data-original-title='Exibir Gráfico' onclick=\"EvolucaoPatrimonial.exibirGrafico('" + full.CPF + "');\" href='javascript:;'><i class='icon-bar-chart'></i></a>";
                     return "<center>" + exibirGrafico + "</center>";
                 }
             });
@@ -202,12 +208,71 @@
 
 
         drawChart: function () {
-            console.log(dataSource);
+            //console.log(dataSource);
+            //var data = google.visualization.arrayToDataTable([
+            //                                                    ['Ano', 'FERNANDO OLIVEIRA', 'Média de Sua Ocupação'],
+            //                                                    ['2006', 89000.00, 102874.19],
+            //                                                    ['2008', 99490.00, 102874.19],
+            //                                                    ['2010', 139136.38, 102874.19],
+            //                                                    ['2012', 151439.17, 102874.19],
+            //                                                    ['2014', 600712.92, 102874.19],
+            //                                                    ['2016', 106463.63, 102874.19]
+            //]);
 
-            //var data = google.visualization.arrayToDataTable([dataSource]);
+            //dataSource = data;
 
-            HelperJS.ajustarPosicaoModal("#modalGrafico");
+            //var options =
+            //{
+            //    title: '',
+            //    vAxis: { title: 'Bens Declarados', prefix: 'R$ ' },
+            //    hAxis: { title: 'Eleições', prefix: 'R$ ' },
+            //    seriesType: 'bars',
+            //    width: 1000,
+            //    height: 400,
+            //    series: { 5: { type: 'line' } }
+            //};
+
+
+            //console.log(dataSource);
+
+            //var chart = new google.visualization.ComboChart(document.getElementById('grafico'));
+            //chart.draw(dataSource, options);
+
+            //HelperJS.ajustarPosicaoModal("#modalGrafico");
+
+            //var data = google.visualization.arrayToDataTable([
+            //                                                        ['Year', 'Fernando', 'Média'],
+            //                                                        ['2014', 1000, 200],
+            //                                                        ['2015', 1170, 250],
+            //                                                        ['2016', 660, 1300],
+            //                                                        ['2017', 1030, 350]
+            //]);
+
+            var data = google.visualization.arrayToDataTable([
+                                                                  ['Year', 'Sales', 'Expenses', 'Profit'],
+                                                                  ['2014', 1000, 400, 200],
+                                                                  ['2015', 1170, 460, 250],
+                                                                  ['2016', 660, 1120, 300],
+                                                                  ['2017', 1030, 540, 350]
+            ]);
+
+            var options = {
+                chart: {
+                    title: 'Company Performance',
+                    subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+                },
+                bars: 'vertical',
+                vAxis: { format: 'decimal' },
+                height: 400,
+                colors: ['#1b9e77', '#d95f02', '#7570b3']
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('grafico'));
+            chart.draw(data, google.charts.Bar.convertOptions(options));
         },
+
+
+
 
 
         hardCode: function () {

@@ -163,6 +163,8 @@
     <Content Include="Assets\img\syncfusion-icons-white.png" />
     <Content Include="Assets\img\syncfusion-icons.png" />
     <Content Include="Assets\img\uploadify-cancel.png" />
+    <Content Include="Assets\jquery-ui-1.10.2.min.js" />
+    <Content Include="Assets\jquery.js" />
     <Content Include="Assets\Plugins\bootstrap-colorpicker\css\colorpicker.css" />
     <Content Include="Assets\Plugins\bootstrap-colorpicker\img\alpha.png" />
     <Content Include="Assets\Plugins\bootstrap-colorpicker\img\hue.png" />
@@ -1231,6 +1233,7 @@
     <Content Include="Assets\Plugins\uniform\css\uniform.default.scss" />
     <Content Include="Assets\Plugins\uniform\images\Thumbs.db" />
     <Content Include="Assets\Plugins\uniform\README.textile" />
+    <Content Include="Models\MasterPrincipal.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1272,6 +1275,13 @@
     </Compile>
     <Compile Include="Models\MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MasterPrincipal.Master.cs">
+      <DependentUpon>MasterPrincipal.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Models\MasterPrincipal.Master.designer.cs">
+      <DependentUpon>MasterPrincipal.Master</DependentUpon>
     </Compile>
     <Compile Include="Pages\BancoDados\Escolaridade.aspx.cs">
       <DependentUpon>Escolaridade.aspx</DependentUpon>

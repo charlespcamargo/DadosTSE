@@ -93,7 +93,7 @@
 
         buscar: function () {
             var filtro = Escolaridade.montarFiltro(); 
-            HelperJS.callApi(APIs.API_TSE, "/consultas/escolaridade/", "POST", filtro, EvolucaoPatrimonial.buscar_sucesso, HelperJS.showError);
+            HelperJS.callApi(APIs.API_TSE, "/consultas/escolaridade/", "POST", filtro, Escolaridade.buscar_sucesso, HelperJS.showError);
         },
 
         montarFiltro: function ()

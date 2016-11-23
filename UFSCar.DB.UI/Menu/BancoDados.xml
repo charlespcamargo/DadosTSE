@@ -2,10 +2,10 @@
 
 <Menu text="Banco de Dados" usoOffLine="true">
 
-  <SubMenu text="Banco de Dados" url=""  icone="icon-usd" >   
-      <SubMenu text="Patrimonial" url="/Pages/BancoDados/EvolucaoPatrimonial.aspx" />    
-      <SubMenu text="Escolaridade" url="/Pages/BancoDados/Escolaridade.aspx" />    
-      <SubMenu text="Por Sexo" url="/Pages/BancoDados/PorSexo.aspx" />    
+  <SubMenu text="Banco de Dados" url=""  icone="icon-bar-chart" >
+    <SubMenu text="Patrimonial" url="/Pages/BancoDados/EvolucaoPatrimonial.aspx"  icone="icon-money" />
+    <SubMenu text="Escolaridade" url="/Pages/BancoDados/Escolaridade.aspx"  icone="icon-bar-chart" />
+    <SubMenu text="Por Sexo" url="/Pages/BancoDados/PorSexo.aspx"  icone="icon-female" />
   </SubMenu>
- 
+
 </Menu>

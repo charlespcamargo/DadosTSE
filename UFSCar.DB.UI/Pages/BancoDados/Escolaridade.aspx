@@ -1,14 +1,14 @@
-﻿<%@ Page Title="UFSCar - Evolução Patrimonial" Language="C#" MasterPageFile="~/Models/MasterPage.Master" AutoEventWireup="true" CodeBehind="Escolaridade.aspx.cs" Inherits="UFSCar.DB.UI.Pages.BancoDados.Escolaridade" %>
+﻿<%@ Page Title="UFSCar - Evolução Patrimonial" Language="C#" MasterPageFile="~/Models/MasterPrincipal.Master" AutoEventWireup="true" CodeBehind="Escolaridade.aspx.cs" Inherits="UFSCar.DB.UI.Pages.BancoDados.Escolaridade" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadPrincipal" runat="server">
 
     <script src="Escolaridade.js"></script>
 
 </asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPrincipal" runat="server">
 
-    <h3 class="page-title">Dashboard 
+    <h3 class="page-title">Consultas 
         <small>Métricas sobre os dados do TSE</small>
     </h3>
 
@@ -179,7 +179,7 @@
 
                 <div class="portlet box grey">
                     <div class="portlet-title">
-                        <div class="caption"><i class="icon-cogs"></i>Evolução Patrimonial</div>
+                        <div class="caption"><i class="icon-cogs"></i>Escolaridade</div>
                         <div class="tools">
                             <a href="javascript:;" class="collapse"></a>
                         </div>

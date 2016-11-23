@@ -1,14 +1,14 @@
-﻿<%@ Page Title="UFSCar - Evolução Patrimonial" Language="C#" MasterPageFile="~/Models/MasterPage.Master" AutoEventWireup="true" CodeBehind="PorSexo.aspx.cs" Inherits="UFSCar.DB.UI.Pages.BancoDados.PorSexo" %>
+﻿<%@ Page Title="UFSCar - Evolução Patrimonial" Language="C#" MasterPageFile="~/Models/MasterPrincipal.Master" AutoEventWireup="true" CodeBehind="PorSexo.aspx.cs" Inherits="UFSCar.DB.UI.Pages.BancoDados.PorSexo" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadPrincipal" runat="server">
 
     <script src="PorSexo.js"></script>
 
 </asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPrincipal" runat="server">
 
-    <h3 class="page-title">Dashboard 
+    <h3 class="page-title">Consultas 
         <small>Métricas sobre os dados do TSE</small>
     </h3>
 
@@ -189,8 +189,8 @@
                         </div>
                         <div id="chart_tooltip_div" style="/*min-height: 100px; min-width: 100px;*/ display: none">
                         </div>
-                        <div id="table_div" style="min-height: 100px" class="portlet-body no-more-tables">
-                            <table id="gridPorSexo" class="display" class="table table-striped table-bordered table-hover table-full-width" cellspacing="0" width="100%">
+                        <div class="portlet-body no-more-tables">
+                            <table id="gridPorSexo" class="table table-striped table-bordered table-hover table-full-width" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
                                         <th>Ano</th>
@@ -204,21 +204,7 @@
                                         <th>%Feminino</th>
                                         <th>%Masculino</th>
                                     </tr>
-                                </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th>Ano</th>
-                                        <th>Região</th>
-                                        <th>Estado</th>
-                                        <th>Município</th>
-                                        <th>Partido</th>
-                                        <th>Qtd. M</th>
-                                        <th>Qtd. F</th>
-                                        <th>Total</th>
-                                        <th>%Feminino</th>
-                                        <th>%Masculino</th>
-                                    </tr>
-                                </tfoot>
+                                </thead>  
                             </table>
                         </div>
                     </div>
