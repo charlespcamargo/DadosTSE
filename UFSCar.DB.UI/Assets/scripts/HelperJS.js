@@ -1317,11 +1317,9 @@ var HelperJS = function () {
         },
         toNumber: function (number) {
 
-            number = number.replace(/[\\.]/, "");
-
-            number = number.replace(',', '.');
             
-            return parseFloat(number);
+            return parseFloat(HelperJS.formataDecimal(number));
+
         },
         fixChoosen: function () {
             var els = jQuery(".chosen-select");
