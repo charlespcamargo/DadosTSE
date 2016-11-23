@@ -216,7 +216,7 @@
                 var item = EvolucaoPatrimonial.datasource[i];
                 if (item.CPF == EvolucaoPatrimonial.cpf) {
                     EvolucaoPatrimonial.current = item;
-                    rows.push([item.Ano + '', HelperJS.toNumber(item.VlrMedioOcupacao), HelperJS.toNumber(item.VlrTotalDeclarado)]);
+                    rows.push([item.Ano + '', HelperJS.toNumber(item.VlrTotalDeclarado), HelperJS.toNumber(item.VlrMedioOcupacao)]);
                 }
             }
 
