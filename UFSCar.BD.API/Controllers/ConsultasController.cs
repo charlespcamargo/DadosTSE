@@ -49,9 +49,9 @@ namespace UFSCar.BD.API.Controllers
         {
             try
             {
-                //lst = ConsultasBL.New.EvolucaoPatrimonialGrafico(cpf);
+                var lst = ConsultasBL.New.EvolucaoPatrimonialGrafico(cpf);
 
-                return Request.CreateResponse(HttpStatusCode.OK);
+                return Request.CreateResponse(HttpStatusCode.OK, lst);
             }
             catch (ArgumentException aex)
             {

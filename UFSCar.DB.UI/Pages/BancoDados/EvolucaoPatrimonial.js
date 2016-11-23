@@ -34,7 +34,11 @@
         },
 
         inicializarGoogleCharts: function () {
+<<<<<<< 9018fd183bea638754aa6973f326353c31baa4a7
             google.charts.load('current', { 'packages': ['bar'] });
+=======
+            google.charts.load('current', { packages: ['corechart', 'bar'] });
+>>>>>>> 7c1ad28b67310c1c3463c384c674007f85312c48
         },
 
         alterouRegiao: function () {
@@ -54,6 +58,7 @@
             EvolucaoPatrimonial.carregarComboOcupacao();
             EvolucaoPatrimonial.carregarComboUF();
             EvolucaoPatrimonial.carregarComboMunicipio();
+
         },
 
         carregarComboOcupacao: function () {
@@ -161,6 +166,7 @@
                 lst = data;
             else
                 lst = [];
+            EvolucaoPatrimonial.datasource = data;
 
             HelperJS.dataTableResult("gridResultado", EvolucaoPatrimonial.montarColunasGrid(), [[0, 'asc'], [1, 'asc']], lst);
         },
@@ -168,9 +174,10 @@
         exibirGrafico: function (cpf) {
             $("#modalGrafico").modal();
 
-            HelperJS.callApi(APIs.API_TSE, "/consultas/patrimoniografico/" + cpf, "GET", null, EvolucaoPatrimonial.exibirGrafico_sucesso, HelperJS.showError);
+            EvolucaoPatrimonial.exibirGrafico_sucesso(cpf);
         },
 
+<<<<<<< 9018fd183bea638754aa6973f326353c31baa4a7
         exibirGrafico_sucesso: function (data) {
 
             if (data != null)
@@ -179,6 +186,11 @@
                 dataSource = [];
 
             //google.charts.setOnLoadCallback(EvolucaoPatrimonial.drawChart);
+=======
+        exibirGrafico_sucesso: function (cpf) {            
+            EvolucaoPatrimonial.cpf = cpf;
+            google.charts.setOnLoadCallback(EvolucaoPatrimonial.drawChart);
+>>>>>>> 7c1ad28b67310c1c3463c384c674007f85312c48
         },
 
         montarColunasGrid: function () {
@@ -208,6 +220,7 @@
 
 
         drawChart: function () {
+<<<<<<< 9018fd183bea638754aa6973f326353c31baa4a7
             //console.log(dataSource);
             //var data = google.visualization.arrayToDataTable([
             //                                                    ['Ano', 'FERNANDO OLIVEIRA', 'Média de Sua Ocupação'],
@@ -272,6 +285,40 @@
         },
 
 
+=======
+            var data = new google.visualization.DataTable();
+            var rows = [];
+            EvolucaoPatrimonial.current = undefined;
+            for (var i = 0; i < EvolucaoPatrimonial.datasource.length; i++) {
+                var item = EvolucaoPatrimonial.datasource[i];
+                if (item.CPF == EvolucaoPatrimonial.cpf)
+                {
+                    EvolucaoPatrimonial.current  = item;
+                    rows.push([item.Ano + '', HelperJS.toNumber(item.VlrMedioOcupacao), HelperJS.toNumber(item.VlrTotalDeclarado)]);
+                }
+            }
+
+            data.addColumn('string', 'Ano');
+            data.addColumn('number', 'Vlr. Declarado');
+            data.addColumn('number', 'Vlr. Média Ocupação');
+
+            data.addRows(rows);
+
+            var options = {
+                title: 'Evolução Patrimonial',
+                chartArea: { width: '50%' },                
+                vAxis: {
+                    title: 'Valor em R$'
+                },
+                hAxis: {
+                    title: 'Ano',
+                    minValue: 2006
+                }
+            };
+
+            var chart = new google.visualization.ColumnChart(document.getElementById('grafico'));
+            chart.draw(data, options);
+>>>>>>> 7c1ad28b67310c1c3463c384c674007f85312c48
 
 
 

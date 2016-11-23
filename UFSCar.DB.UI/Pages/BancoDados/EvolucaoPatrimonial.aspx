@@ -3,7 +3,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPrincipal" runat="server">
 
     <script src="EvolucaoPatrimonial.js"></script>
+<<<<<<< 9018fd183bea638754aa6973f326353c31baa4a7
     
+=======
+    <script src="/Assets/Plugins/highcharts/highcharts.js"></script>
+
+>>>>>>> 7c1ad28b67310c1c3463c384c674007f85312c48
 </asp:Content>
  
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPrincipal" runat="server">
@@ -193,8 +198,8 @@
                     <div class="portlet-body">
                         <div class="row-fluid">
                             <!-- Listagem -->
-                            <div class="portlet-body no-more-tables">
-                                <table id="gridResultado" class="table table-striped table-bordered table-hover table-full-width" cellspacing="0" width="100%">
+                            <div class="portlet-body no-more-tables" style="overflow: scroll">
+                                <table id="gridResultado" class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th style="width: 5%">Ano</th>
@@ -202,9 +207,9 @@
                                             <th style="width: 10%">Municipio</th>
                                             <th style="width: 15%">Nome</th>
                                             <th style="width: 10%">Ocupação</th>
-                                            <th style="width: 10%">Valor Médio da Ocupação</th>
-                                            <th style="width: 10%">Valor Total Declarado</th>
-                                            <th style="width: 10%">Diferença Média</th>
+                                            <th style="width: 10%">Vlr Médio Ocupação</th>
+                                            <th style="width: 10%">Vlr Declarado</th>
+                                            <th style="width: 10%"><>Média</th>
                                             <th style="width: 10%">Cargo Politico</th>
                                             <th style="width: 10%">Partido</th>
                                             <th style="width: 5%">Ações</th>
@@ -230,7 +235,14 @@
             </div>
         </div>
         <div class="modal-body">
+<<<<<<< 9018fd183bea638754aa6973f326353c31baa4a7
             <div id="grafico" style="width: 900px; height: 500px;">
+=======
+
+            <div class="row-fluid">
+                <div id="grafico" style="min-width: 100%; height: 100%; margin: 0 auto">
+                </div>
+>>>>>>> 7c1ad28b67310c1c3463c384c674007f85312c48
             </div>
         </div>
         <div class="modal-footer">

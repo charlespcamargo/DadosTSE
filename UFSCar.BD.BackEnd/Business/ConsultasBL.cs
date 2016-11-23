@@ -109,7 +109,12 @@ namespace UFSCar.BD.BackEnd.Business
 
             return lst;
         }
-                
+
+        public object EvolucaoPatrimonialGrafico(string cpf)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<ANALISE3_2> PorSexo(AnaliseFiltro filtro)
         {
             List<ANALISE3_2> lst = null;

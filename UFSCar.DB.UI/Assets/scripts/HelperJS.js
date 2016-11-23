@@ -1315,6 +1315,14 @@ var HelperJS = function () {
                 return 'textarea';
             }
         },
+        toNumber: function (number) {
+
+            number = number.replace(/[\\.]/, "");
+
+            number = number.replace(',', '.');
+            
+            return parseFloat(number);
+        },
         fixChoosen: function () {
             var els = jQuery(".chosen-select");
             els.on("chosen:showing_dropdown", function () {
