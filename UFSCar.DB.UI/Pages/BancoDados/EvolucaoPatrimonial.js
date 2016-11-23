@@ -231,7 +231,7 @@
                 vAxis: {
                     title: 'Valor em R$'
                 },
-                chartArea: { left: 150,  width: '60%'},
+                chartArea: { left: 150,  width: '65%'},
                 hAxis: {
                     title: 'Ano',
                     minValue: 2006

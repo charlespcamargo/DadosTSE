@@ -3,12 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPrincipal" runat="server">
 
     <script src="EvolucaoPatrimonial.js"></script>
-    <<<<<<< 9018fd183bea638754aa6973f326353c31baa4a7
-    
-=======
-    <script src="/Assets/Plugins/highcharts/highcharts.js"></script>
 
-    >>>>>>> 7c1ad28b67310c1c3463c384c674007f85312c48
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPrincipal" runat="server">
@@ -198,8 +193,8 @@
                     <div class="portlet-body">
                         <div class="row-fluid">
                             <!-- Listagem -->
-                            <div class="portlet-body no-more-tables" style="overflow: scroll">
-                                <table id="gridResultado" class="table table-striped table-bordered table-hover">
+                            <div class="portlet-body no-more-tables">
+                                <table id="gridResultado" class="table table-striped table-bordered table-hover table-full-width" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
                                             <th style="width: 5%">Ano</th>
@@ -231,13 +226,15 @@
     <div id="modalGrafico" class="modal container hide fade" tabindex="-1" data-backdrop="fixed">
         <div class="portlet box light-grey">
             <div class="portlet-title">
-                <div class="caption"><i class="icon-pencil"></i>Candidato - <span class="lblTituloModal"></span></div>
+                <div class="caption"><i class="icon-pencil"></i>Candidato <span class="lblTituloModal"></span></div>
             </div>
         </div>
         <div class="modal-body">
 
-            <div style="min-width: 900px">
-                <div id="grafico">
+            <div class="row-fluid">
+                <div class="controls span12">
+                    <div id="grafico" style="min-height:200px" >
+                    </div>
                 </div>
             </div>
 
