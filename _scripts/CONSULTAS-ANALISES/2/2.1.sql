@@ -28,13 +28,13 @@ AS
 BEGIN
 
 	/*
-		EXEC SP_ANALISE2_1		@ANO				= NULL,
+		EXEC SP_ANALISE2_1		@ANO				= 2016,
 								@SEXO				= NULL,
 								@IDESCOLARIDADE		= NULL,
 								@OCUPACAO			= NULL,
 								@REGIAO				= NULL,
-								@SIGLAESTADO		= NULL,
-								@IDMUNICIPIO		= NULL,
+								@SIGLAESTADO		= 'SP',
+								@IDMUNICIPIO		= 4884,
 								@SIGLAPARTIDO		= NULL,
 								@IDCARGOPRETENDIDO	= NULL
 
@@ -46,17 +46,20 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT TFDadoEleitoral.Ano, 
-	   TDLocalidade.Regiao, 
-	   TDLocalidade.SiglaEstado, 
-	   TDLocalidade.Municipio,
-	   TDCargoPolitico.Descricao as CargoPolitico,
-	   TDPartidoColigacao.Partido,
-	   TDEscolaridade.Descricao AS Escolaridade,
-	   COUNT(1) AS Quantidade,
-	   AG_ANO_LOCAL_CARGO_PARTIDO.QtdCandidatos as Total,
-	   (COUNT(1) / (AG_ANO_LOCAL_CARGO_PARTIDO.QtdCandidatos + 0.0)) * 100.0 AS Percentual,
-	   (RIGHT('000' + CAST(COUNT(1) AS VARCHAR(20)), 3) + ' de ' + RIGHT('000' + CAST(AG_ANO_LOCAL_CARGO_PARTIDO.QtdCandidatos AS VARCHAR(20)), 3) ) AS Fracao
+	SELECT	TFDadoEleitoral.Ano																	AS Ano, 
+			TDLocalidade.Regiao																	AS Regiao, 
+			TDLocalidade.SiglaEstado															AS SiglaEstado, 
+			TDLocalidade.Municipio																AS Municipio,
+			TDCargoPolitico.Descricao															AS CargoPolitico,
+			TDPartidoColigacao.Partido															AS Partido,
+			TDEscolaridade.Descricao															AS Escolaridade,
+			COUNT(1)																			AS Quantidade,
+			AG_ANO_LOCAL_CARGO_PARTIDO.QtdCandidatos											AS Total,
+			CAST(
+					(COUNT(1) / (AG_ANO_LOCAL_CARGO_PARTIDO.QtdCandidatos + 0.0)) * 100.0	
+				 AS NUMERIC(5,2))			AS Percentual,
+			(RIGHT('000' + CAST(COUNT(1) AS VARCHAR(20)), 3) + ' de ' + 
+		     RIGHT('000' + CAST(AG_ANO_LOCAL_CARGO_PARTIDO.QtdCandidatos AS VARCHAR(20)), 3) )	AS Fracao
 	   
 
 

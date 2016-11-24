@@ -102,7 +102,7 @@
 
         buscar: function () {
             var filtro = EvolucaoPatrimonial.montarFiltro();
-            HelperJS.callApi(APIs.API_TSE, "/consultas/patrimonio/", "POST", filtro, EvolucaoPatrimonial.buscar_sucesso, HelperJS.showError);
+            HelperJS.callApi(APIs.API_TSE, "/consultas/escolaridade/", "POST", filtro, EvolucaoPatrimonial.buscar_sucesso, HelperJS.showError);
         },
 
         montarFiltro: function () {
@@ -252,8 +252,6 @@
             cidade.Nome = "São Paulo";
             HelperJS.popularSelect2("hfMunicipio", cidade);
             $("#ddlCargoPretendido").val('8').trigger("liszt:updated");
-
-
         }
     }
 }();

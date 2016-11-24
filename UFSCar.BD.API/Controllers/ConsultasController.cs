@@ -69,11 +69,11 @@ namespace UFSCar.BD.API.Controllers
         [Route("escolaridade")]
         public HttpResponseMessage Escolaridade([FromBody] AnaliseFiltro filtro)
         {
-            List<dynamic> lst = null;
+            List<ANALISE2_1> lst = null;
 
             try
             {
-                //lst = ConsultasBL.New.EvolucaoPatrimonial(filtro);
+                lst = ConsultasBL.New.Escolaridade(filtro);
 
                 return Request.CreateResponse(HttpStatusCode.OK, lst);
             }

@@ -7,9 +7,9 @@
     return {
 
         init: function () {
-            Escolaridade.inicializarGoogleCharts();
             Escolaridade.eventos();
             Escolaridade.inicializarControles();
+            Escolaridade.hardCode();
         },
 
         eventos: function () {
@@ -24,15 +24,18 @@
 
         inicializarControles: function () {
             Escolaridade.carregarCombos();
+            Escolaridade.inicializarGrid();
         },
 
-        inicializarGoogleCharts: function () {
-            google.charts.load('current', { 'packages': ['bar'] });
-        },
 
         alterouRegiao: function () {
             Escolaridade.carregarComboUF();
             Escolaridade.carregarComboMunicipio();
+        },
+
+
+        inicializarGrid: function () {
+            HelperJS.dataTableResult("gridResultado", Escolaridade.montarColunasGrid(), [[0, 'asc'], [1, 'asc']], lst);
         },
 
 
@@ -92,12 +95,11 @@
 
 
         buscar: function () {
-            var filtro = Escolaridade.montarFiltro(); 
+            var filtro = Escolaridade.montarFiltro();
             HelperJS.callApi(APIs.API_TSE, "/consultas/escolaridade/", "POST", filtro, Escolaridade.buscar_sucesso, HelperJS.showError);
         },
 
-        montarFiltro: function ()
-        {
+        montarFiltro: function () {
             var filtro = {};
 
             if (HelperJS.temValor($("#ddlAnoEleitoral").val()))
@@ -110,10 +112,10 @@
             else
                 filtro.Sexo = "";
 
-            if (HelperJS.temValor($("#ddlEscolaridade").val()))
+            if (HelperJS.temValor($("#ddlEscolaridade").val()) && $("#ddlEscolaridade").val())
                 filtro.EscolaridadeID = $("#ddlEscolaridade").val();
             else
-                filtro.EscolaridadeID = 0;
+                filtro.EscolaridadeID = -1;
 
             if (HelperJS.temValor($("#hfOcupacao").val()))
                 filtro.Ocupacao = $("#hfOcupacao").val();
@@ -134,7 +136,7 @@
                 filtro.MunicipioID = $("#hfMunicipio").val();
             else
                 filtro.MunicipioID = 0;
-             
+
 
             if (HelperJS.temValor($("#ddlPartido").val()))
                 filtro.PartidoSigla = $("#ddlPartido").val();
@@ -142,53 +144,61 @@
                 filtro.PartidoSigla = "";
 
 
-            if (HelperJS.temValor($("#ddlCargoPretendido").val()))
+            if (HelperJS.temValor($("#ddlCargoPretendido").val()) && $("#ddlCargoPretendido").val() != 0)
                 filtro.CargoPretendidoID = $("#ddlCargoPretendido").val();
             else
-                filtro.CargoPretendidoID = 0;
+                filtro.CargoPretendidoID = -1;
 
 
             return filtro;
         },
 
         buscar_sucesso: function (data) {
-            lst = data;
-            google.charts.setOnLoadCallback(Escolaridade.drawChart);
+
+            if (data != null)
+                lst = data;
+            else
+                lst = [];
+
+            HelperJS.dataTableResult("gridResultado", Escolaridade.montarColunasGrid(), [[0, 'asc'], [1, 'asc']], lst);
+
         },
 
-        drawChart: function () {
-            var options =
-            {
-                chart:
-                {
-                    title: 'Declaração ',
-                    subtitle: '',
-                },
-                bars: 'horizontal',
-                hAxis: { format: 'decimal' },
-                height: 400
-            };
 
 
-            if (lst != null && lst.length > 0) {
-                var data = new google.visualization.DataTable();
-                data.addColumn('string', 'Nome');
-                data.addColumn('number', '2006');
-                data.addColumn('number', '2008');
-                data.addColumn('number', '2010');
-                data.addColumn('number', '2012');
-                data.addColumn('number', '2014');
-                data.addColumn('number', '2016');
 
-                $.each(lst, function (i, obj) {
-                    data.addRow([obj.NomeUrna, obj.Bens2006, obj.Bens2008, obj.Bens2010, obj.Bens2012, obj.Bens2014, obj.Bens2016]);
-                });
+        montarColunasGrid: function () {
 
-                chart = new google.charts.Bar(document.getElementById('chart_div'));
-                chart.draw(data, google.charts.Bar.convertOptions(options));
-            }
+            var colunas = [];
+
+            colunas.push({ "mData": "Ano" });
+            colunas.push({ "mData": "Regiao" });
+            colunas.push({ "mData": "SiglaEstado" });
+            colunas.push({ "mData": "Municipio" });
+            colunas.push({ "mData": "CargoPolitico" });
+            colunas.push({ "mData": "Partido" });
+            colunas.push({ "mData": "Escolaridade" });
+            colunas.push({ "mData": "Quantidade" });
+            colunas.push({ "mData": "Total" });
+            colunas.push({
+                "mData": "Percentual",
+                "mRender": function (source, type, full) {
+                    return  source + "%";
+                }
+            });
+            colunas.push({ "mData": "Fracao" });
+
+            return colunas;
         },
 
+        hardCode: function () {
+            $("#ddlAnoEleitoral").val('2016').trigger("liszt:updated");
+            var cidade = {};
+            cidade.ID = 4884;
+            cidade.Nome = "São Paulo";
+            HelperJS.popularSelect2("hfMunicipio", cidade);
+            //$("#ddlCargoPretendido").val('8').trigger("liszt:updated");
+        }
 
     }
 }();
