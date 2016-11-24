@@ -10,6 +10,7 @@
             PorSexo.inicializarGoogleCharts();
             PorSexo.eventos();
             PorSexo.inicializarControles();
+            PorSexo.hardCode();
         },
 
         eventos: function () {
@@ -366,5 +367,23 @@
             //});
             return colunas;
         },
+
+        hardCode: function ()
+        {
+            //$("#ddlAnoEleitoral").val('2016').trigger("liszt:updated");
+
+            var cidade = {};
+            cidade.ID = 4884;
+            cidade.Nome = "São Paulo";
+            HelperJS.popularSelect2("hfMunicipio", cidade);
+
+            var estado = {};
+            estado.Sigla = "SP";
+            estado.Nome = "São Paulo";
+            HelperJS.popularSelect2("hfEstado", estado);
+
+            //$("#ddlCargoPretendido").val('8').trigger("liszt:updated");
+        },
+
     }
 }();

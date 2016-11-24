@@ -198,7 +198,7 @@
             cidade.Nome = "São Paulo";
             HelperJS.popularSelect2("hfMunicipio", cidade);
             //$("#ddlCargoPretendido").val('8').trigger("liszt:updated");
-        }
+        },
 
     }
 }();
