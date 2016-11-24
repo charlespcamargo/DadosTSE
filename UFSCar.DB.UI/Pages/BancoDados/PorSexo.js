@@ -163,7 +163,6 @@
             var bPaginate = false;
             var bSort = false;
             var fnDrawCallback = undefined;
-            console.log(data);
             HelperJS.dataTableResult('gridPorSexo', columns, sorter, data, bPaginate, bSort, fnDrawCallback)
 
             google.charts.setOnLoadCallback(PorSexo.drawChart);
@@ -217,8 +216,7 @@
                 'p': { 'html': true }
             });
 
-            for (prop in qtdTotal) {
-                console.log(prop);
+            for (prop in qtdTotal) {                
                 data.addRow(['BR-' + prop, (qtdFemino[prop] / qtdTotal[prop]) * 100, '']);
             }
 
@@ -263,7 +261,7 @@
                 anoEstado[item.Ano][item.SiglaEstado].QtdTotal += item.QtdTotal;
             });
             i = 1;
-            console.log(anoEstado);
+            
             for (ano in anoEstado) {
                 tooltipData.push([]);
                 tooltipData[i].push(ano);
@@ -282,7 +280,7 @@
             }
 
 
-            console.log(tooltipData);
+            
             var data = new google.visualization.arrayToDataTable(tooltipData);
             var view = new google.visualization.DataView(data);
 
@@ -311,6 +309,7 @@
                 });
                 tooltipChart.draw(view, PorSexo.tooltipOptions);
             }
+            lst = [];
             PorSexo.drawRegionsMap();
         },
         montarColunasGrid: function () {

@@ -45,13 +45,3 @@ INSERT INTO [dbo].[Estado] ([Nome], [Sigla], [Regiao], [PaisID]) VALUES ( 'Mato 
 INSERT INTO [dbo].[Estado] ([Nome], [Sigla], [Regiao], [PaisID]) VALUES ( 'Goiás', 'GO', 'Centro-Oeste', @pais)
 INSERT INTO [dbo].[Estado] ([Nome], [Sigla], [Regiao], [PaisID]) VALUES ( 'Distrito Federal', 'DF', 'Centro-Oeste', @pais)
 GO
-
-
-
-INSERT INTO Cidade(Nome, EstadoID)
-SELECT DISTINCT NOME_UE, Estado.ID
- FROM ImportacaoVaga
- JOIN Estado 
-   ON ESTADO.Sigla = ImportacaoVaga.SIGLA_UF 
-ORDER BY NOME_UE
-GO 
