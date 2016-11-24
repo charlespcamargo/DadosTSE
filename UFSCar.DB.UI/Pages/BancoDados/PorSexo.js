@@ -114,15 +114,15 @@
             else
                 filtro.Sexo = "";
 
-            if (HelperJS.temValor($("#ddlEscolaridade").val()))
+            if (HelperJS.temValor($("#ddlEscolaridade").val()) || $("#ddlEscolaridade").val() == "0")
                 filtro.EscolaridadeID = $("#ddlEscolaridade").val();
             else
-                filtro.EscolaridadeID = 0;
+                filtro.EscolaridadeID = -1;
 
             if (HelperJS.temValor($("#hfOcupacao").val()))
                 filtro.Ocupacao = $("#hfOcupacao").val();
             else
-                filtro.Ocupacao = 0;
+                filtro.Ocupacao = "";
 
             if (HelperJS.temValor($("#ddlRegiao").val()))
                 filtro.Regiao = $("#ddlRegiao").val();
@@ -145,10 +145,10 @@
                 filtro.PartidoSigla = "";
 
 
-            if (HelperJS.temValor($("#ddlCargoPretendido").val()))
+            if (HelperJS.temValor($("#ddlCargoPretendido").val()) || $("#ddlCargoPretendido").val() == "0")
                 filtro.CargoPretendidoID = $("#ddlCargoPretendido").val();
             else
-                filtro.CargoPretendidoID = 0;
+                filtro.CargoPretendidoID = -1;
 
 
             return filtro;
@@ -216,7 +216,7 @@
                 'p': { 'html': true }
             });
 
-            for (prop in qtdTotal) {                
+            for (prop in qtdTotal) {
                 data.addRow(['BR-' + prop, (qtdFemino[prop] / qtdTotal[prop]) * 100, '']);
             }
 
@@ -261,7 +261,7 @@
                 anoEstado[item.Ano][item.SiglaEstado].QtdTotal += item.QtdTotal;
             });
             i = 1;
-            
+
             for (ano in anoEstado) {
                 tooltipData.push([]);
                 tooltipData[i].push(ano);
@@ -280,7 +280,7 @@
             }
 
 
-            
+
             var data = new google.visualization.arrayToDataTable(tooltipData);
             var view = new google.visualization.DataView(data);
 

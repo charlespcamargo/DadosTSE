@@ -112,7 +112,7 @@
             else
                 filtro.Sexo = "";
 
-            if (HelperJS.temValor($("#ddlEscolaridade").val()) && $("#ddlEscolaridade").val())
+            if (HelperJS.temValor($("#ddlEscolaridade").val()) || $("#ddlEscolaridade").val() == "0")
                 filtro.EscolaridadeID = $("#ddlEscolaridade").val();
             else
                 filtro.EscolaridadeID = -1;
@@ -144,7 +144,7 @@
                 filtro.PartidoSigla = "";
 
 
-            if (HelperJS.temValor($("#ddlCargoPretendido").val()) && $("#ddlCargoPretendido").val() != 0)
+            if (HelperJS.temValor($("#ddlCargoPretendido").val()) || $("#ddlCargoPretendido").val() == "0")
                 filtro.CargoPretendidoID = $("#ddlCargoPretendido").val();
             else
                 filtro.CargoPretendidoID = -1;

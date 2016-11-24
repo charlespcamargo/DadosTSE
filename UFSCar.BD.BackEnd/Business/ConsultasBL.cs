@@ -48,7 +48,7 @@ namespace UFSCar.BD.BackEnd.Business
             lstParametros.Add(parametro);
 
             parametro = GenericParameter.Create("@IDESCOLARIDADE", System.Data.DbType.Int32);
-            if (filtro.EscolaridadeID > 0)
+            if (filtro.EscolaridadeID > -1)
                 parametro.Value = filtro.EscolaridadeID;
             else
                 parametro.Value = DBNull.Value;
@@ -92,7 +92,7 @@ namespace UFSCar.BD.BackEnd.Business
             lstParametros.Add(parametro);
 
             parametro = GenericParameter.Create("@IDCARGOPRETENDIDO", System.Data.DbType.Int32);
-            if (filtro.CargoPretendidoID > 0)
+            if (filtro.CargoPretendidoID > -1)
                 parametro.Value = filtro.CargoPretendidoID;
             else
                 parametro.Value = DBNull.Value;
@@ -109,11 +109,7 @@ namespace UFSCar.BD.BackEnd.Business
 
             return lst;
         }
-
-        public object EvolucaoPatrimonialGrafico(string cpf)
-        {
-            throw new NotImplementedException();
-        }
+         
 
         public List<ANALISE3_2> PorSexo(AnaliseFiltro filtro)
         {
@@ -139,7 +135,7 @@ namespace UFSCar.BD.BackEnd.Business
             lstParametros.Add(parametro);
 
             parametro = GenericParameter.Create("@IDESCOLARIDADE", System.Data.DbType.Int32);
-            if (filtro.EscolaridadeID > 0)
+            if (filtro.EscolaridadeID > -1)
                 parametro.Value = filtro.EscolaridadeID;
             else
                 parametro.Value = DBNull.Value;
@@ -183,7 +179,7 @@ namespace UFSCar.BD.BackEnd.Business
             lstParametros.Add(parametro);
 
             parametro = GenericParameter.Create("@IDCARGOPRETENDIDO", System.Data.DbType.Int32);
-            if (filtro.CargoPretendidoID > 0)
+            if (filtro.CargoPretendidoID > -1)
                 parametro.Value = filtro.CargoPretendidoID;
             else
                 parametro.Value = DBNull.Value;
@@ -225,7 +221,7 @@ namespace UFSCar.BD.BackEnd.Business
             lstParametros.Add(parametro);
 
             parametro = GenericParameter.Create("@IDESCOLARIDADE", System.Data.DbType.Int32);
-            if (filtro.EscolaridadeID > 0)
+            if (filtro.EscolaridadeID > -1)
                 parametro.Value = filtro.EscolaridadeID;
             else
                 parametro.Value = DBNull.Value;
@@ -269,7 +265,7 @@ namespace UFSCar.BD.BackEnd.Business
             lstParametros.Add(parametro);
 
             parametro = GenericParameter.Create("@IDCARGOPRETENDIDO", System.Data.DbType.Int32);
-            if (filtro.CargoPretendidoID > 0)
+            if (filtro.CargoPretendidoID > -1)
                 parametro.Value = filtro.CargoPretendidoID;
             else
                 parametro.Value = DBNull.Value;

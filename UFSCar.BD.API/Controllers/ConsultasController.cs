@@ -41,30 +41,8 @@ namespace UFSCar.BD.API.Controllers
                 throw new HttpResponseException(errorResponse);
             }
         }
-
-        
-        [HttpGet]
-        [Route("patrimoniografico/{cpf}")]
-        public HttpResponseMessage PatrimonioGrafico(string cpf)
-        {
-            try
-            {
-                var lst = ConsultasBL.New.EvolucaoPatrimonialGrafico(cpf);
-
-                return Request.CreateResponse(HttpStatusCode.OK, lst);
-            }
-            catch (ArgumentException aex)
-            {
-                var errorResponse = Request.CreateErrorResponse(HttpStatusCode.BadRequest, new HttpError(aex.Message));
-                throw new HttpResponseException(errorResponse);
-            }
-            catch (Exception ex)
-            {
-                var errorResponse = Request.CreateErrorResponse(HttpStatusCode.Conflict, new HttpError(ex.Message));
-                throw new HttpResponseException(errorResponse);
-            }
-        }
-
+               
+       
         [HttpPost]
         [Route("escolaridade")]
         public HttpResponseMessage Escolaridade([FromBody] AnaliseFiltro filtro)

@@ -61,6 +61,6 @@ P:\Projetos\Mestrado\DadosTSE\UFSCar.DB.UI\bin\Microsoft.AI.Web.xml
 P:\Projetos\Mestrado\DadosTSE\UFSCar.DB.UI\bin\Microsoft.AI.WindowsServer.xml
 P:\Projetos\Mestrado\DadosTSE\UFSCar.DB.UI\bin\Microsoft.ApplicationInsights.xml
 P:\Projetos\Mestrado\DadosTSE\UFSCar.DB.UI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+P:\Projetos\Mestrado\DadosTSE\UFSCar.DB.UI\obj\Debug\UFSCar.DB.UI.csprojResolveAssemblyReference.cache
 P:\Projetos\Mestrado\DadosTSE\UFSCar.DB.UI\obj\Debug\UFSCar.DB.UI.dll
 P:\Projetos\Mestrado\DadosTSE\UFSCar.DB.UI\obj\Debug\UFSCar.DB.UI.pdb
-P:\Projetos\Mestrado\DadosTSE\UFSCar.DB.UI\obj\Debug\UFSCar.DB.UI.csprojResolveAssemblyReference.cache
