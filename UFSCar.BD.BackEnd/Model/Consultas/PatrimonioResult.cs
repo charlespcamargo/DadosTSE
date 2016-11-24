@@ -16,7 +16,7 @@ namespace UFSCar.BD.BackEnd.Model
 
         public int EscolaridadeID { get; set; }
 
-        public int Ocupacao { get; set; }
+        public string Ocupacao { get; set; }
 
         public string Regiao { get; set; }
 

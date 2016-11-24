@@ -31,7 +31,7 @@ BEGIN
 		EXEC SP_ANALISE3_4		@ANO				= NULL,
 								@SEXO				= NULL,
 								@IDESCOLARIDADE		= NULL,
-								@IDOCUPACAO			= NULL,
+								@OCUPACAO			= NULL,
 								@REGIAO				= NULL,
 								@SIGLAESTADO		= NULL,
 								@IDMUNICIPIO		= NULL,

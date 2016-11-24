@@ -58,7 +58,7 @@
         },
         FormataResultadoOcupacao: function (item) { return item.ID + " - " + item.Descricao; },
         FormataGrupoOcupacao: function (item) { return item.ID + " - " + item.Descricao; },
-        FuncaoGrupoOcupacao: function (item) { return item.ID; },
+        FuncaoGrupoOcupacao: function (item) { return item.Descricao; },
 
 
         carregarComboUF: function () {
@@ -118,7 +118,7 @@
             if (HelperJS.temValor($("#hfOcupacao").val()))
                 filtro.Ocupacao = $("#hfOcupacao").val();
             else
-                filtro.Ocupacao = 0;
+                filtro.Ocupacao = "";
 
             if (HelperJS.temValor($("#ddlRegiao").val()))
                 filtro.Regiao = $("#ddlRegiao").val();

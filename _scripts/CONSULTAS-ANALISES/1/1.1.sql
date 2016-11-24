@@ -33,7 +33,7 @@ BEGIN
 								@TODOSANOS			= 1,
 								@SEXO				= NULL,
 								@IDESCOLARIDADE		= NULL,
-								@IDOCUPACAO			= NULL,
+								@OCUPACAO			= 'DEPUTADO',
 								@REGIAO				= NULL,
 								@SIGLAESTADO		= NULL,
 								@IDMUNICIPIO		= 4884,

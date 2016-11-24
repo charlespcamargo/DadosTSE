@@ -19,7 +19,7 @@ namespace UFSCar.BD.BackEnd.Business
 
         public List<ANALISE1_1> EvolucaoPatrimonial(AnaliseFiltro filtro)
         {
-            List<ANALISE1_1> lst = null; 
+            List<ANALISE1_1> lst = null;
 
             #region Parametros
 
@@ -55,8 +55,8 @@ namespace UFSCar.BD.BackEnd.Business
             lstParametros.Add(parametro);
 
 
-            parametro = GenericParameter.Create("@IDOCUPACAO", System.Data.DbType.Int32);
-            if (filtro.Ocupacao > 0)
+            parametro = GenericParameter.Create("@OCUPACAO", System.Data.DbType.AnsiString);
+            if (!String.IsNullOrEmpty(filtro.Ocupacao))
                 parametro.Value = filtro.Ocupacao;
             else
                 parametro.Value = DBNull.Value;
@@ -102,10 +102,10 @@ namespace UFSCar.BD.BackEnd.Business
 
             using (UnitOfWork UoW = new UnitOfWork())
             {
-                string script = "SP_ANALISE1_1  @ANO, @TODOSANOS, @SEXO, @IDESCOLARIDADE, @IDOCUPACAO, @REGIAO, @SIGLAESTADO, @IDMUNICIPIO, @SIGLAPARTIDO, @IDCARGOPRETENDIDO ";
+                string script = "SP_ANALISE1_1  @ANO, @TODOSANOS, @SEXO, @IDESCOLARIDADE, @OCUPACAO, @REGIAO, @SIGLAESTADO, @IDMUNICIPIO, @SIGLAPARTIDO, @IDCARGOPRETENDIDO ";
 
                 lst = UoW.GetContext().Database.SqlQuery<ANALISE1_1>(script, lstParametros.ToArray()).ToList();
-            }              
+            }
 
             return lst;
         }
@@ -146,8 +146,8 @@ namespace UFSCar.BD.BackEnd.Business
             lstParametros.Add(parametro);
 
 
-            parametro = GenericParameter.Create("@IDOCUPACAO", System.Data.DbType.Int32);
-            if (filtro.Ocupacao > 0)
+            parametro = GenericParameter.Create("@OCUPACAO", System.Data.DbType.AnsiString);
+            if (!String.IsNullOrEmpty(filtro.Ocupacao))
                 parametro.Value = filtro.Ocupacao;
             else
                 parametro.Value = DBNull.Value;
@@ -193,7 +193,7 @@ namespace UFSCar.BD.BackEnd.Business
 
             using (UnitOfWork UoW = new UnitOfWork())
             {
-                string script = "SP_ANALISE3_2  @ANO, @SEXO, @IDESCOLARIDADE, @IDOCUPACAO, @REGIAO, @SIGLAESTADO, @IDMUNICIPIO, @SIGLAPARTIDO, @IDCARGOPRETENDIDO ";
+                string script = "SP_ANALISE3_2  @ANO, @SEXO, @IDESCOLARIDADE, @OCUPACAO, @REGIAO, @SIGLAESTADO, @IDMUNICIPIO, @SIGLAPARTIDO, @IDCARGOPRETENDIDO ";
 
                 lst = UoW.GetContext().Database.SqlQuery<ANALISE3_2>(script, lstParametros.ToArray()).ToList();
             }
