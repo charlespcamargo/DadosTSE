@@ -102,7 +102,7 @@
 
         buscar: function () {
             var filtro = EvolucaoPatrimonial.montarFiltro();
-            HelperJS.callApi(APIs.API_TSE, "/consultas/escolaridade/", "POST", filtro, EvolucaoPatrimonial.buscar_sucesso, HelperJS.showError);
+            HelperJS.callApi(APIs.API_TSE, "/consultas/patrimonio/", "POST", filtro, EvolucaoPatrimonial.buscar_sucesso, HelperJS.showError);
         },
 
         montarFiltro: function () {
@@ -123,7 +123,7 @@
             if (HelperJS.temValor($("#ddlEscolaridade").val()) || $("#ddlEscolaridade").val() == "0")
                 filtro.EscolaridadeID = $("#ddlEscolaridade").val();
             else
-                filtro.EscolaridadeID = 0;
+                filtro.EscolaridadeID = -1;
 
             if (HelperJS.temValor($("#hfOcupacao").val()))
                 filtro.Ocupacao = $("#hfOcupacao").val();
