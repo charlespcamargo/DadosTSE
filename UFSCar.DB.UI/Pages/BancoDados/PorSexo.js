@@ -64,7 +64,7 @@
         },
         FormataResultadoOcupacao: function (item) { return item.ID + " - " + item.Descricao; },
         FormataGrupoOcupacao: function (item) { return item.ID + " - " + item.Descricao; },
-        FuncaoGrupoOcupacao: function (item) { return item.ID; },
+        FuncaoGrupoOcupacao: function (item) { return item.Descricao; },
 
 
         carregarComboUF: function () {
