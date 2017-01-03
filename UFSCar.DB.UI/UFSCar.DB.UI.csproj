@@ -119,6 +119,7 @@
     <Content Include="Assets\img\icon-color-close.png" />
     <Content Include="Assets\img\icon-color.png" />
     <Content Include="Assets\img\logo-ufscar-mini.gif" />
+    <Content Include="Assets\img\logo-ufscar-mini.png" />
     <Content Include="Assets\img\logo-ufscar.gif" />
     <Content Include="Assets\img\menu-toggler.png" />
     <Content Include="Assets\img\overlay-icon.png" />
@@ -1234,6 +1235,7 @@
     <Content Include="Assets\Plugins\uniform\images\Thumbs.db" />
     <Content Include="Assets\Plugins\uniform\README.textile" />
     <Content Include="Models\MasterPrincipal.Master" />
+    <None Include="Properties\PublishProfiles\UFSCar.BD.DadosTSE.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1256,6 +1258,21 @@
     <Content Include="Assets\scripts\HelperJS.js" />
     <Content Include="Styles\DefaultStyle.css" />
     <Content Include="Styles\Print.css" />
+    <Content Include="Styles\themes\base\images\animated-overlay.gif" />
+    <Content Include="Styles\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Styles\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Styles\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Styles\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Styles\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Styles\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Styles\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Styles\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Styles\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Styles\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Styles\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Styles\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Styles\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Styles\themes\base\jquery-ui-1.10.3.custom.min.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

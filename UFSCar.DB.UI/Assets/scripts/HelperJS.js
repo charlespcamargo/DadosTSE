@@ -31,6 +31,11 @@ var HelperJS = function () {
                 apiUrl = $(APIs.API_TSE.IDHiddenField).val();
             }
 
+            if (!HelperJS.temValor())
+            {
+                apiUrl = "http://localhost:8081/";
+            }
+
             return apiUrl != undefined ? apiUrl : "";
         },
 

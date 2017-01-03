@@ -167,6 +167,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+    <None Include="Properties\PublishProfiles\API.UFSCar.BD.DadosTSE.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\DadosTSE\UFSCar.BD.BackEnd\UFSCar.BD.BackEnd.csproj">
